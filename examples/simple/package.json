@@ -1,0 +1,19 @@
+{
+  "license": "MIT",
+  "name": "package-name",
+  "version": "0.0.1",
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.dist.json",
+    "test": "tsc && jest test",
+    "fix": "yarn lint --fix",
+    "lint": "tslint --project tsconfig.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@zefiros/npm-defaults": "git+https://github.com/Zefiros-Software/npm-defaults.git"
+  }
+}

@@ -14,6 +14,9 @@
     "tslint.json",
     "wallaby.base.js"
   ],
+  "bin": {
+    "release": "yarn standard-version -a"
+  },
   "scripts": {},
   "dependencies": {
     "@commitlint/cli": "^7.5.2",

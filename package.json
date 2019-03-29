@@ -18,9 +18,6 @@
     "tslint.json",
     "wallaby.base.js"
   ],
-  "bin": {
-    "release": "yarn standard-version -a"
-  },
   "scripts": {
     "release": "yarn standard-version -a",
     "release:dry": "yarn release --dry-run"

@@ -1,6 +1,10 @@
 {
   "license": "MIT",
   "name": "@zefiros/npm-defaults",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zefiros-Software/npm-defaults.git"
+  },
   "version": "0.1.0",
   "description": "Build tools for Zefiros packages",
   "files": [
@@ -19,7 +23,7 @@
   },
   "scripts": {
     "release": "yarn standard-version -a",
-    "release:dry": "yarn release --dry"
+    "release:dry": "yarn release --dry-run"
   },
   "dependencies": {
     "@commitlint/cli": "^7.5.2",

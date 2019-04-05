@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.3](https://github.com/Zefiros-Software/npm-defaults/compare/v0.1.2...v0.1.3) (2019-04-05)
+
+
+### Features
+
+* **conventional-changelog:** add conventional-changelog ([a74202b](https://github.com/Zefiros-Software/npm-defaults/commit/a74202b))
+
+
+
 ## [0.1.2](https://github.com/Zefiros-Software/npm-defaults/compare/v0.1.1...v0.1.2) (2019-03-29)
 
 

@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.4](https://github.com/Zefiros-Software/npm-defaults/compare/v0.1.3...v0.1.4) (2019-04-05)
+
+
+### Bug Fixes
+
+* **typescript:** set typescript to fixed version (https://github.com/Microsoft/TypeScript/issues/30372) ([f9df6fd](https://github.com/Zefiros-Software/npm-defaults/commit/f9df6fd))
+
+
+
 ## [0.1.3](https://github.com/Zefiros-Software/npm-defaults/compare/v0.1.2...v0.1.3) (2019-04-05)
 
 

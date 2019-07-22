@@ -23,26 +23,26 @@
     "release:dry": "yarn release --dry-run"
   },
   "dependencies": {
-    "@commitlint/cli": "^7.5.2",
-    "@commitlint/config-conventional": "^7.5.0",
-    "@types/jest": "^24.0.11",
-    "@types/prettier": "^1.16.1",
-    "conventional-changelog": "^3.0.6",
-    "husky": "^1.3.1",
-    "jest": "^24.5.0",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@types/jest": "^24.0.15",
+    "@types/prettier": "^1.18.0",
+    "conventional-changelog": "^3.1.8",
+    "husky": "^3.0.1",
+    "jest": "^24.8.0",
     "npm-check": "^5.9.0",
-    "prettier": "^1.16.4",
-    "standard-version": "^5.0.2",
-    "ts-jest": "^24.0.0",
-    "ts-node": "^8.0.3",
-    "tslint": "^5.15.0",
+    "prettier": "^1.18.2",
+    "standard-version": "^6.0.1",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
-    "tslint-no-circular-imports": "^0.6.2",
+    "tslint-no-circular-imports": "^0.7.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "3.3.4000"
+    "typescript": "^3.5.3"
   },
   "devDependencies": {
-    "@types/inquirer": "^6.0.0"
+    "@types/inquirer": "^6.0.3"
   }
 }

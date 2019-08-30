@@ -23,10 +23,6 @@ jobs:
       run: |
         yarn install
         yalc publish
-      env:
-        CI: true
-    - name: npm install, build, and test
-      run: |
         cd examples/simple
         yalc add @zefiros/npm-defaults
         yarn install

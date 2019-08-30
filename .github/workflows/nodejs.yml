@@ -18,13 +18,17 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install -g yarn
-    - name: npm install, build, and test
+    - name: yarn link
       run: |
         yarn install
         yarn link
+      env:
+        CI: true
+    - name: npm install, build, and test
+      run: |
         cd examples/simple
-        yarn link @zefiros/npm-defaults
         yarn install
+        yarn link @zefiros/npm-defaults
         yarn build
         yarn test
       env:

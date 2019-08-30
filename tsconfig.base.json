@@ -6,7 +6,10 @@
     "sourceMap": true,
     "alwaysStrict": true,
     "esModuleInterop": true,
-    "lib": ["esnext.asynciterable", "esnext"],
+    "lib": [
+      "esnext.asynciterable",
+      "esnext"
+    ],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
@@ -16,6 +19,13 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "strict": true,
-    "declaration": true
+    "declaration": true,
+    "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths",
+        "exclude": ["*"]
+      }
+    ],
+    "incremental": true
   }
 }

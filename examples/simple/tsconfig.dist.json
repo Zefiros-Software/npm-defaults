@@ -4,6 +4,12 @@
     "noEmit": false,
     "rootDir": "./src"
   },
-  "include": ["src/**/*.ts", "src/**/*.js"],
-  "exclude": [".vscode", "node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js"
+  ],
+  "exclude": [
+    ".vscode",
+    "node_modules"
+  ]
 }

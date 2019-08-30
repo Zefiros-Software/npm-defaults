@@ -3,11 +3,21 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": [
+        "src/*"
+      ]
     },
     "outDir": "./dist",
     "rootDir": "."
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "test/**/*.ts", "./*.js"],
-  "exclude": [".vscode", "node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "test/**/*.ts",
+    "./*.js"
+  ],
+  "exclude": [
+    ".vscode",
+    "node_modules"
+  ]
 }

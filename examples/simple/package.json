@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "files": ["dist/", "src/"],
   "scripts": {
-    "build": "tsc -p tsconfig.dist.json",
-    "test": "tsc && jest test",
+    "build": "ttsc -p tsconfig.dist.json",
+    "test": "ttsc && jest test",
     "fix": "yarn lint --fix",
     "lint": "tslint --project tsconfig.json",
     "release": "yarn standard-version -a",
@@ -13,6 +13,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@zefiros/npm-defaults": "^0.1.1"
+    "@zefiros/npm-defaults": "^0.1.5"
   }
 }

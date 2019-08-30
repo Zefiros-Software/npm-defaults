@@ -12,7 +12,7 @@ jobs:
         node-version: [8.x, 10.x, 12.x]
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
       with:
         fetch-depth: 1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -36,6 +36,6 @@ jobs:
       env:
         CI: true
     - name: coverage
-      uses: codecov/codecov-action@master
+      uses: codecov/codecov-action@v1.0.2
       with:
-        token: ${{secrets.CODECOV_TOKEN}} #required
+        token: ${{secrets.CODECOV_TOKEN}}

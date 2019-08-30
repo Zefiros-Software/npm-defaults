@@ -35,6 +35,7 @@ jobs:
         yarn test
       env:
         CI: true
-    - name: codecov/codecov-action@master
+    - name: coverage
+      uses: codecov/codecov-action@master
       with:
         token: ${{secrets.CODECOV_TOKEN}} #required

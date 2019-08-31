@@ -37,5 +37,5 @@ jobs:
         CI: true
     - name: coverage
       run: codecov
-      enc:
+      env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}

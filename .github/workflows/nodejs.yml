@@ -19,7 +19,7 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install -g yarn yalc
+    - run: npm install -g yarn yalc codecov
     - name: yarn link
       run: |
         yarn install
@@ -36,6 +36,6 @@ jobs:
       env:
         CI: true
     - name: coverage
-      uses: codecov/codecov-action@master
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
+      run: codecov
+      enc:
+        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}

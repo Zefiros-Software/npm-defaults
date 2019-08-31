@@ -36,6 +36,6 @@ jobs:
       env:
         CI: true
     - name: coverage
-      uses: codecov/codecov-action@v1.0.2
+      uses: codecov/codecov-action@master
       with:
         token: ${{secrets.CODECOV_TOKEN}}

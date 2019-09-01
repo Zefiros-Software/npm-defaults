@@ -48,7 +48,7 @@ jobs:
         git config --global user.email 'hoid@zefiros.io'
         git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         yarn release
-        git push --follow-tags origin HEAD 
+        git push --follow-tags origin HEAD:refs/heads/HEAD 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

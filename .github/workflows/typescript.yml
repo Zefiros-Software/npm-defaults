@@ -12,7 +12,7 @@ jobs:
         node-version: [10.x]
 
     steps:
-    - run: cat "$GITHUB_EVENT_PATH"
+    - run: echo "${{github}}"
     - uses: actions/checkout@master
       with:
         fetch-depth: 1
@@ -42,7 +42,7 @@ jobs:
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
     - name: release
-      if: github.ref == 'refs/heads/feature/actions'
+      if: github.ref == 'feature/actions'
       run: |
         yarn release
         git push

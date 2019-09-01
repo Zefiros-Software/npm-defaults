@@ -44,10 +44,11 @@ jobs:
     - name: release
       if: github.ref == 'refs/heads/feature/actions'
       run: |
+        snap install hub --classic
         git config --global user.name 'Hoid'
         git config --global user.email 'hoid@zefiros.io'
         yarn release
-        git push --follow-tags origin HEAD 
+        hub push --follow-tags origin HEAD 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -1,0 +1,58 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - run: echo "${{github.ref}}"
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@master
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install -g yarn yalc codecov
+    - name: yarn link
+      run: |
+        yarn install
+        yalc publish
+      env:
+        CI: true
+    - name: yarn install, build, and test
+      working-directory: examples/simple
+      run: |
+        yalc add @zefiros/npm-defaults
+        yarn install
+        yarn lint
+        yarn build
+        yarn test
+      env:
+        CI: true
+    - name: coverage
+      run: codecov
+      env:
+        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+    - name: release
+      if: github.ref == 'refs/heads/feature/actions'
+      run: |
+        git config --global user.name 'Hoid'
+        git config --global user.email 'hoid@zefiros.io'
+        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        yarn release
+        git push --follow-tags origin HEAD:refs/heads/HEAD 
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: publish
+      if: github.event.release
+      run: |
+        yarn publish --tag next --access public --registry=https://npm.pkg.github.com

@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "files": ["dist/", "src/"],
   "scripts": {
-    "build": "ttsc -p tsconfig.dist.json",
-    "test": "ttsc && jest test",
+    "build": "yarn ttsc -p tsconfig.dist.json",
+    "test": "yarn ttsc && jest test",
     "fix": "yarn lint --fix",
     "lint": "tslint --project tsconfig.json",
     "release": "yarn standard-version -a",

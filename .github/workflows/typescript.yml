@@ -27,10 +27,11 @@ jobs:
       env:
         CI: true
     - name: yarn install, build, and test
+      working-directory: examples/simple
       run: |
-        cd examples/simple
         yalc add @zefiros/npm-defaults
         yarn install
+        yarn lint
         yarn build
         yarn test
       env:

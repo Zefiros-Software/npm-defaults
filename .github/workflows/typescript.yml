@@ -40,3 +40,14 @@ jobs:
       run: codecov
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+
+    - name: release
+      if: github.ref == 'master'
+      run: |
+        yarn release
+        git push
+
+    - name: publish
+      if: github.event.release
+      run: |
+        yarn publish --tag next --access public --registry=https://npm.pkg.github.com

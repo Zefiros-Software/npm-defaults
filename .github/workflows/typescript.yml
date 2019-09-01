@@ -49,7 +49,7 @@ jobs:
         yarn release
         git push --follow-tags origin HEAD 
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_EPG_BOT_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: publish
       if: github.event.release

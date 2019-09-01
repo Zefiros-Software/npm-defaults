@@ -40,7 +40,7 @@ jobs:
       run: codecov
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-
+    - run: apk --no-cache add jq && cat "$GITHUB_EVENT_PATH" | jq -M .
     - name: release
       if: github.ref == 'master'
       run: |

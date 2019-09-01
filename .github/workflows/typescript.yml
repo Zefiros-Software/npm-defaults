@@ -9,9 +9,10 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [10.x]
 
     steps:
+    - run: cat "$GITHUB_EVENT_PATH"
     - uses: actions/checkout@master
       with:
         fetch-depth: 1
@@ -40,7 +41,6 @@ jobs:
       run: codecov
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-    - run: apk --no-cache add jq && cat "$GITHUB_EVENT_PATH" | jq -M .
     - name: release
       if: github.ref == 'master'
       run: |

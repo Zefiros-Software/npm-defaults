@@ -1,6 +1,6 @@
 name: Node CI
 
-on: [push, release]
+on: [push]
 
 jobs:
   build:
@@ -56,3 +56,5 @@ jobs:
       if: github.event.release
       run: |
         yarn publish --tag next --access public --registry=https://npm.pkg.github.com
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

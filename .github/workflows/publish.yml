@@ -1,17 +1,20 @@
 name: Publish
-on: release
+on: push
 jobs:
   publish-gpr:
     runs-on: ubuntu-latest
     steps:
+    # - name: Cancel if not a release publish
+    #   run: exit 1
+    #   if: github.event.action != 'created'
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
     - uses: actions/setup-node@v1
       with:
-        node-version: 12
-        registry-url: https://npm.pkg.github.com/
-        scope: '@Zefiros-Software'
-    - run: yarn publish --tag next --access public
+        node-version: 10
+    - run: |
+        echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >>~/.npmrc
+        yarn publish --tag next --access public
       env:
-        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NPM_TOKEN: ${{secrets.GITHUB_TOKEN}}

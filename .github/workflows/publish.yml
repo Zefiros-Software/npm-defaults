@@ -14,5 +14,8 @@ jobs:
       with:
         node-version: 10
     - run: |
-        echo "//npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}" >>~/.yarnrc
+        echo "registry=https://npm.pkg.github.com/" > ~/.npmrc
+        echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
         yarn publish --tag next --access public
+      env:
+        NPM_TOKEN: ${{secrets.GITHUB_TOKEN}}

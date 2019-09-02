@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/Zefiros-Software/npm-defaults.git"
   },
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Build tools for Zefiros packages",
   "files": [
     ".gitignore",

@@ -5,14 +5,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+    - uses: actions/checkout@v1
       with:
         fetch-depth: 1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-          scope: '@Zefiros-Software'
-      - run: yarn publish --tag next --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12
+        registry-url: https://npm.pkg.github.com/
+        scope: '@Zefiros-Software'
+    - run: yarn publish --tag next --access public
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

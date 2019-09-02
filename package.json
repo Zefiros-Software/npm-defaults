@@ -1,6 +1,6 @@
 {
   "license": "MIT",
-  "name": "@zefiros-software/npm-defaults",
+  "name": "@zefiros/npm-defaults",
   "repository": {
     "type": "git",
     "url": "https://github.com/Zefiros-Software/npm-defaults.git"

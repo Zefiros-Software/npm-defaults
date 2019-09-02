@@ -2,7 +2,6 @@ name: Publish
 on: release
 jobs:
   publish-gpr:
-    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1

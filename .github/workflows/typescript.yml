@@ -1,29 +1,23 @@
 name: Node CI
 
-on:
-  push:
-  release:
-    actions:
-      - published
+on: push
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x]
-
     steps:
+    - name: Cancel if not a release publish # workaround has `on` doesn't have this filter
+      run: exit 1
+      if: github.event.action != 'created'
     - run: echo "${{github.ref}}"
     - uses: actions/checkout@master
       with:
         fetch-depth: 1
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 10
       uses: actions/setup-node@master
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 10
     - run: npm install -g yarn yalc codecov
     - name: yarn link
       run: |
@@ -55,11 +49,3 @@ jobs:
         git push --follow-tags origin HEAD:refs/heads/master 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: publish
-      if: github.event.release && !github.event.release.draft && !github.event.release.prerelease
-      run: |
-        echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >>~/.npmrc
-        yarn publish --tag next --access public --registry=https://npm.pkg.github.com
-      #env:
-        #NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

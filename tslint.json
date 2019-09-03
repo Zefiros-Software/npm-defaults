@@ -4,7 +4,9 @@
     "tslint-plugin-prettier",
     "tslint-eslint-rules",
     "tslint-config-prettier",
-    "tslint-no-circular-imports"
+    "tslint-no-circular-imports",
+    "typestrict",
+    "tslint-no-commented-code-rule"
   ],
   "rules": {
     "prettier": true,
@@ -20,7 +22,15 @@
     },
     "no-floating-promises": true,
     "no-empty-interface": false,
-    "no-var-keyword": true
+    "no-var-keyword": true,    
+    "no-use-before-declare": false,
+    "no-commented-code": [
+      true,
+      {
+        "minLineCount": 2,
+        "ignoredCommentRegex": "^(\\w+$|TODO|FIXME)"
+      }
+    ]
   },
   "jsRules": {
     "prettier": true,

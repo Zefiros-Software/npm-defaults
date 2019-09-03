@@ -10,6 +10,7 @@
       "esnext.asynciterable",
       "esnext"
     ],
+    "importHelpers": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,

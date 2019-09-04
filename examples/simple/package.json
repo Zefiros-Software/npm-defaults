@@ -2,7 +2,9 @@
   "license": "MIT",
   "name": "package-name",
   "version": "0.0.1",
-  "files": ["dist/", "src/"],
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",
     "test": "yarn ttsc && jest test",

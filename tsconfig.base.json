@@ -26,7 +26,6 @@
         "transform": "@zerollup/ts-transform-paths",
         "exclude": ["*"]
       }
-    ],
-    "incremental": true
+    ]
   }
 }

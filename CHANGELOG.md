@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.19 (2019-09-04)
+
+
+### Features
+
+* do not use incremental builds ([d26e2a5](https://github.com/Zefiros-Software/npm-defaults/commit/d26e2a5))
+
 ### 0.1.18 (2019-09-03)
 
 

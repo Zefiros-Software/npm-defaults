@@ -30,7 +30,8 @@
         "minLineCount": 2,
         "ignoredCommentRegex": "^(\\w+$|TODO|FIXME)"
       }
-    ]
+    ],
+    "file-name-casing": [true, "kebab-case"]
   },
   "jsRules": {
     "prettier": true,

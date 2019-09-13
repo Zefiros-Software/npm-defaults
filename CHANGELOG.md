@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.21 (2019-09-13)
+
+
+### Features
+
+* improved linting ([56c2a06](https://github.com/Zefiros-Software/npm-defaults/commit/56c2a06))
+
 ### 0.1.20 (2019-09-04)
 
 

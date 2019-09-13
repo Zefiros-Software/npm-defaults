@@ -32,8 +32,7 @@
       }
     ],
     "file-name-casing": [true, "kebab-case"],
-    "strict-type-predicates": true,
-    "strict-boolean-expressions": true
+    "strict-type-predicates": true
   },
   "jsRules": {
     "prettier": true,

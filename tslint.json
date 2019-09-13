@@ -6,8 +6,7 @@
     "tslint-config-prettier",
     "tslint-no-circular-imports",
     "typestrict",
-    "tslint-no-commented-code-rule", 
-    "tslint-microsoft-contrib/latest"
+    "tslint-no-commented-code-rule"
   ],
   "rules": {
     "prettier": true,

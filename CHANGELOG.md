@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.22 (2019-09-13)
+
+
+### Features
+
+* remove strict-boolean-expressions rule ([e411f27](https://github.com/Zefiros-Software/npm-defaults/commit/e411f27))
+
 ### 0.1.21 (2019-09-13)
 
 

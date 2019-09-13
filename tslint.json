@@ -6,7 +6,8 @@
     "tslint-config-prettier",
     "tslint-no-circular-imports",
     "typestrict",
-    "tslint-no-commented-code-rule"
+    "tslint-no-commented-code-rule", 
+    "tslint-microsoft-contrib/latest"
   ],
   "rules": {
     "prettier": true,
@@ -32,7 +33,8 @@
       }
     ],
     "file-name-casing": [true, "kebab-case"],
-    "strict-type-predicates": true
+    "strict-type-predicates": true,
+    "no-relative-imports": true
   },
   "jsRules": {
     "prettier": true,

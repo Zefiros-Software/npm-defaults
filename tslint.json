@@ -31,7 +31,9 @@
         "ignoredCommentRegex": "^(\\w+$|TODO|FIXME)"
       }
     ],
-    "file-name-casing": [true, "kebab-case"]
+    "file-name-casing": [true, "kebab-case"],
+    "strict-type-predicates": true,
+    "strict-boolean-expressions": true
   },
   "jsRules": {
     "prettier": true,

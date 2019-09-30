@@ -42,8 +42,7 @@ jobs:
         export GIT_COMMITTER_NAME=Hoid
         export GIT_AUTHOR_EMAIL=hoid@zefiros.io
         export GIT_COMMITTER_EMAIL=hoid@zefiros.io
-        #git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        yarn release
+        yarn release -b development
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}

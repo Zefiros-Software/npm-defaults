@@ -55,7 +55,7 @@ jobs:
           const require = global.require || global.process.mainModule.constructor._load;
           const { version } = require('./package.json')
           try {
-            github.pulls.create({
+            await github.pulls.create({
               ...context.repo, 
               title: `Publish version ${version}`,
               head: 'development',

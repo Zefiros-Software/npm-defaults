@@ -35,8 +35,8 @@ jobs:
       run: codecov
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-    - name: release dev
-      if: github.ref == 'refs/heads/development' && !github.event.release
+    - name: release
+      if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
       run: |
         export GIT_AUTHOR_NAME=Hoid
         export GIT_COMMITTER_NAME=Hoid
@@ -46,13 +46,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-    - name: release
-      if: github.ref == 'refs/heads/master' && !github.event.release
-      run: |
-        git config --global user.name 'Hoid'
-        git config --global user.email 'hoid@zefiros.io'
-        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        yarn release
-        git push --follow-tags origin HEAD:refs/heads/master 
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: create pull request
+      if: github.ref == 'refs/heads/development'
+      uses: repo-sync/pull-request@v2
+      with:
+        source_branch: "development"                
+        destination_branch: "master"  
+        pr_title: "Pulling ${{ github.ref }} into master"
+        pr_body: ":crown: *An automated PR*"
+        github_token: ${{ secrets.GITHUB_TOKEN }}

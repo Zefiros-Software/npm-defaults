@@ -48,11 +48,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
     - name: create pull request
-      if: github.ref == 'refs/heads/development'
-      uses: repo-sync/pull-request@v2
+      uses: actions/github-script@0.2.0
       with:
-        source_branch: "development"                
-        destination_branch: "master"  
-        pr_title: "Create new release"
-        pr_body: ":crown: *An automated PR*"
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{github.token}}
+        script: |
+          github.pulls.create({
+            ...context.repo, 
+            title: 'Create new release',
+            head: 'development',
+            base: 'master'
+          })

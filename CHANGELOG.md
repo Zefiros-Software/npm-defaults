@@ -1,3 +1,5 @@
+# [0.2.0-beta.4](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.3@next...v0.2.0-beta.4@next) (2019-09-30)
+
 # [0.2.0-beta.2](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.1@next...v0.2.0-beta.2@next) (2019-09-30)
 
 # [0.2.0-beta.1](https://github.com/Zefiros-Software/npm-defaults/compare/v0.1.24...v0.2.0-beta.1@next) (2019-09-30)

@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/Zefiros-Software/npm-defaults.git"
   },
-  "version": "0.2.0-beta.3",
+  "version": "0.2.0-beta.4",
   "description": "Build tools for Zefiros packages",
   "files": [
     ".huskyrc.js",

@@ -44,6 +44,7 @@ jobs:
         yarn release:dry
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{secrets.NPM_TOKEN}}
     - name: release
       if: github.ref == 'refs/heads/master' && !github.event.release
       run: |

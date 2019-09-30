@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.24 (2019-09-14)
+
+
+### Features
+
+* add tsconfig-paths ([f254a50](https://github.com/Zefiros-Software/npm-defaults/commit/f254a50))
+
+### 0.1.23 (2019-09-13)
+
+### 0.1.22 (2019-09-13)
+
+
+### Features
+
+* remove strict-boolean-expressions rule ([e411f27](https://github.com/Zefiros-Software/npm-defaults/commit/e411f27))
+
+### 0.1.21 (2019-09-13)
+
+
+### Features
+
+* improved linting ([56c2a06](https://github.com/Zefiros-Software/npm-defaults/commit/56c2a06))
+
+### 0.1.20 (2019-09-04)
+
+
+### Features
+
+* enforce kebab casing ([57f4387](https://github.com/Zefiros-Software/npm-defaults/commit/57f4387))
+
+### 0.1.19 (2019-09-04)
+
+
+### Features
+
+* do not use incremental builds ([d26e2a5](https://github.com/Zefiros-Software/npm-defaults/commit/d26e2a5))
+
+### 0.1.18 (2019-09-03)
+
+
+### Features
+
+* upgrade tslint rule set for more type correctness ([7b7ef62](https://github.com/Zefiros-Software/npm-defaults/commit/7b7ef62))
+
 ### 0.1.17 (2019-09-03)
 
 ### 0.1.16 (2019-09-03)

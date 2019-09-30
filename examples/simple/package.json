@@ -15,6 +15,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@zefiros/npm-defaults": "^0.1.5"
+    "@zefiros/npm-defaults": "^0.1.23"
   }
 }

@@ -35,6 +35,15 @@ jobs:
       run: codecov
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+    - name: release dev
+      if: github.ref == 'refs/heads/development' && !github.event.release
+      run: |
+        git config --global user.name 'Hoid'
+        git config --global user.email 'hoid@zefiros.io'
+        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        yarn release:dry
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: release
       if: github.ref == 'refs/heads/master' && !github.event.release
       run: |

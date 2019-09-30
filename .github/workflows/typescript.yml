@@ -42,7 +42,7 @@ jobs:
         export GIT_COMMITTER_NAME=Hoid
         export GIT_AUTHOR_EMAIL=hoid@zefiros.io
         export GIT_COMMITTER_EMAIL=hoid@zefiros.io
-        yarn release -b development
+        yarn release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}

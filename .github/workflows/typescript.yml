@@ -69,6 +69,7 @@ jobs:
               head: 'Zefiros-Software:development',
               base: 'master'
             })
+            console.log(existing)
             if (existing.length > 0) {
               const number = existing[0].number
               await github.pulls.create({

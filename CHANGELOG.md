@@ -1,3 +1,10 @@
+# [0.2.0-beta.1](https://github.com/Zefiros-Software/npm-defaults/compare/v0.1.24...v0.2.0-beta.1@next) (2019-09-30)
+
+
+### Features
+
+* do not use incremental builds ([ced9e78](https://github.com/Zefiros-Software/npm-defaults/commit/ced9e78))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.

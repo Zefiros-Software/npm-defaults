@@ -38,8 +38,10 @@ jobs:
     - name: release dev
       if: github.ref == 'refs/heads/development' && !github.event.release
       run: |
-        git config --global user.name 'Hoid'
-        git config --global user.email 'hoid@zefiros.io'
+        export GIT_AUTHOR_NAME=Hoid
+        export GIT_COMMITTER_NAME=Hoid
+        export GIT_AUTHOR_EMAIL=hoid@zefiros.io
+        export GIT_COMMITTER_EMAIL=hoid@zefiros.io
         #git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         yarn release
       env:

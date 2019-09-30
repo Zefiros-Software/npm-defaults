@@ -8,12 +8,12 @@
   "version": "0.2.0-beta.1",
   "description": "Build tools for Zefiros packages",
   "files": [
-    ".gitignore",
     ".huskyrc.js",
     "commitlint.config.js",
     "jest.config.js",
     "package.json",
     "prettier.config.js",
+    "release.config.js",
     "tsconfig.base.json",
     "tslint.json",
     "wallaby.base.js"
@@ -27,7 +27,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@semantic-release/changelog": "^3.0.4",
-    "@semantic-release/git": "^7.1.0-beta.3",
+    "@semantic-release/git": "^7.0.16",
     "@types/jest": "^24.0.18",
     "@types/prettier": "^1.18.2",
     "@zerollup/ts-transform-paths": "^1.7.3",

@@ -43,6 +43,7 @@ jobs:
         export GIT_AUTHOR_EMAIL=hoid@zefiros.io
         export GIT_COMMITTER_EMAIL=hoid@zefiros.io
         yarn release
+        
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
@@ -52,6 +53,6 @@ jobs:
       with:
         source_branch: "development"                
         destination_branch: "master"  
-        pr_title: "Pulling ${{ github.ref }} into master"
+        pr_title: "Create new release"
         pr_body: ":crown: *An automated PR*"
         github_token: ${{ secrets.GITHUB_TOKEN }}

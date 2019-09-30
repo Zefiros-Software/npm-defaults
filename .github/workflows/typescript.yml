@@ -53,7 +53,7 @@ jobs:
         github-token: ${{github.token}}
         script: |
           const require = global.require || global.process.mainModule.constructor._load;
-          const { version } = require('package.json')
+          const { version } = require('./package.json')
           try {
             github.pulls.create({
               ...context.repo, 

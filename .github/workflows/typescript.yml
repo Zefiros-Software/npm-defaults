@@ -71,7 +71,7 @@ jobs:
             })
             if (existing.data.length > 0) {
               const number = existing.data[0].number
-              await github.pulls.create({
+              await github.pulls.update({
                 ...context.repo, 
                 title: `Publish version ${version}`,
                 pull_number: number

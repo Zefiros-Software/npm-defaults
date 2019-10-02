@@ -1,3 +1,10 @@
+# [0.2.0-beta.6](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.5@next...v0.2.0-beta.6@next) (2019-10-02)
+
+
+### Features
+
+* use typescript 3.7 beta ([d588b2a](https://github.com/Zefiros-Software/npm-defaults/commit/d588b2a))
+
 # [0.2.0-beta.5](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.4@next...v0.2.0-beta.5@next) (2019-09-30)
 
 # [0.2.0-beta.4](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.3@next...v0.2.0-beta.4@next) (2019-09-30)

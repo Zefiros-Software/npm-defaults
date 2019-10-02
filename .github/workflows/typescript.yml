@@ -43,7 +43,6 @@ jobs:
         export GIT_AUTHOR_EMAIL=hoid@zefiros.io
         export GIT_COMMITTER_EMAIL=hoid@zefiros.io
         yarn release
-        echo '::set-env name=GOPATH::${{ runner.workspace }}'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}

@@ -27,7 +27,6 @@ module.exports = function(dir) {
                 module: 'commonjs',
             }),
         },
-        filesWithNoCoverageCalculated: [],
 
         setup: function(wallaby) {
             const jestConfig = require('./jest.config.js')

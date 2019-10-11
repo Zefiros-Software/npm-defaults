@@ -6,10 +6,7 @@
     "sourceMap": true,
     "alwaysStrict": true,
     "esModuleInterop": true,
-    "lib": [
-      "esnext.asynciterable",
-      "esnext"
-    ],
+    "lib": ["esnext.asynciterable", "esnext"],
     "importHelpers": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -26,6 +23,15 @@
         "transform": "@zerollup/ts-transform-paths",
         "exclude": ["*"]
       }
-    ]
-  }
+    ],
+    "paths": {
+      "~/*": ["./src/*"],
+      "*": ["./typings/*"]
+    },
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "rootDir": "."
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": [".vscode", "node_modules"]
 }

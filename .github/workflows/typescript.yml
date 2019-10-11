@@ -38,42 +38,12 @@ jobs:
     - name: release
       if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
       run: |
-        export GIT_AUTHOR_NAME=Hoid
-        export GIT_COMMITTER_NAME=Hoid
-        export GIT_AUTHOR_EMAIL=hoid@zefiros.io
-        export GIT_COMMITTER_EMAIL=hoid@zefiros.io
-        yarn release
+        npm-defaults release
+        npm-defaults make-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
     - name: create pull request
-      uses: actions/github-script@0.2.0
-      with:
-        github-token: ${{github.token}}
-        script: |
-          const require = global.require || global.process.mainModule.constructor._load;
-          const { version } = require('./package.json')
-          try {
-            await github.pulls.create({
-              ...context.repo, 
-              title: `Publish version ${version}`,
-              head: 'development',
-              base: 'master',
-              draft: true
-            })
-          } catch (error) {
-            const existing = await github.pulls.list({
-              ...context.repo,
-              state: 'open',
-              head: 'Zefiros-Software:development',
-              base: 'master'
-            })
-            if (existing.data.length > 0) {
-              const number = existing.data[0].number
-              await github.pulls.update({
-                ...context.repo, 
-                title: `Publish version ${version}`,
-                pull_number: number
-              })
-            }
-          }
+      run: npm-defaults make-release
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

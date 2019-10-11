@@ -1,3 +1,3 @@
 module.exports = {
-    "**/*.ts?(x)": "yarn fix"
+    '**/*.ts?(x)': 'yarn fix',
 }

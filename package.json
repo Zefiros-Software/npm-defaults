@@ -77,5 +77,8 @@
     "ttypescript": "^1.5.7",
     "typescript": "^3.7.0-beta",
     "typestrict": "^1.0.2"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.22.2"
   }
 }

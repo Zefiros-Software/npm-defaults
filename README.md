@@ -22,7 +22,47 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`npm-defaults goodbye [FILE]`](#npm-defaults-goodbye-file)
+* [`npm-defaults hello [FILE]`](#npm-defaults-hello-file)
 * [`npm-defaults help [COMMAND]`](#npm-defaults-help-command)
+* [`npm-defaults make-release`](#npm-defaults-make-release)
+* [`npm-defaults release`](#npm-defaults-release)
+
+## `npm-defaults goodbye [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ npm-defaults goodbye [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [dist\commands\goodbye.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.6/dist\commands\goodbye.js)_
+
+## `npm-defaults hello [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ npm-defaults hello [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+
+EXAMPLE
+  $ example-multi-ts hellowefwefwef
+  hello world from ./src/hello.ts!
+```
+
+_See code: [dist\commands\hello.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.6/dist\commands\hello.js)_
 
 ## `npm-defaults help [COMMAND]`
 
@@ -40,4 +80,26 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src\commands\help.ts)_
+
+## `npm-defaults make-release`
+
+describe the command here
+
+```
+USAGE
+  $ npm-defaults make-release
+```
+
+_See code: [dist\commands\make-release.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.6/dist\commands\make-release.js)_
+
+## `npm-defaults release`
+
+describe the command here
+
+```
+USAGE
+  $ npm-defaults release
+```
+
+_See code: [dist\commands\release.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.6/dist\commands\release.js)_
 <!-- commandsstop -->

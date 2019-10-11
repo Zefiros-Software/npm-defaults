@@ -24,7 +24,7 @@ jobs:
     - name: yarn install, build, and test
       working-directory: examples/simple
       run: |
-        yalc add @zefiros/npm-defaults
+        yalc add @zefiros/npm-defaults --pure
         yarn install
         yarn lint
         yarn build
@@ -38,12 +38,12 @@ jobs:
     - name: release
       if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
       run: |
-        npm-defaults release
-        npm-defaults make-release
+         npm-defaults release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
     - name: create pull request
+      if: github.ref == 'refs/heads/development'
       run: npm-defaults make-release
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

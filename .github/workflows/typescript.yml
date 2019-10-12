@@ -17,7 +17,7 @@ jobs:
     - run: npm install -g yarn yalc codecov
     - name: yarn link
       run: |
-        yarn config set prefix $(npm config get prefix)
+        export PATH="$(yarn global bin):$PATH"
         yarn install
         ./bin/run ci
         yalc publish

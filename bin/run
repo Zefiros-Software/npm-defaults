@@ -6,6 +6,10 @@ const project = path.join(__dirname, '../tsconfig.json')
 const dev = fs.existsSync(project)
 
 if (dev) {
+    const tsPaths = require('tsconfig-paths')
+    tsPaths.register({
+        ...tsPaths.loadConfig(),
+    })
     require('ts-node').register({ project })
 }
 

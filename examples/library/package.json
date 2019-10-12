@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",
-    "test": "yarn ttsc && jest test",
+    "test": "yarn ttsc -p tsconfig.json && jest test",
     "fix": "yarn lint --fix",
     "lint": "tslint --project tsconfig.json",
     "release": "yarn standard-version -a",

@@ -17,18 +17,16 @@ jobs:
     - run: npm install -g yarn yalc codecov
     - name: yarn link
       run: |
-        yarn install
+        npm-defaults lint
+        npm-defaults ci
         yalc publish
       env:
         CI: true
     - name: yarn install, build, and test
-      working-directory: examples/simple
+      working-directory: examples/library
       run: |
         yalc add @zefiros/npm-defaults --pure
-        yarn install
-        yarn lint
-        yarn build
-        yarn test
+        npm-defaults ci
       env:
         CI: true
     - name: coverage

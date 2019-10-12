@@ -33,13 +33,13 @@
   ],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",
-    "test": "yarn ttsc && jest test",
+    "test": "yarn ttsc -p tsconfig.lint.json && jest test",
     "fix": "yarn lint --fix",
-    "lint": "tslint --project tsconfig.json",
+    "lint": "tslint --project tsconfig.lint.json",
     "release": "yarn semantic-release",
     "release:dry": "yarn release --dry-run",
     "package": "rm -rf dist && yarn build",
-    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "prepack": "yarn ts-node -r tsconfig-paths/register node_modules/@oclif/dev-cli/bin/run manifest && oclif-dev readme",
     "postpack": "rm -f oclif.manifest.json"
   },
   "dependencies": {
@@ -59,7 +59,7 @@
     "execa": "^2.1.0",
     "husky": "^3.0.8",
     "jest": "^24.9.0",
-    "lint-staged": "^9.4.1",
+    "lint-staged": "^9.4.2",
     "npm-check": "^5.9.0",
     "prettier": "^1.18.2",
     "semantic-release": "^16.0.0-beta.24",
@@ -76,9 +76,11 @@
     "tslint-plugin-prettier": "^2.0.1",
     "ttypescript": "^1.5.7",
     "typescript": "^3.7.0-beta",
-    "typestrict": "^1.0.2"
+    "typestrict": "^1.0.2",
+    "variable-diff": "^2.0.1"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.22.2"
+    "@oclif/dev-cli": "^1.22.2",
+    "package-json": "^6.5.0"
   }
 }

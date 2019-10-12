@@ -17,9 +17,7 @@ jobs:
     - run: npm install -g yarn yalc codecov
     - name: yarn link
       run: |
-        yarn link
-        yarn global add @zefiros/npm-defaults
-        npm-defaults ci
+        ./bin/run ci
         yalc publish
       env:
         CI: true
@@ -27,7 +25,7 @@ jobs:
       working-directory: examples/library
       run: |
         yalc add @zefiros/npm-defaults --pure
-        npm-defaults ci
+        yarn npm-defaults ci
       env:
         CI: true
     - name: coverage
@@ -37,12 +35,12 @@ jobs:
     - name: release
       if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
       run: |
-         npm-defaults release
+         ./bin/run release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
     - name: create pull request
       if: github.ref == 'refs/heads/development'
-      run: npm-defaults make-release
+      run: ./bin/run make-release
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

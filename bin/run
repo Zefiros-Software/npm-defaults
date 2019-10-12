@@ -8,7 +8,7 @@ const dev = fs.existsSync(project)
 if (dev) {
     const tsPaths = require('tsconfig-paths')
     tsPaths.register({
-        ...tsPaths.loadConfig(),
+        ...tsPaths.loadConfig(`${__dirname}/../`),
     })
     require('ts-node').register({ project })
 }

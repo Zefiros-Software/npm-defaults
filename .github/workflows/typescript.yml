@@ -17,6 +17,7 @@ jobs:
     - run: npm install -g yarn yalc codecov
     - name: yarn link
       run: |
+        yarn install
         ./bin/run ci
         yalc publish
       env:

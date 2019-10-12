@@ -18,6 +18,7 @@ jobs:
     - name: yarn link
       run: |
         yarn link
+        yarn global add @zefiros/npm-defaults
         npm-defaults ci
         yalc publish
       env:

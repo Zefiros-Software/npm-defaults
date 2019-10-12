@@ -21,8 +21,7 @@ jobs:
         yarn install
         ./bin/run ci
         yalc publish
-        yarn link
-        yarn link "@zefiros/npm-defaults"
+        npm link
       env:
         CI: true
     - name: yarn install, build, and test

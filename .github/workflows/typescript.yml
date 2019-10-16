@@ -18,7 +18,7 @@ jobs:
     - name: yarn link
       run: |
         export PATH="$(yarn global bin):$PATH"
-        alias npm-defaults='${pwd}/bin/run'
+        alias npm-defaults='$(pwd)/bin/run'
         yarn install
         npm-defaults ci
         yalc publish

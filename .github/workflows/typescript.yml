@@ -40,5 +40,5 @@ jobs:
     - name: create pull request
       if: github.ref == 'refs/heads/development'
       run: ./bin/run make-release
-      with:
-        github: ${{secrets.GITHUB_TOKEN}}
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -1,3 +1,10 @@
+# [0.2.0-beta.7](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.6@next...v0.2.0-beta.7@next) (2019-10-17)
+
+
+### Features
+
+* add ci commands ([027044d](https://github.com/Zefiros-Software/npm-defaults/commit/027044da742d959f322f5de3caf71d08f48d6b44))
+
 # [0.2.0-beta.6](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.5@next...v0.2.0-beta.6@next) (2019-10-02)
 
 

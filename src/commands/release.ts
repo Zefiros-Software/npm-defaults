@@ -1,12 +1,9 @@
-import * as core from '@actions/core'
 import * as github from '@actions/github'
 import { Command } from '@oclif/command'
 import execa from 'execa'
 
 export default class PullRequest extends Command {
     public static description = 'describe the command here'
-
-    public octokit = new github.GitHub(core.getInput('GITHUB_TOKEN'))
     public context = github.context
 
     public async run() {

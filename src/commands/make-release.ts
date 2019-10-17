@@ -10,7 +10,7 @@ export default class PullRequest extends Command {
 
     public async run() {
         const { version } = require(`${process.cwd()}/package.json`)
-        this.log(`Creating release pull request for version ${version} ${token}`)
+        this.log(`Creating release pull request for version ${version} ${this.token}`)
         try {
             await this.octokit.pulls.create({
                 ...this.context.repo,

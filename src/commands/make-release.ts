@@ -4,7 +4,7 @@ import { Command } from '@oclif/command'
 
 export default class PullRequest extends Command {
     public static description = 'describe the command here'
-    public token = core.getInput('GITHUB_TOKEN')
+    public token = process.env.GITHUB_TOKEN!
     public octokit = new github.GitHub(this.token)
     public context = github.context
 

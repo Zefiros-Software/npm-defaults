@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const fs = require('fs')
 const path = require('path')
 const project = path.join(__dirname, '../tsconfig.json')
@@ -12,7 +11,7 @@ if (dev) {
         ...tsPaths.loadConfig(root),
         baseUrl: root,
     })
-    require('ts-node').register({ project })
+    require('ts-node').register({ project, pretty: true })
 }
 
 require(`../${dev ? 'src' : 'dist'}`)

@@ -2,6 +2,9 @@
   "license": "MIT",
   "name": "package-name",
   "version": "0.0.1",
+  "npm-defaults": {
+    "type": "library"
+  },
   "files": [
     "dist/**"
   ],
@@ -10,10 +13,9 @@
     "test": "yarn ttsc -p tsconfig.json && jest test",
     "fix": "yarn lint --fix",
     "lint": "tslint --project tsconfig.json",
-    "release": "yarn standard-version -a",
+    "release": "yarn semantic-release",
     "release:dry": "yarn release --dry-run"
   },
-  "dependencies": {},
   "devDependencies": {
     "@zefiros/npm-defaults": "^0.1.24"
   }

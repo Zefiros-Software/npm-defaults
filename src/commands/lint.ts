@@ -1,7 +1,8 @@
 import { Command, flags } from '@oclif/command'
 import fs from 'fs'
-import { Package } from 'normalize-package-data'
 import diff from 'variable-diff'
+import { config, packagejson, reloadConfiguration } from '~/common/config'
+import { PackageType } from '~/common/type'
 
 export default class Lint extends Command {
     public static description = 'describe the command here'
@@ -10,63 +11,85 @@ export default class Lint extends Command {
         fix: flags.boolean(),
     }
 
-    public static scripts = {
-        ['build']: 'yarn ttsc -p tsconfig.dist.json',
-        ['test']: 'yarn ttsc -p tsconfig.lint.json && jest test',
-        ['fix']: 'yarn lint --fix',
-        ['lint']: 'tslint --project tsconfig.lint.json',
-        ['release']: 'yarn semantic-release',
-        ['release:dry']: 'yarn release --dry-run',
+    public static scripts: Record<PackageType, Record<string, string>> = {
+        [PackageType.Common]: {
+            ['build']: 'yarn ttsc -p tsconfig.dist.json',
+            ['test']: 'yarn ttsc -p tsconfig.json && jest test',
+            ['fix']: 'yarn lint --fix',
+            ['lint']: 'tslint --project tsconfig.json',
+            ['release']: 'yarn semantic-release',
+            ['release:dry']: 'yarn release --dry-run',
+        },
+        [PackageType.Library]: {},
+        [PackageType.OclifCli]: {
+            ['lint']: 'tslint --project tsconfig.lint.json',
+            ['test']: 'yarn ttsc -p tsconfig.lint.json && jest test',
+        },
     }
+
+    public args!: ReturnType<Lint['parseArgs']>
+    public parseArgs = () => this.parse(Lint)
 
     public async run() {
-        const { flags: lflags } = this.parse(Lint)
-        await this.lintPackage(lflags.fix)
+        this.args = this.parseArgs()
+        await this.lintPackage()
     }
 
-    public async lintPackage(fix: boolean) {
-        const pkg: Package = require(`${process.cwd()}/package.json`)
+    public async lintPackage() {
+        const json = JSON.stringify(packagejson, null, 2)
+        await this.lintConfiguration()
+        await this.lintScripts()
 
-        await this.lintScripts(pkg)
-
-        if (fix) {
-            fs.writeFileSync(`${process.cwd()}/package.json`, JSON.stringify(pkg, null, 2))
+        const fixed = JSON.stringify(packagejson, null, 2)
+        if (this.args.flags.fix && json !== fixed) {
+            fs.writeFileSync(`${process.cwd()}/package.json`, fixed)
             this.log('fixed entries')
         }
     }
 
-    public async lintScripts(pkg: Package) {
-        if (!pkg.scripts) {
-            pkg.scripts = {}
-        }
-        const json = JSON.stringify(pkg.scripts)
-        for (const [entry] of Object.entries({ ...pkg.scripts, ...Lint.scripts })) {
-            switch (entry) {
-                case 'build':
-                    pkg.scripts[entry] = 'yarn ttsc -p tsconfig.dist.json'
-                    break
-                case 'test':
-                    pkg.scripts[entry] = 'yarn ttsc -p tsconfig.lint.json && jest test'
-                    break
-                case 'fix':
-                    pkg.scripts[entry] = 'yarn lint --fix'
-                    break
-                case 'lint':
-                    pkg.scripts[entry] = 'tslint --project tsconfig.lint.json'
-                    break
-                case 'release':
-                    pkg.scripts[entry] = 'yarn semantic-release'
-                    break
-                case 'release:dry':
-                    pkg.scripts[entry] = 'yarn release --dry-run'
-                    break
-                default:
-                    break
+    public async lintConfiguration() {
+        const json = JSON.stringify(packagejson['npm-defaults'] || {})
+        if (!packagejson['npm-defaults']) {
+            packagejson['npm-defaults'] = {
+                type: PackageType.Library,
             }
         }
-        if (JSON.stringify(pkg.scripts) !== json) {
-            this.warn(`missing or outdated script entries found:\n${diff(pkg.scripts, JSON.parse(json)).text}`)
+        if (JSON.stringify(packagejson['npm-defaults']) !== json) {
+            this.warn(
+                `[package.json>npm-defaults] missing or outdated configuration:\n${
+                    diff(JSON.parse(json), packagejson['npm-defaults']).text
+                }`
+            )
 
+            this.fail()
+        }
+        reloadConfiguration()
+    }
+
+    public async lintScripts() {
+        if (!packagejson.scripts) {
+            packagejson.scripts = {}
+        }
+        const json = JSON.stringify(packagejson.scripts)
+        for (const [entry, value] of Object.entries(Lint.scripts[PackageType.Common])) {
+            packagejson.scripts[entry] = value
+        }
+        for (const [entry, value] of Object.entries(Lint.scripts[config.type] || {})) {
+            packagejson.scripts[entry] = value
+        }
+        if (JSON.stringify(packagejson.scripts) !== json) {
+            this.warn(
+                `[package.json>scripts] missing or outdated script entries found:\n${
+                    diff(JSON.parse(json), packagejson.scripts).text
+                }`
+            )
+
+            this.fail()
+        }
+    }
+
+    public fail() {
+        if (!this.args.flags.fix) {
             this.exit(1)
         }
     }

@@ -9,8 +9,15 @@
     "bin": "npm-defaults",
     "commands": "./dist/commands",
     "plugins": [
-      "@oclif/plugin-help"
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-warn-if-update-available",
+      "@oclif/plugin-plugins",
+      "@oclif/plugin-warn-if-update-available"
     ]
+  },
+  "npm-defaults": {
+    "type": "oclif-cli"
   },
   "repository": {
     "type": "git",
@@ -50,14 +57,17 @@
     "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.13.3",
     "@oclif/plugin-help": "^2.2.1",
+    "@oclif/plugin-not-found": "^1.2.3",
+    "@oclif/plugin-plugins": "^1.7.8",
+    "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/git": "^7.1.0-beta.3",
-    "@types/jest": "^24.0.18",
+    "@types/jest": "^24.0.19",
     "@types/prettier": "^1.18.3",
     "@zerollup/ts-transform-paths": "^1.7.3",
     "conventional-changelog": "^3.1.12",
-    "execa": "^2.1.0",
-    "husky": "^3.0.8",
+    "execa": "^3.1.0",
+    "husky": "^3.0.9",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
     "npm-check": "^5.9.0",

@@ -1,6 +1,6 @@
 import { Command, flags } from '@oclif/command'
-import LineDiff from 'line-diff'
 import fs from 'fs'
+import LineDiff from 'line-diff'
 import path from 'path'
 import vdiff from 'variable-diff'
 import { config, packagejson, reloadConfiguration, root } from '~/common/config'

@@ -1,6 +1,6 @@
 import { Package } from 'normalize-package-data'
-import { PackageType } from '~/common/type'
 import path from 'path'
+import { PackageType } from '~/common/type'
 
 export interface NpmDefaultsConfiguration {
     type: PackageType

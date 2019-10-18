@@ -1,11 +1,14 @@
 import { Command, flags } from '@oclif/command'
+import LineDiff from 'line-diff'
 import fs from 'fs'
-import diff from 'variable-diff'
-import { config, packagejson, reloadConfiguration } from '~/common/config'
+import path from 'path'
+import vdiff from 'variable-diff'
+import { config, packagejson, reloadConfiguration, root } from '~/common/config'
+import { getAllFiles } from '~/common/file'
 import { PackageType } from '~/common/type'
 
 export default class Lint extends Command {
-    public static description = 'describe the command here'
+    public static description = 'lint the project configuration'
 
     public static flags = {
         fix: flags.boolean(),
@@ -32,13 +35,49 @@ export default class Lint extends Command {
 
     public async run() {
         this.args = this.parseArgs()
-        await this.lintPackage()
+        this.lintPackage()
+        this.lintTemplate()
     }
 
-    public async lintPackage() {
+    public lintTemplate() {
+        if (config.skipTemplate) {
+            return
+        }
+
+        const templateRoot = `${root}/templates/${PackageType.Common}/`
+        for (const file of getAllFiles(templateRoot)) {
+            const relFile = path.relative(templateRoot, file)
+            this.lintFile(`${templateRoot}${relFile}`, relFile)
+        }
+    }
+
+    public lintFile(from: string, target: string) {
+        const oldContent = fs.existsSync(target) ? fs.readFileSync(target, 'utf-8') : undefined
+        const newContent = fs.readFileSync(from, 'utf-8')
+        const isDifferent = oldContent !== newContent
+        if (isDifferent) {
+            if (oldContent) {
+                this.warn(`[${target}]:\n${new LineDiff(oldContent, newContent).toString()}`)
+            } else {
+                this.warn(`[${target}]: file not found`)
+            }
+            this.fail()
+
+            if (this.args.flags.fix) {
+                this.log(`Writing ${target}`)
+                const dir = path.dirname(target)
+                if (!fs.existsSync(dir)) {
+                    fs.mkdirSync(dir)
+                }
+                fs.writeFileSync(target, newContent)
+            }
+        }
+    }
+
+    public lintPackage() {
         const json = JSON.stringify(packagejson, null, 2)
-        await this.lintConfiguration()
-        await this.lintScripts()
+        this.lintConfiguration()
+        this.lintScripts()
 
         const fixed = JSON.stringify(packagejson, null, 2)
         if (this.args.flags.fix && json !== fixed) {
@@ -47,7 +86,7 @@ export default class Lint extends Command {
         }
     }
 
-    public async lintConfiguration() {
+    public lintConfiguration() {
         const json = JSON.stringify(packagejson['npm-defaults'] || {})
         if (!packagejson['npm-defaults']) {
             packagejson['npm-defaults'] = {
@@ -57,7 +96,7 @@ export default class Lint extends Command {
         if (JSON.stringify(packagejson['npm-defaults']) !== json) {
             this.warn(
                 `[package.json>npm-defaults] missing or outdated configuration:\n${
-                    diff(JSON.parse(json), packagejson['npm-defaults']).text
+                    vdiff(JSON.parse(json), packagejson['npm-defaults']).text
                 }`
             )
 
@@ -66,7 +105,7 @@ export default class Lint extends Command {
         reloadConfiguration()
     }
 
-    public async lintScripts() {
+    public lintScripts() {
         if (!packagejson.scripts) {
             packagejson.scripts = {}
         }
@@ -80,7 +119,7 @@ export default class Lint extends Command {
         if (JSON.stringify(packagejson.scripts) !== json) {
             this.warn(
                 `[package.json>scripts] missing or outdated script entries found:\n${
-                    diff(JSON.parse(json), packagejson.scripts).text
+                    vdiff(JSON.parse(json), packagejson.scripts).text
                 }`
             )
 
@@ -90,6 +129,7 @@ export default class Lint extends Command {
 
     public fail() {
         if (!this.args.flags.fix) {
+            this.error('Found errors in the project')
             this.exit(1)
         }
     }

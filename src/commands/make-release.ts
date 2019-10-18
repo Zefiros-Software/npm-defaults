@@ -2,14 +2,14 @@ import * as github from '@actions/github'
 import { Command } from '@oclif/command'
 
 export default class PullRequest extends Command {
-    public static description = 'describe the command here'
+    public static description = 'create a pull request to release to stable'
     public token = process.env.GITHUB_TOKEN!
     public octokit = new github.GitHub(this.token)
     public context = github.context
 
     public async run() {
         const { version } = require(`${process.cwd()}/package.json`)
-        this.log(`Creating release pull request for version ${version} ${this.token}`)
+        this.log(`Creating release pull request for version ${version}`)
         try {
             await this.octokit.pulls.create({
                 ...this.context.repo,

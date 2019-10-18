@@ -3,7 +3,7 @@ import execa from 'execa'
 import Lint from '~/commands/lint'
 
 export default class CI extends Command {
-    public static description = 'describe the command here'
+    public static description = 'run all ci tests'
 
     public async run() {
         await Lint.run([])

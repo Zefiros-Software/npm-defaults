@@ -2,15 +2,15 @@ import * as github from '@actions/github'
 import { Command } from '@oclif/command'
 import execa from 'execa'
 
-export default class PullRequest extends Command {
-    public static description = 'describe the command here'
+export default class Release extends Command {
+    public static description = 'release the package (standard-release)'
     public context = github.context
 
     public async run() {
         const { version } = require(`${process.cwd()}/package.json`)
         this.log(`Creating release pull request for version ${version}`)
 
-        const subprocess = execa('yarn', ['release', '--dry'], {
+        const subprocess = execa('yarn', ['release'], {
             extendEnv: true,
             env: {
                 GIT_AUTHOR_NAME: 'Hoid',

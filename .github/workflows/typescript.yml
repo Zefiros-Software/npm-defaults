@@ -30,13 +30,13 @@ jobs:
       run: codecov
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-    # - name: release
-    #   if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
-    #   run: |
-    #      ./bin/run release
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
-    #     NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+    - name: release
+      if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
+      run: |
+         ./bin/run release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+        NPM_TOKEN: ${{secrets.NPM_TOKEN}}
     - name: create pull request
       if: github.ref == 'refs/heads/development'
       run: ./bin/run make-release

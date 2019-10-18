@@ -1,3 +1,10 @@
+# [0.2.0-beta.8](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.7@next...v0.2.0-beta.8@next) (2019-10-18)
+
+
+### Features
+
+* add template linting ([cca5666](https://github.com/Zefiros-Software/npm-defaults/commit/cca56663aa95d0041007663108aae5e0834cfebb))
+
 # [0.2.0-beta.7](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.6@next...v0.2.0-beta.7@next) (2019-10-17)
 
 

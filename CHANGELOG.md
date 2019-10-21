@@ -1,3 +1,10 @@
+# [0.2.0-beta.10](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.9@next...v0.2.0-beta.10@next) (2019-10-21)
+
+
+### Features
+
+* run prettier on js and json ([6933e6a](https://github.com/Zefiros-Software/npm-defaults/commit/6933e6a93fa8d7034766296a15b495a110f09b97))
+
 # [0.2.0-beta.9](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.8@next...v0.2.0-beta.9@next) (2019-10-21)
 
 

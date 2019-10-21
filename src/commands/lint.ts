@@ -22,6 +22,7 @@ export default class Lint extends Command {
             ['test']: 'yarn check:types && yarn jest test --maxWorkers=1',
             ['fix']: 'yarn lint --fix',
             ['lint']: 'tslint --project tsconfig.json',
+            ['package']: 'rm -rf dist && yarn build',
             ['release']: 'yarn semantic-release',
             ['release:dry']: 'yarn release --dry-run',
         },
@@ -29,6 +30,8 @@ export default class Lint extends Command {
         [PackageType.OclifCli]: {
             ['check:types']: 'yarn ttsc -p tsconfig.lint.json',
             ['lint']: 'tslint --project tsconfig.lint.json',
+            ['prepack']:
+                'yarn ts-node -r tsconfig-paths/register node_modules/@oclif/dev-cli/bin/run manifest && oclif-dev readme',
         },
     }
 

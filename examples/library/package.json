@@ -14,7 +14,8 @@
     "release": "yarn semantic-release",
     "release:dry": "yarn release --dry-run",
     "check:types": "yarn ttsc -p tsconfig.json",
-    "check:project": "yarn npm-defaults lint"
+    "check:project": "yarn npm-defaults lint",
+    "package": "rm -rf dist && yarn build"
   },
   "devDependencies": {
     "@zefiros/npm-defaults": "^0.1.24"

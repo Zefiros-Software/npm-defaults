@@ -5,12 +5,10 @@
   "npm-defaults": {
     "type": "library"
   },
-  "files": [
-    "dist/**"
-  ],
+  "files": ["dist/**"],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",
-    "test": "yarn ttsc -p tsconfig.json && jest test",
+    "test": "yarn jest test --maxWorkers=1",
     "fix": "yarn lint --fix",
     "lint": "tslint --project tsconfig.json",
     "release": "yarn semantic-release",

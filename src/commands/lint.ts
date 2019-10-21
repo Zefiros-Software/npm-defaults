@@ -17,7 +17,9 @@ export default class Lint extends Command {
     public static scripts: Record<PackageType, Record<string, string>> = {
         [PackageType.Common]: {
             ['build']: 'yarn ttsc -p tsconfig.dist.json',
-            ['test']: 'yarn jest test --maxWorkers=1',
+            ['check:types']: 'yarn ttsc -p tsconfig.json',
+            ['check:project']: 'yarn npm-defaults lint',
+            ['test']: 'yarn check:types && yarn jest test --maxWorkers=1',
             ['fix']: 'yarn lint --fix',
             ['lint']: 'tslint --project tsconfig.json',
             ['release']: 'yarn semantic-release',
@@ -25,8 +27,8 @@ export default class Lint extends Command {
         },
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
+            ['check:types']: 'yarn ttsc -p tsconfig.lint.json',
             ['lint']: 'tslint --project tsconfig.lint.json',
-            ['test']: 'yarn jest test --maxWorkers=1',
         },
     }
 

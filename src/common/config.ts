@@ -1,5 +1,6 @@
 import { Package } from 'normalize-package-data'
 import path from 'path'
+import fs from 'fs'
 import { PackageType } from '~/common/type'
 
 export interface NpmDefaultsConfiguration {
@@ -11,7 +12,7 @@ export const packagejson: Package & {
     ['npm-defaults']: NpmDefaultsConfiguration
 } = {
     // tslint:disable-next-line: no-var-requires
-    ...require(`${process.cwd()}/package.json`),
+    ...(fs.existsSync(`${process.cwd()}/package.json`) ? require(`${process.cwd()}/package.json`) : {}),
 }
 
 export let config = packagejson['npm-defaults']

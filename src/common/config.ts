@@ -1,6 +1,6 @@
+import fs from 'fs'
 import { Package } from 'normalize-package-data'
 import path from 'path'
-import fs from 'fs'
 import { PackageType } from '~/common/type'
 
 export interface NpmDefaultsConfiguration {

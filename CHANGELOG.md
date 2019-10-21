@@ -1,3 +1,10 @@
+# [0.2.0-beta.11](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.10@next...v0.2.0-beta.11@next) (2019-10-21)
+
+
+### Features
+
+* explicit git assets ([513143b](https://github.com/Zefiros-Software/npm-defaults/commit/513143b6a808da084b230f56405ebd233f6db361))
+
 # [0.2.0-beta.10](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.9@next...v0.2.0-beta.10@next) (2019-10-21)
 
 

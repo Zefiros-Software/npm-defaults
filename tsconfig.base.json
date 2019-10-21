@@ -30,7 +30,8 @@
     },
     "outDir": "./dist",
     "baseUrl": ".",
-    "rootDir": "."
+    "rootDir": ".",
+    "incremental": true
   },
   "include": ["src/**/*.ts", "test/**/*.ts"],
   "exclude": [".vscode", "node_modules"]

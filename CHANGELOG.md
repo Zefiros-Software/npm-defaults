@@ -1,3 +1,11 @@
+# [0.2.0-beta.9](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.8@next...v0.2.0-beta.9@next) (2019-10-21)
+
+
+### Features
+
+* add create command ([05dbb16](https://github.com/Zefiros-Software/npm-defaults/commit/05dbb16ad9f5e36c9c143b7e25fc1481fdf43609))
+* use incremental build compiler option ([25ee930](https://github.com/Zefiros-Software/npm-defaults/commit/25ee930340ebcaee4cc7cfc2a9304a681f345076))
+
 # [0.2.0-beta.8](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.7@next...v0.2.0-beta.8@next) (2019-10-18)
 
 

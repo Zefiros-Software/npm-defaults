@@ -1,11 +1,8 @@
 import { Command } from '@oclif/command'
-import execa from 'execa'
-import Lint from '~/commands/lint'
 import path from 'path'
 import copy from 'recursive-copy'
-import { PackageType } from '~/common/type'
-import { Input } from '@oclif/command/lib/flags'
 import { root } from '~/common/config'
+import { PackageType } from '~/common/type'
 
 export interface CreateArgs {
     type: PackageType.Library | PackageType.OclifCli

@@ -5,9 +5,7 @@
   "npm-defaults": {
     "type": "library"
   },
-  "files": [
-    "dist/**"
-  ],
+  "files": ["dist/**"],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",
     "test": "yarn check:types && yarn jest test --maxWorkers=1",

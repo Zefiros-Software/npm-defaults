@@ -1,3 +1,4 @@
 {
-  "extends": "@zefiros/npm-defaults/tsconfig.base.json"
+  "extends": "@zefiros/npm-defaults/tsconfig.base.json",
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }

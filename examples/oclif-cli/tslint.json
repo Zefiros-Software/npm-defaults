@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "@zefiros/npm-defaults/tslint.json"
+  ]
+}

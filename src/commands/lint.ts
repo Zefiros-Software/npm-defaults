@@ -32,6 +32,7 @@ export default class Lint extends Command {
             ['lint']: 'tslint --project tsconfig.lint.json',
             ['prepack']:
                 'yarn ts-node -r tsconfig-paths/register node_modules/@oclif/dev-cli/bin/run manifest && oclif-dev readme',
+            ['postpack']: 'rm -f oclif.manifest.json',
         },
     }
 

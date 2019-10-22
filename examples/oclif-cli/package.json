@@ -1,0 +1,48 @@
+{
+  "license": "MIT",
+  "name": "package-name",
+  "description": "example package",
+  "version": "0.0.1",
+  "bin": {
+    "example-cli": "./bin/run"
+  },
+  "oclif": {
+    "bin": "example-cli",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-warn-if-update-available"
+    ]
+  },
+  "npm-defaults": {
+    "type": "oclif-cli"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn ttsc -p tsconfig.dist.json",
+    "test": "yarn check:types && yarn jest test --maxWorkers=1",
+    "fix": "yarn lint --fix",
+    "lint": "tslint --project tsconfig.lint.json",
+    "release": "yarn semantic-release",
+    "release:dry": "yarn release --dry-run",
+    "package": "rm -rf dist && yarn build",
+    "prepack": "yarn ts-node -r tsconfig-paths/register node_modules/@oclif/dev-cli/bin/run manifest && oclif-dev readme",
+    "check:types": "yarn ttsc -p tsconfig.lint.json",
+    "check:project": "yarn npm-defaults lint"
+  },
+  "dependencies": {
+    "@oclif/command": "^1.5.19",
+    "@oclif/config": "^1.13.3",
+    "@oclif/plugin-help": "^2.2.1",
+    "@oclif/plugin-not-found": "^1.2.3",
+    "@oclif/plugin-warn-if-update-available": "^1.7.0"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.22.2",
+    "@zefiros/npm-defaults": "^0.1.24"
+  }
+}

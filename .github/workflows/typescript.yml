@@ -21,8 +21,13 @@ jobs:
         yarn install
         ./bin/run ci
         yalc publish
-    - name: yarn install, build, and test
+    - name: library - yarn install, build, and test
       working-directory: examples/library
+      run: |
+        yalc add @zefiros/npm-defaults --pure
+        ../../bin/run ci
+    - name: oclif-cli - yarn install, build, and test
+      working-directory: examples/oclif-cli
       run: |
         yalc add @zefiros/npm-defaults --pure
         ../../bin/run ci

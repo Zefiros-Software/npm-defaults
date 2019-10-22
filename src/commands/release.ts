@@ -19,8 +19,12 @@ export default class Release extends Command {
                 GIT_COMMITTER_EMAIL: 'hoid@zefiros.io',
             },
         })
-        subprocess.stdout!.pipe(process.stdout)
-        const { stdout } = await subprocess
-        this.log(stdout)
+        try {
+            subprocess.stdout!.pipe(process.stdout)
+            const { stdout } = await subprocess
+            this.log(stdout)
+        } catch (error) {
+            this.error(error)
+        }
     }
 }

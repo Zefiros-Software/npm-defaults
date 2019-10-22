@@ -9,19 +9,12 @@
   "oclif": {
     "bin": "example-cli",
     "commands": "./dist/commands",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-not-found",
-      "@oclif/plugin-warn-if-update-available"
-    ]
+    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found", "@oclif/plugin-warn-if-update-available"]
   },
   "npm-defaults": {
     "type": "oclif-cli"
   },
-  "files": [
-    "bin",
-    "dist"
-  ],
+  "files": ["bin", "dist"],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",
     "test": "yarn check:types && yarn jest test --maxWorkers=1",

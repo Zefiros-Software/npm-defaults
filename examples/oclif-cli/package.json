@@ -31,6 +31,7 @@
     "release:dry": "yarn release --dry-run",
     "package": "rm -rf dist && yarn build",
     "prepack": "yarn ts-node -r tsconfig-paths/register node_modules/@oclif/dev-cli/bin/run manifest && oclif-dev readme",
+    "postpack": "rm -f oclif.manifest.json",
     "check:types": "yarn ttsc -p tsconfig.lint.json",
     "check:project": "yarn npm-defaults lint"
   },

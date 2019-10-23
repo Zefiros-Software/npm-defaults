@@ -19,6 +19,7 @@ jobs:
     - name: yarn link
       run: |
         export PATH="$(yarn global bin):$PATH"
+        npm config set scripts-prepend-node-path true
         yarn install
         ./bin/run ci
         yalc publish

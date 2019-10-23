@@ -38,7 +38,8 @@ jobs:
     - name: release
       if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
       run: |
-         ./bin/run release
+         #./bin/run release
+         yarn release
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}

@@ -13,7 +13,7 @@ $ npm install -g @zefiros/npm-defaults
 $ npm-defaults COMMAND
 running command...
 $ npm-defaults (-v|--version|version)
-@zefiros/npm-defaults/0.2.0-beta.11 win32-x64 node-v12.6.0
+@zefiros/npm-defaults/0.2.0-beta.11 linux-x64 node-v10.17.0
 $ npm-defaults --help [COMMAND]
 USAGE
   $ npm-defaults COMMAND
@@ -37,8 +37,6 @@ run all ci tests
 USAGE
   $ npm-defaults ci
 ```
-
-_See code: [dist\commands\ci.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.11/dist\commands\ci.js)_
 
 ## `npm-defaults create TYPE NAME`
 
@@ -68,7 +66,7 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src\commands\help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src/commands/help.ts)_
 
 ## `npm-defaults lint`
 
@@ -82,8 +80,6 @@ OPTIONS
   --fix
 ```
 
-_See code: [dist\commands\lint.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.11/dist\commands\lint.js)_
-
 ## `npm-defaults make-release`
 
 create a pull request to release to stable
@@ -93,8 +89,6 @@ USAGE
   $ npm-defaults make-release
 ```
 
-_See code: [dist\commands\make-release.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.11/dist\commands\make-release.js)_
-
 ## `npm-defaults release`
 
 release the package (standard-release)
@@ -103,6 +97,4 @@ release the package (standard-release)
 USAGE
   $ npm-defaults release
 ```
-
-_See code: [dist\commands\release.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.11/dist\commands\release.js)_
 <!-- commandsstop -->

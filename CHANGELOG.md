@@ -1,3 +1,10 @@
+# [0.2.0-beta.12](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.11@next...v0.2.0-beta.12@next) (2019-10-23)
+
+
+### Features
+
+* add oclif-cli template ([23763e2](https://github.com/Zefiros-Software/npm-defaults/commit/23763e217f34273fae6454502c947e02af29d113))
+
 # [0.2.0-beta.11](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.10@next...v0.2.0-beta.11@next) (2019-10-21)
 
 

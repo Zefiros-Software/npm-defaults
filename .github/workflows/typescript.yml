@@ -3,6 +3,8 @@ name: Node CI
 on: push
 
 jobs:
+  env:
+    CI: true
   build:
 
     runs-on: ubuntu-latest

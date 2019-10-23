@@ -468,7 +468,7 @@
     supports-color "^5.4.0"
     tslib "^1"
 
-"@oclif/command@^1.5.1", "@oclif/command@^1.5.10", "@oclif/command@^1.5.12", "@oclif/command@^1.5.13", "@oclif/command@^1.5.19", "@oclif/command@^1.5.3":
+"@oclif/command@^1.5.1", "@oclif/command@^1.5.10", "@oclif/command@^1.5.13", "@oclif/command@^1.5.19", "@oclif/command@^1.5.3":
   version "1.5.19"
   resolved "https://registry.yarnpkg.com/@oclif/command/-/command-1.5.19.tgz#13f472450eb83bd6c6871a164c03eadb5e1a07ed"
   integrity sha512-6+iaCMh/JXJaB2QWikqvGE9//wLEVYYwZd5sud8aLoLKog1Q75naZh2vlGVtg5Mq/NqpqGQvdIjJb3Bm+64AUQ==
@@ -556,24 +556,6 @@
     cli-ux "^4.9.0"
     fast-levenshtein "^2.0.6"
     lodash "^4.17.13"
-
-"@oclif/plugin-plugins@^1.7.8":
-  version "1.7.8"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-1.7.8.tgz#51e07cb85bf9cd36a6de8f3e441b7d705a5e7105"
-  integrity sha512-GxLxaf8Lk1RqHVAIBZyA7hmhU7u5oV97i/OsWgFPdjPaT+BmWlWXR8IpmtA8giNo6atR+JpfgDmYndMU75zYUQ==
-  dependencies:
-    "@oclif/color" "^0.0.0"
-    "@oclif/command" "^1.5.12"
-    chalk "^2.4.2"
-    cli-ux "^5.2.1"
-    debug "^4.1.0"
-    fs-extra "^7.0.1"
-    http-call "^5.2.2"
-    load-json-file "^5.2.0"
-    npm-run-path "^3.0.0"
-    semver "^5.6.0"
-    tslib "^1.9.3"
-    yarn "^1.15.0"
 
 "@oclif/plugin-warn-if-update-available@^1.7.0":
   version "1.7.0"
@@ -5146,17 +5128,6 @@ load-json-file@^4.0.0:
     pify "^3.0.0"
     strip-bom "^3.0.0"
 
-load-json-file@^5.2.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-5.3.0.tgz#4d3c1e01fa1c03ea78a60ac7af932c9ce53403f3"
-  integrity sha512-cJGP40Jc/VXUsp8/OrnyKyTZ1y6v/dphm3bioS+RrKXjK2BB6wHUd6JptZEFDGgGahMT+InnZO5i1Ei9mpC8Bw==
-  dependencies:
-    graceful-fs "^4.1.15"
-    parse-json "^4.0.0"
-    pify "^4.0.1"
-    strip-bom "^3.0.0"
-    type-fest "^0.3.0"
-
 load-json-file@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-6.2.0.tgz#5c7770b42cafa97074ca2848707c61662f4251a1"
@@ -8590,7 +8561,7 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-type-fest@^0.3.0, type-fest@^0.3.1:
+type-fest@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.3.1.tgz#63d00d204e059474fe5e1b7c011112bbd1dc29e1"
   integrity sha512-cUGJnCdr4STbePCgqNFbpVNCepa+kAVohJs1sLhxzdH+gnEoOd8VhbYa7pD3zZYGiURWM2xzEII3fQcRizDkYQ==
@@ -9182,11 +9153,6 @@ yargs@^8.0.2:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
-
-yarn@^1.15.0:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.19.1.tgz#14b92410dd1ba5bab87a12b4a3d807f4569bea97"
-  integrity sha512-gBnfbL9rYY05Gt0cjJhs/siqQXHYlZalTjK3nXn2QO20xbkIFPob+LlH44ML47GcR4VU9/2dYck1BWFM0Javxw==
 
 yn@^3.0.0:
   version "3.1.1"

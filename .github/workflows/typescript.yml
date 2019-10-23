@@ -3,11 +3,10 @@ name: Node CI
 on: push
 
 jobs:
-  env:
-    CI: true
   build:
-
     runs-on: ubuntu-latest
+    env:
+      CI: true
     steps:
     - uses: actions/checkout@master
       with:

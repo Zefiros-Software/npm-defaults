@@ -9,11 +9,7 @@
   "oclif": {
     "bin": "npm-defaults",
     "commands": "./dist/commands",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-not-found",
-      "@oclif/plugin-warn-if-update-available"
-    ]
+    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found", "@oclif/plugin-warn-if-update-available"]
   },
   "npm-defaults": {
     "type": "oclif-cli",
@@ -88,7 +84,7 @@
     "tslint-no-commented-code-rule": "^0.1.0",
     "tslint-plugin-prettier": "^2.0.1",
     "ttypescript": "^1.5.7",
-    "typescript": "^3.7.0-beta",
+    "typescript": "^3.7.1-rc",
     "typestrict": "^1.0.2",
     "variable-diff": "^2.0.1"
   },

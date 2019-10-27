@@ -1,3 +1,10 @@
+# [0.2.0-beta.16](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.15@next...v0.2.0-beta.16@next) (2019-10-27)
+
+
+### Features
+
+* hide node_modules in vscode ([2ff8f79](https://github.com/Zefiros-Software/npm-defaults/commit/2ff8f7932d0ab53ceae4c8ee8ae7e5de218e7564))
+
 # [0.2.0-beta.15](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.14@next...v0.2.0-beta.15@next) (2019-10-27)
 
 

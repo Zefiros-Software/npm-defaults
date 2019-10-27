@@ -22,11 +22,12 @@ export default class Release extends Command {
         try {
             subprocess.stderr!.pipe(process.stderr)
             subprocess.stdout!.pipe(process.stdout)
-            const { stdout, stderr } = await subprocess
+            const { stdout, stderr, exitCode, failed } = await subprocess
             this.log(stdout)
-            if (stderr) {
-                this.error(stderr)
+            if (stderr && failed) {
+                this.warn(stderr)
             }
+            this.log(`Exited with code ${exitCode}`)
         } catch (error) {
             this.error(error)
         }

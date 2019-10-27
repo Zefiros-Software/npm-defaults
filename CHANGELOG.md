@@ -1,3 +1,10 @@
+# [0.2.0-beta.15](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.14@next...v0.2.0-beta.15@next) (2019-10-27)
+
+
+### Bug Fixes
+
+* npm notices reports in stderr - only fail when failed ([75bf9c2](https://github.com/Zefiros-Software/npm-defaults/commit/75bf9c2cd6fd47f11356cce4ff1bb8f6b88e0b98))
+
 # [0.2.0-beta.14](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.13@next...v0.2.0-beta.14@next) (2019-10-27)
 
 

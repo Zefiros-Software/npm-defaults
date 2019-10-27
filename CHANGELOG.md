@@ -1,3 +1,10 @@
+# [0.2.0-beta.14](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.13@next...v0.2.0-beta.14@next) (2019-10-27)
+
+
+### Bug Fixes
+
+* speedup ts-jest ([de9424a](https://github.com/Zefiros-Software/npm-defaults/commit/de9424afce44f4daba3a6094388fa78d928af3d8))
+
 # [0.2.0-beta.13](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.12@next...v0.2.0-beta.13@next) (2019-10-27)
 
 

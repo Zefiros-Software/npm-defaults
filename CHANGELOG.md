@@ -1,3 +1,10 @@
+# [0.2.0-beta.13](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.12@next...v0.2.0-beta.13@next) (2019-10-27)
+
+
+### Features
+
+* upgrade typescript to 3.7.1-rc ([ae0e91c](https://github.com/Zefiros-Software/npm-defaults/commit/ae0e91ce1cf9ed6a9743264a7141c1660dcd601e))
+
 # [0.2.0-beta.12](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.11@next...v0.2.0-beta.12@next) (2019-10-23)
 
 

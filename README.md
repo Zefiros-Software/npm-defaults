@@ -13,7 +13,7 @@ $ npm install -g @zefiros/npm-defaults
 $ npm-defaults COMMAND
 running command...
 $ npm-defaults (-v|--version|version)
-@zefiros/npm-defaults/0.2.0-beta.11 linux-x64 node-v10.17.0
+@zefiros/npm-defaults/0.2.0-beta.12 linux-x64 node-v10.17.0
 $ npm-defaults --help [COMMAND]
 USAGE
   $ npm-defaults COMMAND

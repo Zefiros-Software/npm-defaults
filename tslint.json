@@ -14,10 +14,7 @@
     "object-literal-sort-keys": false,
     "interface-name": false,
     "prefer-conditional-expression": false,
-    "no-implicit-dependencies": [
-      false,
-      "dev"
-    ],
+    "no-implicit-dependencies": [false, "dev"],
     "no-submodule-imports": false,
     "no-unused-variable": [
       true,
@@ -25,16 +22,8 @@
         "ignore-pattern": "[iI]gnored"
       }
     ],
-    "no-namespace": {
-      "options": [
-        true,
-        "allow-declarations"
-      ]
-    },
-    "await-promise": [
-      true,
-      "PromiseLike"
-    ],
+    "no-namespace": [true, "allow-declarations"],
+    "await-promise": [true, "PromiseLike"],
     "no-floating-promises": true,
     "no-empty-interface": false,
     "no-var-keyword": true,
@@ -46,10 +35,7 @@
         "ignoredCommentRegex": "^(\\w+$|TODO|FIXME)"
       }
     ],
-    "file-name-casing": [
-      true,
-      "kebab-case"
-    ],
+    "file-name-casing": [true, "kebab-case"],
     "strict-type-predicates": true,
     "no-relative-imports": true
   },
@@ -59,10 +45,7 @@
     "object-literal-sort-keys": false,
     "interface-name": false,
     "prefer-conditional-expression": false,
-    "no-implicit-dependencies": [
-      false,
-      "dev"
-    ],
+    "no-implicit-dependencies": [false, "dev"],
     "no-submodule-imports": false,
     "no-empty-interface": false,
     "no-var-keyword": true

@@ -17,6 +17,6 @@ module.exports = {
     collectCoverage: true,
     coverageDirectory: '<rootDir>/coverage/',
     globals: {
-        'ts-jest': { diagnostics: true },
+        'ts-jest': { isolatedModules: true, diagnostics: false },
     },
 }

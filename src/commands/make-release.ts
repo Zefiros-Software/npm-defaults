@@ -1,7 +1,7 @@
 import * as github from '@actions/github'
 import { Command } from '@oclif/command'
 
-export default class PullRequest extends Command {
+export class MakeRelease extends Command {
     public static description = 'create a pull request to release to stable'
     public token = process.env.GITHUB_TOKEN!
     public octokit = new github.GitHub(this.token)
@@ -37,3 +37,5 @@ export default class PullRequest extends Command {
         }
     }
 }
+
+export default MakeRelease

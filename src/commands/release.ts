@@ -2,7 +2,7 @@ import * as github from '@actions/github'
 import { Command } from '@oclif/command'
 import execa from 'execa'
 
-export default class Release extends Command {
+export class Release extends Command {
     public static description = 'release the package (standard-release)'
     public context = github.context
 
@@ -33,3 +33,5 @@ export default class Release extends Command {
         }
     }
 }
+
+export default Release

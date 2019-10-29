@@ -2,15 +2,16 @@ import { Command } from '@oclif/command'
 import execa from 'execa'
 import Lint from '~/commands/lint'
 
-export default class CI extends Command {
+export class CI extends Command {
     public static description = 'run all ci tests'
+
+    public commands = ['install', 'lint', 'build', 'test']
 
     public async run() {
         await Lint.run([])
-        await this.runCommand('install')
-        await this.runCommand('lint')
-        await this.runCommand('build')
-        await this.runCommand('test')
+        for (const command of this.commands) {
+            await this.runCommand(command)
+        }
     }
 
     public async runCommand(command: string) {
@@ -19,3 +20,5 @@ export default class CI extends Command {
         await subprocess
     }
 }
+
+export default CI

@@ -5,7 +5,7 @@
     "incremental": false,
     "noEmit": false,
     "outDir": "./dist",
-    "baseUrl": ".",
-    "rootDir": "."
+    "rootDir": "./src",
+    "baseUrl": "."
   }
 }

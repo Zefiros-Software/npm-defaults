@@ -1,19 +1,17 @@
 {
-  "license": "MIT",
   "name": "@zefiros/npm-defaults",
-  "version": "0.2.0-beta.16",
   "description": "Build tools for Zefiros packages",
+  "version": "0.2.0-beta.16",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
     "npm-defaults": "./bin/run"
   },
   "oclif": {
     "bin": "npm-defaults",
     "commands": "./dist/commands",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-not-found",
-      "@oclif/plugin-warn-if-update-available"
-    ]
+    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found", "@oclif/plugin-warn-if-update-available"]
   },
   "npm-defaults": {
     "type": "oclif-cli",

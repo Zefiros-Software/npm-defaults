@@ -9,7 +9,7 @@ export interface CreateArgs {
     name: string
 }
 
-export default class Create extends Command {
+export class Create extends Command {
     public static description = 'run all ci tests'
 
     public static args = [
@@ -50,3 +50,5 @@ export default class Create extends Command {
         })
     }
 }
+
+export default Create

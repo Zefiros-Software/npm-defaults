@@ -7,7 +7,7 @@ import { config, packagejson, reloadConfiguration, root } from '~/common/config'
 import { getAllFiles } from '~/common/file'
 import { PackageType } from '~/common/type'
 
-export default class Lint extends Command {
+export class Lint extends Command {
     public static description = 'lint the project configuration'
 
     public static flags = {
@@ -50,10 +50,18 @@ export default class Lint extends Command {
             return
         }
 
-        const templateRoot = `${root}/templates/${PackageType.Common}/`
-        for (const file of getAllFiles(templateRoot)) {
-            const relFile = path.relative(templateRoot, file)
-            this.lintFile(`${templateRoot}${relFile}`, relFile)
+        const commonRoot = `${root}/templates/${PackageType.Common}/`
+        for (const file of getAllFiles(commonRoot)) {
+            const relFile = path.relative(commonRoot, file)
+            this.lintFile(`${commonRoot}${relFile}`, relFile)
+        }
+
+        if (config.type !== PackageType.Common) {
+            const templateRoot = `${root}/templates/${config.type}/`
+            for (const file of getAllFiles(templateRoot)) {
+                const relFile = path.relative(templateRoot, file)
+                this.lintFile(`${templateRoot}${relFile}`, relFile)
+            }
         }
     }
 
@@ -140,3 +148,5 @@ export default class Lint extends Command {
         }
     }
 }
+
+export default Lint

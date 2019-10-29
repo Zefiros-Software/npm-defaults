@@ -1,3 +1,10 @@
+# [0.2.0-beta.17](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.16@next...v0.2.0-beta.17@next) (2019-10-29)
+
+
+### Features
+
+* npm-defaults as library ([72b134d](https://github.com/Zefiros-Software/npm-defaults/commit/72b134d04928827cf4967460836ee015282f09c5))
+
 # [0.2.0-beta.16](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.15@next...v0.2.0-beta.16@next) (2019-10-27)
 
 

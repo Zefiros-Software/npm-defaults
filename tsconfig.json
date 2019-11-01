@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "typings/variable-diff.d.ts", "typings/recursive-copy.d.ts", "typings/line-diff.d.ts"],
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",

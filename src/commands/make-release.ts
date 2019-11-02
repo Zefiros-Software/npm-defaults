@@ -1,5 +1,6 @@
 import * as github from '@actions/github'
 import { Command } from '@oclif/command'
+import { packagejson } from '~/common/config'
 
 export class MakeRelease extends Command {
     public static description = 'create a pull request to release to stable'
@@ -8,7 +9,7 @@ export class MakeRelease extends Command {
     public context = github.context
 
     public async run() {
-        const { version } = require(`${process.cwd()}/package.json`)
+        const { version } = packagejson
         this.log(`Creating release pull request for version ${version}`)
         try {
             await this.octokit.pulls.create({
@@ -31,6 +32,7 @@ export class MakeRelease extends Command {
                 await this.octokit.pulls.update({
                     ...this.context.repo,
                     title: `Publish version ${version}`,
+                    // eslint-disable-next-line @typescript-eslint/camelcase
                     pull_number: pullNumber,
                 })
             }

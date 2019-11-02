@@ -3,6 +3,7 @@
   "prettier.disableLanguages": ["json", "yaml"],
   "typescript.referencesCodeLens.enabled": true,
   "typescript.implementationsCodeLens.enabled": true,
+  "eslint.validate": ["javascript", { "language": "typescript", "autoFix": true }],
   "yaml.format.enable": false,
   "editor.formatOnSave": true,
   "[json]": {

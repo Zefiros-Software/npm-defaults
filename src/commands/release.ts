@@ -1,13 +1,14 @@
 import * as github from '@actions/github'
 import { Command } from '@oclif/command'
 import execa from 'execa'
+import { packagejson } from '~/common/config'
 
 export class Release extends Command {
     public static description = 'release the package (standard-release)'
     public context = github.context
 
     public async run() {
-        const { version } = require(`${process.cwd()}/package.json`)
+        const { version } = packagejson
         this.log(`Creating release pull request for version ${version}`)
 
         const subprocess = execa('yarn', ['release'], {

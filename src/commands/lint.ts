@@ -22,6 +22,7 @@ export class Lint extends Command {
             ['test']: 'concurrently "yarn check:types" "yarn jest test --maxWorkers=1"',
             ['fix']: 'yarn lint --fix',
             ['lint']: 'eslint "{src,test,typing}/**/*.{ts,js}"',
+            ['format']: 'prettier "{src,test,typing,templates}/**/*.{ts,js,json}" --write',
             ['package']: 'rm -rf dist && yarn build',
             ['release']: 'yarn semantic-release',
             ['release:dry']: 'yarn release --dry-run',

@@ -23,6 +23,9 @@ jobs:
         yarn install
         ./bin/run ci
         yalc publish
+        # for using named modules
+        yarn link
+        yarn link @zefiros/npm-defaults
     - name: library - yarn install, build, and test
       working-directory: examples/library
       run: |

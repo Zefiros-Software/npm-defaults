@@ -11,17 +11,24 @@
   "oclif": {
     "bin": "example-cli",
     "commands": "./dist/commands",
-    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found", "@oclif/plugin-warn-if-update-available"]
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-warn-if-update-available"
+    ]
   },
   "npm-defaults": {
     "type": "oclif-cli"
   },
-  "files": ["bin", "dist"],
+  "files": [
+    "bin",
+    "dist"
+  ],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",
     "test": "yarn check:types && yarn jest test --maxWorkers=1",
     "fix": "yarn lint --fix",
-    "lint": "tslint --project tsconfig.lint.json",
+    "lint": "eslint \"{src,test,typing}/**/*.{ts,js}\"",
     "release": "yarn semantic-release",
     "release:dry": "yarn release --dry-run",
     "package": "rm -rf dist && yarn build",
@@ -35,7 +42,8 @@
     "@oclif/config": "^1.13.3",
     "@oclif/plugin-help": "^2.2.1",
     "@oclif/plugin-not-found": "^1.2.3",
-    "@oclif/plugin-warn-if-update-available": "^1.7.0"
+    "@oclif/plugin-warn-if-update-available": "^1.7.0",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",

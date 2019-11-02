@@ -21,7 +21,7 @@ export class Lint extends Command {
             ['check:project']: 'yarn npm-defaults lint',
             ['test']: 'yarn check:types && yarn jest test --maxWorkers=1',
             ['fix']: 'yarn lint --fix',
-            ['lint']: 'tslint --project tsconfig.json',
+            ['lint']: 'eslint "{src,test,typing}/**/*.{ts,js}"',
             ['package']: 'rm -rf dist && yarn build',
             ['release']: 'yarn semantic-release',
             ['release:dry']: 'yarn release --dry-run',
@@ -29,11 +29,19 @@ export class Lint extends Command {
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
             ['check:types']: 'yarn ttsc -p tsconfig.lint.json',
-            ['lint']: 'tslint --project tsconfig.lint.json',
+            ['lint']: 'eslint "{src,test,typing}/**/*.{ts,js}"',
             ['prepack']:
                 'yarn ts-node -r tsconfig-paths/register node_modules/@oclif/dev-cli/bin/run manifest && oclif-dev readme',
             ['postpack']: 'rm -f oclif.manifest.json',
         },
+    }
+
+    public static dependencies: Record<PackageType, Record<string, string>> = {
+        [PackageType.Common]: {
+            tslib: '^1.10.0',
+        },
+        [PackageType.Library]: {},
+        [PackageType.OclifCli]: {},
     }
 
     public args!: ReturnType<Lint['parseArgs']>
@@ -92,6 +100,7 @@ export class Lint extends Command {
         const json = JSON.stringify(packagejson, null, 2)
         this.lintConfiguration()
         this.lintScripts()
+        this.lintDependencies()
 
         const fixed = JSON.stringify(packagejson, null, 2)
         if (this.args.flags.fix && json !== fixed) {
@@ -141,10 +150,31 @@ export class Lint extends Command {
         }
     }
 
+    public lintDependencies() {
+        if (!packagejson.dependencies) {
+            packagejson.dependencies = {}
+        }
+        const json = JSON.stringify(packagejson.dependencies)
+        for (const [entry, value] of Object.entries(Lint.dependencies[PackageType.Common])) {
+            packagejson.dependencies[entry] = value
+        }
+        for (const [entry, value] of Object.entries(Lint.dependencies[config.type] || {})) {
+            packagejson.dependencies[entry] = value
+        }
+        if (JSON.stringify(packagejson.dependencies) !== json) {
+            this.warn(
+                `[package.json>dependencies] missing or outdated script entries found:\n${
+                    vdiff(JSON.parse(json), packagejson.dependencies).text
+                }`
+            )
+
+            this.fail()
+        }
+    }
+
     public fail() {
         if (!this.args.flags.fix) {
             this.error('Found errors in the project')
-            this.exit(1)
         }
     }
 }

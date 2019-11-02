@@ -42,7 +42,7 @@
   ],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",
-    "test": "yarn check:types && yarn jest test --maxWorkers=1",
+    "test": "concurrently \"yarn check:types\" \"yarn jest test --maxWorkers=1\"",
     "fix": "yarn lint --fix",
     "lint": "eslint \"{src,test,typing}/**/*.{ts,js}\"",
     "release": "yarn semantic-release",

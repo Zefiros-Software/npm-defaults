@@ -16,8 +16,10 @@ export class CI extends Command {
 
     public async runCommand(command: string) {
         const subprocess = execa('yarn', [command])
+        subprocess.stderr!.pipe(process.stderr)
         subprocess.stdout!.pipe(process.stdout)
-        await subprocess
+        const { exitCode } = await subprocess
+        this.log(`Exited with code ${exitCode}`)
     }
 }
 

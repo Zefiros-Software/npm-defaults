@@ -20,12 +20,15 @@ jobs:
       run: |
         export PATH="$(yarn global bin):$PATH"
         npm config set scripts-prepend-node-path true
-        yarn install
-        ./bin/run ci
-        yalc publish
+
+        yarn install        
+        
         # for using named modules
         yarn link
         yarn link @zefiros/npm-defaults
+
+        ./bin/run ci
+        yalc publish
     - name: library - yarn install, build, and test
       working-directory: examples/library
       run: |

@@ -1,3 +1,10 @@
+# [0.2.0-beta.19](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.18@next...v0.2.0-beta.19@next) (2019-11-02)
+
+
+### Features
+
+* remove tslint ([f832c44](https://github.com/Zefiros-Software/npm-defaults/commit/f832c4439026069deb695c5329c4e674600fc94a))
+
 # [0.2.0-beta.18](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.17@next...v0.2.0-beta.18@next) (2019-11-02)
 
 

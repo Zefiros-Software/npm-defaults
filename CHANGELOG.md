@@ -1,3 +1,13 @@
+# [0.2.0-beta.18](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.17@next...v0.2.0-beta.18@next) (2019-11-02)
+
+
+### Features
+
+* add release config ([9a9c512](https://github.com/Zefiros-Software/npm-defaults/commit/9a9c5123e8eaab3ae43513e5cf834dad33933c00))
+* concurrent test execution ([46ed049](https://github.com/Zefiros-Software/npm-defaults/commit/46ed04947a24f6e3696d01db24012dbc58e4ee64))
+* lint tslib library ([5bb0150](https://github.com/Zefiros-Software/npm-defaults/commit/5bb01502ea94ef04e55c619855110230b99961e3))
+* migrate to eslint ([b2e4c2a](https://github.com/Zefiros-Software/npm-defaults/commit/b2e4c2aaa604d46ee234f16e28dfa0ca93325da1))
+
 # [0.2.0-beta.17](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.16@next...v0.2.0-beta.17@next) (2019-10-29)
 
 

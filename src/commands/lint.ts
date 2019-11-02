@@ -19,7 +19,7 @@ export class Lint extends Command {
             ['build']: 'yarn ttsc -p tsconfig.dist.json',
             ['check:types']: 'yarn ttsc -p tsconfig.json',
             ['check:project']: 'yarn npm-defaults lint',
-            ['test']: 'yarn check:types && yarn jest test --maxWorkers=1',
+            ['test']: 'concurrently "yarn check:types" "yarn jest test --maxWorkers=1"',
             ['fix']: 'yarn lint --fix',
             ['lint']: 'eslint "{src,test,typing}/**/*.{ts,js}"',
             ['package']: 'rm -rf dist && yarn build',

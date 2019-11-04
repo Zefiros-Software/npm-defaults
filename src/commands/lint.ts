@@ -21,7 +21,7 @@ export class Lint extends Command {
             ['check:project']: 'yarn npm-defaults lint',
             ['test']: 'concurrently "yarn check:types" "yarn jest test --maxWorkers=1"',
             ['fix']: 'yarn lint --fix',
-            ['lint']: 'eslint "{src,test,typing}/**/*.{ts,js}"',
+            ['lint']: 'eslint "{src,test,typing}/**/*.{ts,js}" --ignore-pattern **/node_modules/*',
             ['format']: 'prettier "{src,test,typing,templates}/**/*.{ts,js,json}" --write',
             ['package']: 'rm -rf dist && yarn build',
             ['release']: 'yarn semantic-release',
@@ -30,7 +30,6 @@ export class Lint extends Command {
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
             ['check:types']: 'yarn ttsc -p tsconfig.lint.json',
-            ['lint']: 'eslint "{src,test,typing}/**/*.{ts,js}"',
             ['prepack']:
                 'yarn ts-node -r tsconfig-paths/register node_modules/@oclif/dev-cli/bin/run manifest && oclif-dev readme',
             ['postpack']: 'rm -f oclif.manifest.json',

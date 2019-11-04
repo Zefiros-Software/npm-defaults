@@ -28,7 +28,7 @@
     "build": "yarn ttsc -p tsconfig.dist.json",
     "test": "concurrently \"yarn check:types\" \"yarn jest test --maxWorkers=1\"",
     "fix": "yarn lint --fix",
-    "lint": "eslint \"{src,test,typing}/**/*.{ts,js}\"",
+    "lint": "eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-pattern **/node_modules/*",
     "format": "prettier \"{src,test,typing,templates}/**/*.{ts,js,json}\" --write",
     "release": "yarn semantic-release",
     "release:dry": "yarn release --dry-run",

@@ -57,23 +57,27 @@ export class Lint extends Command {
         if (config.skipTemplate) {
             return
         }
-
-        const commonRoot = `${root}/templates/${PackageType.Common}/`
-        for (const file of getAllFiles(commonRoot)) {
-            const relFile = path.relative(commonRoot, file)
-            this.lintFile(`${commonRoot}${relFile}`, relFile)
-        }
+        const targets: Record<string, () => void> = {}
 
         if (config.type !== PackageType.Common) {
             const templateRoot = `${root}/templates/${config.type}/`
             for (const file of getAllFiles(templateRoot)) {
                 const relFile = path.relative(templateRoot, file)
-                this.lintFile(`${templateRoot}${relFile}`, relFile)
+                this.lintFile(`${templateRoot}${relFile}`, relFile, targets)
             }
+        }
+        const commonRoot = `${root}/templates/${PackageType.Common}/`
+        for (const file of getAllFiles(commonRoot)) {
+            const relFile = path.relative(commonRoot, file)
+            this.lintFile(`${commonRoot}${relFile}`, relFile, targets)
+        }
+
+        for (const target of Object.values(targets)) {
+            target()
         }
     }
 
-    public lintFile(from: string, target: string) {
+    public lintFile(from: string, target: string, targets: Record<string, () => void>) {
         const oldContent = fs.existsSync(target) ? fs.readFileSync(target, 'utf-8') : undefined
         const newContent = fs.readFileSync(from, 'utf-8')
         const isDifferent = oldContent !== newContent
@@ -88,10 +92,14 @@ export class Lint extends Command {
             if (this.args.flags.fix) {
                 this.log(`Writing ${target}`)
                 const dir = path.dirname(target)
-                if (!fs.existsSync(dir)) {
-                    fs.mkdirSync(dir)
+                if (targets[target] === undefined) {
+                    targets[target] = () => {
+                        if (!fs.existsSync(dir)) {
+                            fs.mkdirSync(dir)
+                        }
+                        fs.writeFileSync(target, newContent)
+                    }
                 }
-                fs.writeFileSync(target, newContent)
             }
         }
     }

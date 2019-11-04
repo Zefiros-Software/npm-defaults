@@ -63,13 +63,17 @@ export class Lint extends Command {
             const templateRoot = `${root}/templates/${config.type}/`
             for (const file of getAllFiles(templateRoot)) {
                 const relFile = path.relative(templateRoot, file)
-                this.lintFile(`${templateRoot}${relFile}`, relFile, targets)
+                if (!targets[relFile]) {
+                    targets[relFile] = () => this.lintFile(`${templateRoot}${relFile}`, relFile)
+                }
             }
         }
         const commonRoot = `${root}/templates/${PackageType.Common}/`
         for (const file of getAllFiles(commonRoot)) {
             const relFile = path.relative(commonRoot, file)
-            this.lintFile(`${commonRoot}${relFile}`, relFile, targets)
+            if (!targets[relFile]) {
+                targets[relFile] = () => this.lintFile(`${commonRoot}${relFile}`, relFile)
+            }
         }
 
         for (const target of Object.values(targets)) {
@@ -77,7 +81,7 @@ export class Lint extends Command {
         }
     }
 
-    public lintFile(from: string, target: string, targets: Record<string, () => void>) {
+    public lintFile(from: string, target: string) {
         const oldContent = fs.existsSync(target) ? fs.readFileSync(target, 'utf-8') : undefined
         const newContent = fs.readFileSync(from, 'utf-8')
         const isDifferent = oldContent !== newContent
@@ -92,14 +96,10 @@ export class Lint extends Command {
             if (this.args.flags.fix) {
                 this.log(`Writing ${target}`)
                 const dir = path.dirname(target)
-                if (targets[target] === undefined) {
-                    targets[target] = () => {
-                        if (!fs.existsSync(dir)) {
-                            fs.mkdirSync(dir)
-                        }
-                        fs.writeFileSync(target, newContent)
-                    }
+                if (!fs.existsSync(dir)) {
+                    fs.mkdirSync(dir)
                 }
+                fs.writeFileSync(target, newContent)
             }
         }
     }

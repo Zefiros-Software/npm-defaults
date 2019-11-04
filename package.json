@@ -26,7 +26,7 @@
     "url": "https://github.com/Zefiros-Software/npm-defaults.git"
   },
   "files": [
-    ".eslintrc.js",
+    ".eslintrc.base.js",
     ".huskyrc.js",
     "oclif.manifest.json",
     "commitlint.config.js",

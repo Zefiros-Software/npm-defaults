@@ -1,3 +1,11 @@
+# [0.2.0-beta.20](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.19@next...v0.2.0-beta.20@next) (2019-11-04)
+
+
+### Features
+
+* add node_module cache ([9ecbf01](https://github.com/Zefiros-Software/npm-defaults/commit/9ecbf01a96e9b5ce949fd2f67fbea29c885e0745))
+* upgrade eslint configuration ([3de72fa](https://github.com/Zefiros-Software/npm-defaults/commit/3de72fa3e11145a0cdd01c08d0abf04729a0783d))
+
 # [0.2.0-beta.19](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.18@next...v0.2.0-beta.19@next) (2019-11-02)
 
 

@@ -112,7 +112,7 @@ export class Lint extends Command {
 
     public lintConfiguration() {
         const json = JSON.stringify(packagejson['npm-defaults'] || {})
-        if (!packagejson['npm-defaults']) {
+        if (packagejson['npm-defaults'] === undefined) {
             packagejson['npm-defaults'] = {
                 type: PackageType.Library,
             }

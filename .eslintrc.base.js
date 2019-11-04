@@ -3,7 +3,7 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 2018,
         sourceType: 'module',
-        project: 'tsconfig.lint.json',
+        project: 'tsconfig.json',
     },
     plugins: ['@typescript-eslint', 'extra-rules', 'unicorn', 'import'],
     extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended', 'prettier/@typescript-eslint'],

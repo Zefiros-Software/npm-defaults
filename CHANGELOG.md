@@ -1,3 +1,11 @@
+# [0.2.0-beta.21](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.20@next...v0.2.0-beta.21@next) (2019-11-05)
+
+
+### Features
+
+* update typescript settings ([b198817](https://github.com/Zefiros-Software/npm-defaults/commit/b198817308ffec3159e82b40b3ccb4e485225bc5))
+* upgrade to typescript 3.7.2 ([4f1cd3d](https://github.com/Zefiros-Software/npm-defaults/commit/4f1cd3dea20606781f068cdcaa7f8d798614b1e1))
+
 # [0.2.0-beta.20](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.19@next...v0.2.0-beta.20@next) (2019-11-04)
 
 

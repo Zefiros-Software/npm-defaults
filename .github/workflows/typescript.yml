@@ -15,9 +15,9 @@ jobs:
       uses: actions/cache@v1
       with:
         path: node_modules
-        key: ${{ runner.os }}-node
+        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-node
+          ${{ runner.os }}-node-
     - name: Use Node.js 10
       uses: actions/setup-node@master
       with:

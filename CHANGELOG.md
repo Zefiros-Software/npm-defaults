@@ -1,3 +1,10 @@
+# [0.2.0-beta.22](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.21@next...v0.2.0-beta.22@next) (2019-11-09)
+
+
+### Features
+
+* update dependencies ([777d552](https://github.com/Zefiros-Software/npm-defaults/commit/777d552757b9106d1e4723dc0d285f41efdb07a2))
+
 # [0.2.0-beta.21](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.20@next...v0.2.0-beta.21@next) (2019-11-05)
 
 

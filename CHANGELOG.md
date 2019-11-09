@@ -1,3 +1,10 @@
+# [0.2.0-beta.23](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.22@next...v0.2.0-beta.23@next) (2019-11-09)
+
+
+### Features
+
+* ci install with frozen-lockfile ([97c63db](https://github.com/Zefiros-Software/npm-defaults/commit/97c63dbd1f4d3a1b3c8b2e7c73beb3ed06bae8e1))
+
 # [0.2.0-beta.22](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.21@next...v0.2.0-beta.22@next) (2019-11-09)
 
 

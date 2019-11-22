@@ -1,3 +1,11 @@
+# [0.2.0-beta.24](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.23@next...v0.2.0-beta.24@next) (2019-11-22)
+
+
+### Features
+
+* update dependencies ([ed526eb](https://github.com/Zefiros-Software/npm-defaults/commit/ed526eb5934593c58768b954486209ca24c05df3))
+* upgrade prettier with 3.7.2 support ([307ffd9](https://github.com/Zefiros-Software/npm-defaults/commit/307ffd90f8de879338b166d4d11a78d71d358ec1))
+
 # [0.2.0-beta.23](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.22@next...v0.2.0-beta.23@next) (2019-11-09)
 
 

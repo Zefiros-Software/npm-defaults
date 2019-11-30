@@ -8,9 +8,7 @@
   "npm-defaults": {
     "type": "library"
   },
-  "files": [
-    "dist/**"
-  ],
+  "files": ["dist/**"],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",
     "test": "concurrently \"yarn check:types\" \"yarn jest test --maxWorkers=1\"",
@@ -27,6 +25,6 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@zefiros/npm-defaults": "^0.1.24"
+    "@zefiros/npm-defaults": "^0.2.0-beta.24"
   }
 }

@@ -36,6 +36,7 @@
     "release.config.js",
     "tsconfig.base.json",
     "wallaby.base.js",
+    "lint-staged.config.js",
     "bin",
     "dist",
     "templates"
@@ -73,7 +74,7 @@
     "@zerollup/ts-transform-paths": "^1.7.7",
     "concurrently": "^5.0.0",
     "conventional-changelog": "^3.1.15",
-    "eslint": "^6.7.1",
+    "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-extra-rules": "^0.0.0-development",
     "eslint-plugin-import": "^2.18.2",

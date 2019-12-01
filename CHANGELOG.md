@@ -1,3 +1,10 @@
+# [0.2.0-beta.26](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.25@next...v0.2.0-beta.26@next) (2019-12-01)
+
+
+### Features
+
+* release lint-staged config ([5fe51f0](https://github.com/Zefiros-Software/npm-defaults/commit/5fe51f0dd7bed8d608a02f452f86f6bd42297f80))
+
 # [0.2.0-beta.25](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.24@next...v0.2.0-beta.25@next) (2019-11-30)
 
 

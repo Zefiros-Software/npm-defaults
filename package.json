@@ -8,6 +8,9 @@
   "bin": {
     "npm-defaults": "./bin/run"
   },
+  "engines": {
+    "node": ">=12"
+  },
   "oclif": {
     "bin": "npm-defaults",
     "commands": "./dist/commands",

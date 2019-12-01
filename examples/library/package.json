@@ -8,6 +8,9 @@
   "npm-defaults": {
     "type": "library"
   },
+  "engines": {
+    "node": ">=12"
+  },
   "files": ["dist/**"],
   "scripts": {
     "build": "yarn ttsc -p tsconfig.dist.json",

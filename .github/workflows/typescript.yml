@@ -6,15 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      CI: true
+      CI: "true"
     steps:
     - uses: actions/checkout@master
       with:
         fetch-depth: 1
-    - name: Use Node.js 10
+    - name: Use Node.js 12
       uses: actions/setup-node@master
       with:
-        node-version: 10
+        node-version: 12
     - run: npm install -g yarn yalc codecov
     - name: yarn link
       run: |
@@ -30,12 +30,12 @@ jobs:
         ./bin/run ci
         yalc publish
     - name: library - yarn install, build, and test
-      working-directory: examples/library
+      working-directory: ./examples/library
       run: |
         yalc add @zefiros/npm-defaults
         ../../bin/run ci
     - name: oclif-cli - yarn install, build, and test
-      working-directory: examples/oclif-cli
+      working-directory: ./examples/oclif-cli
       run: |
         yalc add @zefiros/npm-defaults
         ../../bin/run ci

@@ -1,3 +1,11 @@
+# [0.2.0-beta.27](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.26...v0.2.0-beta.27) (2019-12-07)
+
+
+### Features
+
+* improve formatting ([0530b5f](https://github.com/Zefiros-Software/npm-defaults/commit/0530b5f77fa4ba993b682d708de531380b4ab3f1))
+* require node 12 ([f6359a9](https://github.com/Zefiros-Software/npm-defaults/commit/f6359a9ba4cd674a03debf981b0164ae25fae299))
+
 # [0.2.0-beta.26](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.25@next...v0.2.0-beta.26@next) (2019-12-01)
 
 

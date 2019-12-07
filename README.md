@@ -13,7 +13,7 @@ $ npm install -g @zefiros/npm-defaults
 $ npm-defaults COMMAND
 running command...
 $ npm-defaults (-v|--version|version)
-@zefiros/npm-defaults/0.2.0-beta.25 linux-x64 node-v10.17.0
+@zefiros/npm-defaults/0.2.0-beta.26 linux-x64 node-v12.13.1
 $ npm-defaults --help [COMMAND]
 USAGE
   $ npm-defaults COMMAND
@@ -38,7 +38,7 @@ USAGE
   $ npm-defaults ci
 ```
 
-_See code: [dist/commands/ci.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.25/dist/commands/ci.js)_
+_See code: [dist/commands/ci.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.26/dist/commands/ci.js)_
 
 ## `npm-defaults create TYPE NAME`
 
@@ -53,7 +53,7 @@ ARGUMENTS
   NAME  the package name
 ```
 
-_See code: [dist/commands/create.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.25/dist/commands/create.js)_
+_See code: [dist/commands/create.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.26/dist/commands/create.js)_
 
 ## `npm-defaults help [COMMAND]`
 
@@ -70,7 +70,7 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.1/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.2/src/commands/help.ts)_
 
 ## `npm-defaults lint`
 
@@ -84,7 +84,7 @@ OPTIONS
   --fix
 ```
 
-_See code: [dist/commands/lint.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.25/dist/commands/lint.js)_
+_See code: [dist/commands/lint.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.26/dist/commands/lint.js)_
 
 ## `npm-defaults make-release`
 
@@ -95,7 +95,7 @@ USAGE
   $ npm-defaults make-release
 ```
 
-_See code: [dist/commands/make-release.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.25/dist/commands/make-release.js)_
+_See code: [dist/commands/make-release.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.26/dist/commands/make-release.js)_
 
 ## `npm-defaults release`
 
@@ -106,5 +106,5 @@ USAGE
   $ npm-defaults release
 ```
 
-_See code: [dist/commands/release.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.25/dist/commands/release.js)_
+_See code: [dist/commands/release.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.26/dist/commands/release.js)_
 <!-- commandsstop -->

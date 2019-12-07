@@ -11,7 +11,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "useDefineForClassFields": true,
     "strictNullChecks": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,

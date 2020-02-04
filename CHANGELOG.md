@@ -1,3 +1,10 @@
+# [0.2.0-beta.29](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.28...v0.2.0-beta.29) (2020-02-04)
+
+
+### Features
+
+* remove eslint rule with false positives ([4a6892c](https://github.com/Zefiros-Software/npm-defaults/commit/4a6892ca7995ebdde8261439d455c604a6b78cc5))
+
 # [0.2.0-beta.28](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.27...v0.2.0-beta.28) (2020-02-04)
 
 

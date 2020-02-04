@@ -1,3 +1,10 @@
+# [0.2.0-beta.28](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.27...v0.2.0-beta.28) (2020-02-04)
+
+
+### Features
+
+* upgrade versions ([6e4eaa8](https://github.com/Zefiros-Software/npm-defaults/commit/6e4eaa89bfcea76263f1fb0a110b87b8fac58b26))
+
 # [0.2.0-beta.27](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.26...v0.2.0-beta.27) (2019-12-07)
 
 

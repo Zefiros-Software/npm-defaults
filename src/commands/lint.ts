@@ -3,7 +3,7 @@ import fs from 'fs'
 import LineDiff from 'line-diff'
 import path from 'path'
 import vdiff from 'variable-diff'
-import { config, packagejson, reloadConfiguration, root } from '~/common/config'
+import { config, packagejson, reloadConfiguration, root, configurationKey } from '~/common/config'
 import { getAllFiles } from '~/common/file'
 import { PackageType } from '~/common/type'
 
@@ -14,7 +14,7 @@ export class Lint extends Command {
         fix: flags.boolean(),
     }
 
-    public static scripts: Record<PackageType, Record<string, string>> = {
+    public static scripts: Record<string, Record<string, string>> = {
         [PackageType.Common]: {
             ['build']: 'yarn ttsc -p tsconfig.dist.json',
             ['check:types']: 'yarn ttsc -p tsconfig.json',
@@ -36,7 +36,7 @@ export class Lint extends Command {
         },
     }
 
-    public static dependencies: Record<PackageType, Record<string, string>> = {
+    public static dependencies: Record<string, Record<string, string>> = {
         [PackageType.Common]: {
             tslib: '^1.10.0',
         },
@@ -44,8 +44,40 @@ export class Lint extends Command {
         [PackageType.OclifCli]: {},
     }
 
+    public static links: Record<string, string[]> = {
+        [PackageType.Library]: [PackageType.Common],
+        [PackageType.OclifCli]: [PackageType.Common],
+    }
+
+    public static roots: Record<string, string> = {
+        [PackageType.Library]: root,
+        [PackageType.OclifCli]: root,
+    }
+
     public args!: ReturnType<Lint['parseArgs']>
     public parseArgs = () => this.parse(Lint)
+
+    public get scripts() {
+        return Lint.scripts
+    }
+    public get links() {
+        return Lint.links
+    }
+    public get roots() {
+        return Lint.roots
+    }
+
+    public get type(): string | undefined {
+        return config?.type
+    }
+
+    public getRoot(type: string) {
+        return this.roots[type] ?? root
+    }
+
+    public getLinks(): string[] {
+        return this.type ? this.links[this.type] || [] : []
+    }
 
     public async run() {
         this.args = this.parseArgs()
@@ -54,13 +86,13 @@ export class Lint extends Command {
     }
 
     public lintTemplate() {
-        if (config.skipTemplate) {
+        if (!config || config.skipTemplate) {
             return
         }
         const targets: Record<string, () => void> = {}
 
         if (config.type !== PackageType.Common) {
-            const templateRoot = `${root}/templates/${config.type}/`
+            const templateRoot = `${this.getRoot(config.type)}/templates/${config.type}/`
             for (const file of getAllFiles(templateRoot)) {
                 const relFile = path.relative(templateRoot, file)
                 if (!targets[relFile]) {
@@ -68,11 +100,14 @@ export class Lint extends Command {
                 }
             }
         }
-        const commonRoot = `${root}/templates/${PackageType.Common}/`
-        for (const file of getAllFiles(commonRoot)) {
-            const relFile = path.relative(commonRoot, file)
-            if (!targets[relFile]) {
-                targets[relFile] = () => this.lintFile(`${commonRoot}${relFile}`, relFile)
+
+        for (const other of this.getLinks()) {
+            const otherRoot = `${this.getRoot(other)}/templates/${other}/`
+            for (const file of getAllFiles(otherRoot)) {
+                const relFile = path.relative(otherRoot, file)
+                if (!targets[relFile]) {
+                    targets[relFile] = () => this.lintFile(`${otherRoot}${relFile}`, relFile)
+                }
             }
         }
 
@@ -118,16 +153,16 @@ export class Lint extends Command {
     }
 
     public lintConfiguration() {
-        const json = JSON.stringify(packagejson['npm-defaults'] || {})
-        if (packagejson['npm-defaults'] === undefined) {
-            packagejson['npm-defaults'] = {
+        const json = JSON.stringify(packagejson[configurationKey] || {})
+        if (packagejson[configurationKey] === undefined) {
+            packagejson[configurationKey] = {
                 type: PackageType.Library,
             }
         }
-        if (JSON.stringify(packagejson['npm-defaults']) !== json) {
+        if (JSON.stringify(packagejson[configurationKey]) !== json) {
             this.warn(
-                `[package.json>npm-defaults] missing or outdated configuration:\n${
-                    vdiff(JSON.parse(json), packagejson['npm-defaults']).text
+                `[package.json>${configurationKey}] missing or outdated configuration:\n${
+                    vdiff(JSON.parse(json), packagejson[configurationKey]).text
                 }`
             )
 
@@ -141,10 +176,12 @@ export class Lint extends Command {
             packagejson.scripts = {}
         }
         const json = JSON.stringify(packagejson.scripts)
-        for (const [entry, value] of Object.entries(Lint.scripts[PackageType.Common])) {
-            packagejson.scripts[entry] = value
+        for (const other of config?.type ? this.links[config?.type] ?? [] : []) {
+            for (const [entry, value] of Object.entries(this.scripts[other])) {
+                packagejson.scripts[entry] = value
+            }
         }
-        for (const [entry, value] of Object.entries(Lint.scripts[config.type] || {})) {
+        for (const [entry, value] of Object.entries(config ? this.scripts[config.type] ?? {} : {})) {
             packagejson.scripts[entry] = value
         }
         if (JSON.stringify(packagejson.scripts) !== json) {
@@ -163,10 +200,12 @@ export class Lint extends Command {
             packagejson.dependencies = {}
         }
         const json = JSON.stringify(packagejson.dependencies)
-        for (const [entry, value] of Object.entries(Lint.dependencies[PackageType.Common])) {
-            packagejson.dependencies[entry] = value
+        for (const other of config?.type ? this.links[config?.type] ?? [] : []) {
+            for (const [entry, value] of Object.entries(Lint.dependencies[other])) {
+                packagejson.dependencies[entry] = value
+            }
         }
-        for (const [entry, value] of Object.entries(Lint.dependencies[config.type] || {})) {
+        for (const [entry, value] of Object.entries(config ? Lint.dependencies[config.type] ?? {} : {})) {
             packagejson.dependencies[entry] = value
         }
         if (JSON.stringify(packagejson.dependencies) !== json) {

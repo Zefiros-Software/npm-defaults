@@ -28,6 +28,6 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@zefiros/npm-defaults": "^0.2.0-beta.24"
+    "@zefiros/npm-defaults": "^0.2.0-beta.29"
   }
 }

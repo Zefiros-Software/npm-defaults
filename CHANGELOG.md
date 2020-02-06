@@ -1,3 +1,10 @@
+# [0.2.0-beta.30](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.29...v0.2.0-beta.30) (2020-02-06)
+
+
+### Features
+
+* improved robustness of configuration handling ([e7dd12e](https://github.com/Zefiros-Software/npm-defaults/commit/e7dd12e9131efad6cbb51c7d16e86ea0cbe3d15e))
+
 # [0.2.0-beta.29](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.28...v0.2.0-beta.29) (2020-02-04)
 
 

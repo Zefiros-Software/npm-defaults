@@ -1,3 +1,10 @@
+# [0.2.0-beta.32](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.31...v0.2.0-beta.32) (2020-02-07)
+
+
+### Features
+
+* drop @github/action ([5125ca1](https://github.com/Zefiros-Software/npm-defaults/commit/5125ca11f4f1abfad41ef1e2508018ad13c86d04))
+
 # [0.2.0-beta.31](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.30...v0.2.0-beta.31) (2020-02-07)
 
 

@@ -1,3 +1,10 @@
+# [0.2.0-beta.33](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.32...v0.2.0-beta.33) (2020-02-07)
+
+
+### Features
+
+* conditional lockfile usage ([24353b5](https://github.com/Zefiros-Software/npm-defaults/commit/24353b5f78ba05baafd6ff8e90b34e90a0d3425e))
+
 # [0.2.0-beta.32](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.31...v0.2.0-beta.32) (2020-02-07)
 
 

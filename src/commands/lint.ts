@@ -75,8 +75,9 @@ export class Lint extends Command {
 
     public async run() {
         this._scripts = (this.constructor as any).scripts ?? Lint.scripts
-        this._links = (this.constructor as any)._links ?? Lint.links
-        this._roots = (this.constructor as any)._roots ?? Lint.roots
+        this._links = (this.constructor as any).links ?? Lint.links
+        this._roots = (this.constructor as any).roots ?? Lint.roots
+
         this.args = this.parseArgs()
         this.lintPackage()
         this.lintTemplate()

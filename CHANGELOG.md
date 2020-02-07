@@ -1,3 +1,10 @@
+# [0.2.0-beta.34](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.33...v0.2.0-beta.34) (2020-02-07)
+
+
+### Features
+
+* fix static overrides ([86be242](https://github.com/Zefiros-Software/npm-defaults/commit/86be2420e805c8ac639f5f48610bc74274385711))
+
 # [0.2.0-beta.33](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.32...v0.2.0-beta.33) (2020-02-07)
 
 

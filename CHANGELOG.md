@@ -1,3 +1,10 @@
+# [0.2.0-beta.31](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.30...v0.2.0-beta.31) (2020-02-07)
+
+
+### Features
+
+* improve inheritance ([04690f2](https://github.com/Zefiros-Software/npm-defaults/commit/04690f2f1b6bc45506315af57832e5b9b07a5c69))
+
 # [0.2.0-beta.30](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.29...v0.2.0-beta.30) (2020-02-06)
 
 

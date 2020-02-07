@@ -57,29 +57,26 @@ export class Lint extends Command {
     public args!: ReturnType<Lint['parseArgs']>
     public parseArgs = () => this.parse(Lint)
 
-    public get scripts() {
-        return Lint.scripts
-    }
-    public get links() {
-        return Lint.links
-    }
-    public get roots() {
-        return Lint.roots
-    }
+    public _scripts!: typeof Lint.scripts
+    public _links!: typeof Lint.links
+    public _roots!: typeof Lint.roots
 
     public get type(): string | undefined {
         return config?.type
     }
 
     public getRoot(type: string) {
-        return this.roots[type] ?? root
+        return this._roots[type] ?? root
     }
 
     public getLinks(): string[] {
-        return this.type ? this.links[this.type] || [] : []
+        return this.type ? this._links[this.type] ?? [] : []
     }
 
     public async run() {
+        this._scripts = (this.constructor as any).scripts ?? Lint.scripts
+        this._links = (this.constructor as any)._links ?? Lint.links
+        this._roots = (this.constructor as any)._roots ?? Lint.roots
         this.args = this.parseArgs()
         this.lintPackage()
         this.lintTemplate()
@@ -176,12 +173,12 @@ export class Lint extends Command {
             packagejson.scripts = {}
         }
         const json = JSON.stringify(packagejson.scripts)
-        for (const other of config?.type ? this.links[config?.type] ?? [] : []) {
-            for (const [entry, value] of Object.entries(this.scripts[other])) {
+        for (const other of config?.type ? this._links[config?.type] ?? [] : []) {
+            for (const [entry, value] of Object.entries(this._scripts[other])) {
                 packagejson.scripts[entry] = value
             }
         }
-        for (const [entry, value] of Object.entries(config ? this.scripts[config.type] ?? {} : {})) {
+        for (const [entry, value] of Object.entries(config ? this._scripts[config.type] ?? {} : {})) {
             packagejson.scripts[entry] = value
         }
         if (JSON.stringify(packagejson.scripts) !== json) {
@@ -200,7 +197,7 @@ export class Lint extends Command {
             packagejson.dependencies = {}
         }
         const json = JSON.stringify(packagejson.dependencies)
-        for (const other of config?.type ? this.links[config?.type] ?? [] : []) {
+        for (const other of config?.type ? this._links[config?.type] ?? [] : []) {
             for (const [entry, value] of Object.entries(Lint.dependencies[other])) {
                 packagejson.dependencies[entry] = value
             }

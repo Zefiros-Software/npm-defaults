@@ -8,13 +8,18 @@ export class CI extends Command {
     public commands = [[...(this.isCI() ? ['install', '--frozen-lockfile'] : ['install'])], 'lint', 'build', 'test']
 
     public async run() {
-        await Lint.run([])
+        await this.lint()
         for (const command of this.commands) {
             await this.runCommand(command)
         }
     }
 
+    public async lint() {
+        return Lint.run([])
+    }
+
     public async runCommand(command: string | string[]) {
+        this.log(`$ yarn ${command}`)
         const subprocess = execa('yarn', Array.isArray(command) ? command : [command])
         subprocess.stderr!.pipe(process.stderr)
         subprocess.stdout!.pipe(process.stdout)

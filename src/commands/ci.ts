@@ -27,7 +27,7 @@ export class CI extends Command {
     }
 
     public async runCommand(command: string | string[]) {
-        this.log(`$ yarn ${command}`)
+        this.log(`$ yarn ${Array.isArray(command) ? command.join(' ') : command}`)
         const subprocess = execa('yarn', Array.isArray(command) ? command : [command])
         subprocess.stderr!.pipe(process.stderr)
         subprocess.stdout!.pipe(process.stdout)

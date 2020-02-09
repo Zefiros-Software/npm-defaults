@@ -175,8 +175,10 @@ export class Lint extends Command {
         }
         const json = JSON.stringify(packagejson.scripts)
         for (const other of config?.type ? this._links[config?.type] ?? [] : []) {
-            for (const [entry, value] of Object.entries(this._scripts[other])) {
-                packagejson.scripts[entry] = value
+            if (this._scripts[other]) {
+                for (const [entry, value] of Object.entries(this._scripts[other])) {
+                    packagejson.scripts[entry] = value
+                }
             }
         }
         for (const [entry, value] of Object.entries(config ? this._scripts[config.type] ?? {} : {})) {
@@ -199,8 +201,10 @@ export class Lint extends Command {
         }
         const json = JSON.stringify(packagejson.dependencies)
         for (const other of config?.type ? this._links[config?.type] ?? [] : []) {
-            for (const [entry, value] of Object.entries(Lint.dependencies[other])) {
-                packagejson.dependencies[entry] = value
+            if (Lint.dependencies[other]) {
+                for (const [entry, value] of Object.entries(Lint.dependencies[other])) {
+                    packagejson.dependencies[entry] = value
+                }
             }
         }
         for (const [entry, value] of Object.entries(config ? Lint.dependencies[config.type] ?? {} : {})) {

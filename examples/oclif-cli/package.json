@@ -44,6 +44,6 @@
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",
-    "@zefiros/npm-defaults": "^0.1.24"
+    "@zefiros/npm-defaults": "^0.2.0-beta.34"
   }
 }

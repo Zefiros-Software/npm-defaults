@@ -1,3 +1,10 @@
+# [0.2.0-beta.35](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.34...v0.2.0-beta.35) (2020-02-11)
+
+
+### Features
+
+* quality of life updates ([66b197a](https://github.com/Zefiros-Software/npm-defaults/commit/66b197ac125a441e3a3c071250c08f65c005dd09))
+
 # [0.2.0-beta.34](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.33...v0.2.0-beta.34) (2020-02-07)
 
 

@@ -1,3 +1,10 @@
+# [0.2.0-beta.36](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.35...v0.2.0-beta.36) (2020-03-09)
+
+
+### Features
+
+* upgrade compiler settings ([b0bde8b](https://github.com/Zefiros-Software/npm-defaults/commit/b0bde8b08388cdf372e6ff898584a47646153b28))
+
 # [0.2.0-beta.35](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.34...v0.2.0-beta.35) (2020-02-11)
 
 

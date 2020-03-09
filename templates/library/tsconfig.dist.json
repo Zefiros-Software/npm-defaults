@@ -1,9 +1,7 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "typings/**/*.ts"],
   "compilerOptions": {
-    "incremental": false,
-    "noEmit": false,
     "rootDir": "./src"
   }
 }

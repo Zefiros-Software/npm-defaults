@@ -27,7 +27,6 @@
     "paths": {
       "~/*": ["./src/*"],
       "*": ["./typings/*"]
-    },
-    "incremental": true
+    }
   }
 }

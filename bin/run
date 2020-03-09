@@ -11,7 +11,7 @@ if (dev) {
         ...tsPaths.loadConfig(root),
         baseUrl: root,
     })
-    require('ts-node').register({ project, pretty: true })
+    require('ts-node').register({ project, pretty: true, files: true })
 }
 
 require(`../${dev ? 'src' : 'dist'}`)

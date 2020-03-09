@@ -8,6 +8,8 @@ module.exports = {
     plugins: ['@typescript-eslint', 'extra-rules', 'unicorn', 'import'],
     extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended', 'prettier/@typescript-eslint'],
     rules: {
+        'require-await': 'off',
+        '@typescript-eslint/require-await': 'error',
         'max-classes-per-file': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/interface-name-prefix': 'off',

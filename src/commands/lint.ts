@@ -38,7 +38,7 @@ export class Lint extends Command {
 
     public static dependencies: Record<string, Record<string, string>> = {
         [PackageType.Common]: {
-            tslib: '^1.10.0',
+            tslib: '^1.11.1',
         },
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {},

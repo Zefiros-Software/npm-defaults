@@ -1,8 +1,7 @@
 {
   "extends": "@zefiros/npm-defaults/tsconfig.base.json",
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "typings/**/*.ts"],
   "compilerOptions": {
-    "incremental": false,
     "noEmit": false,
     "outDir": "./dist",
     "rootDir": "./src",

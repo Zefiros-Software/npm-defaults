@@ -18,6 +18,7 @@
     "noEmit": true,
     "strict": true,
     "declaration": true,
+    "resolveJsonModule": true,
     "plugins": [
       {
         "transform": "@zerollup/ts-transform-paths",

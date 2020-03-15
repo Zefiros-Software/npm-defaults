@@ -35,7 +35,6 @@
     "check:project": "yarn npm-defaults lint"
   },
   "dependencies": {
-    "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.14.0",
     "@oclif/plugin-help": "^2.2.3",
     "@oclif/plugin-not-found": "^1.2.3",
@@ -43,7 +42,6 @@
     "tslib": "^1.11.1"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.22.2",
-    "@zefiros/npm-defaults": "^0.2.0-beta.34"
+    "@oclif/dev-cli": "^1.22.2"
   }
 }

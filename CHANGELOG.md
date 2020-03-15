@@ -1,3 +1,10 @@
+# [0.2.0-beta.39](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.38...v0.2.0-beta.39) (2020-03-15)
+
+
+### Features
+
+* publish webpack oclif config ([7048577](https://github.com/Zefiros-Software/npm-defaults/commit/70485771902af295e484e1723e5c6e1cdc2601df))
+
 # [0.2.0-beta.38](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.37...v0.2.0-beta.38) (2020-03-15)
 
 

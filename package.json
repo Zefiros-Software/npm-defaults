@@ -38,6 +38,7 @@
     "release.config.js",
     "tsconfig.base.json",
     "wallaby.base.js",
+    "webpack.oclif.js",
     "lint-staged.config.js",
     "bin",
     "dist",

@@ -1,3 +1,10 @@
+# [0.2.0-beta.37](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.36...v0.2.0-beta.37) (2020-03-15)
+
+
+### Features
+
+* update dependencies ([56f67b3](https://github.com/Zefiros-Software/npm-defaults/commit/56f67b39fecdc7b032429c13e0cd87a1d0dfa0a9))
+
 # [0.2.0-beta.36](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.35...v0.2.0-beta.36) (2020-03-09)
 
 

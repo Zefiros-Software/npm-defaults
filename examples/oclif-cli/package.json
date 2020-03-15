@@ -14,14 +14,14 @@
   "oclif": {
     "bin": "example-cli",
     "commands": "./dist/commands",
-    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found", "@oclif/plugin-warn-if-update-available"]
+    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found"]
   },
   "npm-defaults": {
     "type": "oclif-cli"
   },
   "files": ["bin", "dist"],
   "scripts": {
-    "build": "yarn ttsc -p tsconfig.dist.json",
+    "build": "yarn webpack",
     "test": "concurrently \"yarn check:types\" \"yarn jest test --maxWorkers=1\"",
     "fix": "yarn lint --fix",
     "lint": "eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-pattern **/node_modules/*",
@@ -37,11 +37,10 @@
   "dependencies": {
     "@oclif/config": "^1.14.0",
     "@oclif/plugin-help": "^2.2.3",
-    "@oclif/plugin-not-found": "^1.2.3",
-    "@oclif/plugin-warn-if-update-available": "^1.7.0",
-    "tslib": "^1.11.1"
+    "@oclif/plugin-not-found": "^1.2.3"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.22.2"
+    "@oclif/dev-cli": "^1.22.2",
+    "tslib": "^1.11.1"
   }
 }

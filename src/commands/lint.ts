@@ -29,6 +29,7 @@ export class Lint extends Command {
         },
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
+            ['build']: 'yarn webpack',
             ['check:types']: 'yarn ttsc -p tsconfig.lint.json',
             ['prepack']:
                 'yarn ts-node -r tsconfig-paths/register node_modules/@oclif/dev-cli/bin/run manifest && oclif-dev readme',
@@ -36,12 +37,22 @@ export class Lint extends Command {
         },
     }
 
-    public static dependencies: Record<string, Record<string, string>> = {
+    public static dependencies: Record<string, Record<string, string | undefined>> = {
         [PackageType.Common]: {
             tslib: '^1.11.1',
         },
         [PackageType.Library]: {},
-        [PackageType.OclifCli]: {},
+        [PackageType.OclifCli]: {
+            tslib: undefined,
+        },
+    }
+
+    public static devDependencies: Record<string, Record<string, string | undefined>> = {
+        [PackageType.Common]: {},
+        [PackageType.Library]: {},
+        [PackageType.OclifCli]: {
+            tslib: '^1.11.1',
+        },
     }
 
     public static links: Record<string, string[]> = {
@@ -142,6 +153,7 @@ export class Lint extends Command {
         this.lintConfiguration()
         this.lintScripts()
         this.lintDependencies()
+        this.lintDevDependencies()
 
         const fixed = JSON.stringify(packagejson, null, 2)
         if (this.args.flags.fix && json !== fixed) {
@@ -203,17 +215,43 @@ export class Lint extends Command {
         for (const other of config?.type ? this._links[config?.type] ?? [] : []) {
             if (Lint.dependencies[other]) {
                 for (const [entry, value] of Object.entries(Lint.dependencies[other])) {
-                    packagejson.dependencies[entry] = value
+                    packagejson.dependencies[entry] = value!
                 }
             }
         }
         for (const [entry, value] of Object.entries(config ? Lint.dependencies[config.type] ?? {} : {})) {
-            packagejson.dependencies[entry] = value
+            packagejson.dependencies[entry] = value!
         }
         if (JSON.stringify(packagejson.dependencies) !== json) {
             this.warn(
                 `[package.json>dependencies] missing or outdated script entries found:\n${
                     vdiff(JSON.parse(json), packagejson.dependencies).text
+                }`
+            )
+
+            this.fail()
+        }
+    }
+
+    public lintDevDependencies() {
+        if (!packagejson.devDependencies) {
+            packagejson.devDependencies = {}
+        }
+        const json = JSON.stringify(packagejson.devDependencies)
+        for (const other of config?.type ? this._links[config?.type] ?? [] : []) {
+            if (Lint.devDependencies[other]) {
+                for (const [entry, value] of Object.entries(Lint.devDependencies[other])) {
+                    packagejson.devDependencies[entry] = value!
+                }
+            }
+        }
+        for (const [entry, value] of Object.entries(config ? Lint.devDependencies[config.type] ?? {} : {})) {
+            packagejson.devDependencies[entry] = value!
+        }
+        if (JSON.stringify(packagejson.devDependencies) !== json) {
+            this.warn(
+                `[package.json>devDependencies] missing or outdated script entries found:\n${
+                    vdiff(JSON.parse(json), packagejson.devDependencies).text
                 }`
             )
 

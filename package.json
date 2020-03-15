@@ -14,11 +14,7 @@
   "oclif": {
     "bin": "npm-defaults",
     "commands": "./dist/commands",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-not-found",
-      "@oclif/plugin-warn-if-update-available"
-    ]
+    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found"]
   },
   "npm-defaults": {
     "type": "oclif-cli",
@@ -45,7 +41,7 @@
     "templates"
   ],
   "scripts": {
-    "build": "yarn ttsc -p tsconfig.dist.json",
+    "build": "yarn webpack",
     "test": "concurrently \"yarn check:types\" \"yarn jest test --maxWorkers=1\"",
     "fix": "yarn lint --fix",
     "lint": "eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-pattern **/node_modules/*",
@@ -62,10 +58,6 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@oclif/config": "^1.14.0",
-    "@oclif/plugin-help": "^2.2.3",
-    "@oclif/plugin-not-found": "^1.2.3",
-    "@oclif/plugin-warn-if-update-available": "^1.7.0",
-    "@octokit/action": "^2.0.0",
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "@types/jest": "^25.1.4",
@@ -81,23 +73,32 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-unicorn": "^17.2.0",
-    "execa": "^4.0.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "line-diff": "^2.1.0",
     "lint-staged": "^10.0.8",
     "prettier": "^1.19.1",
-    "recursive-copy": "^2.0.10",
     "semantic-release": "^17.0.4",
     "ts-jest": "^25.2.1",
     "ts-node": "^8.6.2",
     "tsconfig-paths": "^3.9.0",
-    "tslib": "^1.11.1",
     "ttypescript": "^1.5.10",
-    "typescript": "^3.8.3",
-    "variable-diff": "^2.0.1"
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.22.2"
+    "@oclif/dev-cli": "^1.22.2",
+    "@oclif/plugin-help": "^2.2.3",
+    "@oclif/plugin-not-found": "^1.2.3",
+    "@octokit/action": "^2.0.0",
+    "execa": "^4.0.0",
+    "line-diff": "^2.1.0",
+    "recursive-copy": "^2.0.10",
+    "ts-loader": "^6.2.1",
+    "ts-loader-decleration": "^0.10.4",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "tslib": "^1.11.1",
+    "variable-diff": "^2.0.1",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
   }
 }

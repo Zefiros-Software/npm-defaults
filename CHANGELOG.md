@@ -1,3 +1,10 @@
+# [0.2.0-beta.38](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.37...v0.2.0-beta.38) (2020-03-15)
+
+
+### Features
+
+* simplify dependency tree ([eede83d](https://github.com/Zefiros-Software/npm-defaults/commit/eede83dfb63e84b2654aeb155a04cf25177e47b2))
+
 # [0.2.0-beta.37](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.36...v0.2.0-beta.37) (2020-03-15)
 
 

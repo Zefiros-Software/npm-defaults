@@ -35,12 +35,18 @@
     "check:project": "yarn npm-defaults lint"
   },
   "dependencies": {
-    "@oclif/config": "^1.14.0",
-    "@oclif/plugin-help": "^2.2.3",
-    "@oclif/plugin-not-found": "^1.2.3"
+    "@oclif/config": "^1.14.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",
-    "tslib": "^1.11.1"
+    "tslib": "^1.11.1",
+    "@oclif/plugin-help": "^2.2.3",
+    "@oclif/plugin-not-found": "^1.2.3",
+    "ts-loader": "^6.2.1",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2",
+    "@zefiros/npm-defaults": "^0.2.0-beta.36"
   }
 }

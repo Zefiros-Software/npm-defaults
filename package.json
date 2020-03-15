@@ -93,7 +93,6 @@
     "line-diff": "^2.1.0",
     "recursive-copy": "^2.0.10",
     "ts-loader": "^6.2.1",
-    "ts-loader-decleration": "^0.10.4",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "tslib": "^1.11.1",
     "variable-diff": "^2.0.1",

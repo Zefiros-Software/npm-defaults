@@ -43,6 +43,10 @@ export class Lint extends Command {
         },
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
+            '@oclif/config': '^1.14.0',
+            '@oclif/dev-cli': undefined,
+            '@oclif/plugin-help': undefined,
+            '@oclif/plugin-not-found': undefined,
             tslib: undefined,
         },
     }
@@ -51,7 +55,15 @@ export class Lint extends Command {
         [PackageType.Common]: {},
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
+            '@oclif/dev-cli': '^1.22.2',
+            '@oclif/plugin-help': '^2.2.3',
+            '@oclif/plugin-not-found': '^1.2.3',
+            'ts-loader': '^6.2.1',
+            'tsconfig-paths-webpack-plugin': '^3.2.0',
             tslib: '^1.11.1',
+            webpack: '^4.42.0',
+            'webpack-cli': '^3.3.11',
+            'webpack-node-externals': '^1.7.2',
         },
     }
 

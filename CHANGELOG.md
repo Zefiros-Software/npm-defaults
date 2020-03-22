@@ -1,3 +1,10 @@
+# [0.2.0-beta.40](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.39...v0.2.0-beta.40) (2020-03-22)
+
+
+### Features
+
+* upgrade prettier to 2.0 ([d4be243](https://github.com/Zefiros-Software/npm-defaults/commit/d4be243d0609bf4a73813b406a1cd0e5404b7274))
+
 # [0.2.0-beta.39](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.38...v0.2.0-beta.39) (2020-03-15)
 
 

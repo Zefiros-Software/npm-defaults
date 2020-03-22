@@ -272,9 +272,13 @@ export class Lint extends Command {
     }
 
     public fail() {
-        if (!this.args.flags.fix) {
+        if (!this.args.flags.fix && !this.isCI) {
             this.error('Found errors in the project')
         }
+    }
+
+    public get isCI(): boolean {
+        return process.env.CI !== undefined
     }
 }
 

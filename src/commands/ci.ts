@@ -42,6 +42,7 @@ export class CI extends Command {
     public get isCI(): boolean {
         return process.env.CI !== undefined
     }
+
     public get type(): string | undefined {
         return config?.type
     }

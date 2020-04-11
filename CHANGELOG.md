@@ -1,3 +1,10 @@
+# [0.2.0-beta.41](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.40...v0.2.0-beta.41) (2020-04-11)
+
+
+### Features
+
+* upgrade prettier linting ([7f1427b](https://github.com/Zefiros-Software/npm-defaults/commit/7f1427bf72a8b9b88bbeed8a7293580a5110465a))
+
 # [0.2.0-beta.40](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.39...v0.2.0-beta.40) (2020-03-22)
 
 

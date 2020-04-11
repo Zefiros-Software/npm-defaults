@@ -9,6 +9,7 @@
   "[json]": {
     "editor.tabSize": 2
   },
+  "files.eol": "\n",
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,

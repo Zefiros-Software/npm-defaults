@@ -12,6 +12,8 @@ export interface NpmDefaultsConfiguration {
     skipTemplate?: boolean
 }
 
+import { path as appRoot } from 'app-root-path'
+
 export const packagejson: Package & {
     ['npm-defaults']: NpmDefaultsConfiguration
 } = {
@@ -30,4 +32,4 @@ export function setConfigurationKey(key: string) {
     configurationKey = key
 }
 
-export const root = path.resolve(__dirname, '../../')
+export const root = appRoot

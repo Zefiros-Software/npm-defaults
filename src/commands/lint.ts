@@ -58,10 +58,10 @@ export class Lint extends Command {
             '@oclif/dev-cli': '^1.22.2',
             '@oclif/plugin-help': '^2.2.3',
             '@oclif/plugin-not-found': '^1.2.3',
-            'ts-loader': '^6.2.1',
+            'ts-loader': '^6.2.2',
             'tsconfig-paths-webpack-plugin': '^3.2.0',
             tslib: '^1.11.1',
-            webpack: '^4.42.0',
+            webpack: '^4.42.1',
             'webpack-cli': '^3.3.11',
             'webpack-node-externals': '^1.7.2',
         },
@@ -77,6 +77,7 @@ export class Lint extends Command {
         [PackageType.OclifCli]: root,
     }
 
+    public shouldFail = false
     public args!: ReturnType<Lint['parseArgs']>
     public parseArgs = () => this.parse(Lint)
 
@@ -104,6 +105,10 @@ export class Lint extends Command {
         this.args = this.parseArgs()
         this.lintPackage()
         this.lintTemplate()
+
+        if (this.shouldFail) {
+            this.error('Found errors in the project')
+        }
     }
 
     public lintTemplate() {
@@ -273,7 +278,7 @@ export class Lint extends Command {
 
     public fail() {
         if (!this.args.flags.fix && !this.isCI) {
-            this.error('Found errors in the project')
+            this.shouldFail = true
         }
     }
 

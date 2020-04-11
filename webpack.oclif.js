@@ -3,7 +3,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const glob = require('glob')
 const nodeExternals = require('webpack-node-externals')
 
-module.exports = function({ root }) {
+module.exports = function ({ root }) {
     return {
         mode: 'production',
         entry: glob.sync('./src/**/*.ts').reduce((acc, file) => {
@@ -37,6 +37,7 @@ module.exports = function({ root }) {
             }),
         ],
         node: {
+            __filename: false,
             __dirname: false,
         },
         optimization: {

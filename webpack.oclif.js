@@ -25,6 +25,7 @@ module.exports = function ({ root }) {
             filename: '[name].js',
         },
         target: 'node',
+        node: false,
         externals: [
             '@oclif/config',
             '@oclif/command',
@@ -36,10 +37,6 @@ module.exports = function ({ root }) {
                 },
             }),
         ],
-        node: {
-            __filename: false,
-            __dirname: false,
-        },
         optimization: {
             minimize: false,
         },

@@ -108,3 +108,4 @@ USAGE
 
 _See code: [dist/commands/release.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.44/dist/commands/release.js)_
 <!-- commandsstop -->
+

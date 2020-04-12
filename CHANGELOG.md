@@ -1,3 +1,10 @@
+# [0.2.0-beta.43](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.42...v0.2.0-beta.43) (2020-04-12)
+
+
+### Features
+
+* compile with ttsc ([82f42e8](https://github.com/Zefiros-Software/npm-defaults/commit/82f42e85a6d64ce856946411629008c99078d3d5))
+
 # [0.2.0-beta.42](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.41...v0.2.0-beta.42) (2020-04-12)
 
 

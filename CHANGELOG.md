@@ -1,3 +1,10 @@
+# [0.2.0-beta.45](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.44...v0.2.0-beta.45) (2020-04-12)
+
+
+### Bug Fixes
+
+* fix root of module finding ([751b6b9](https://github.com/Zefiros-Software/npm-defaults/commit/751b6b9f009949523a349da29aa21c98477d64f1))
+
 # [0.2.0-beta.44](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.43...v0.2.0-beta.44) (2020-04-12)
 
 

@@ -12,7 +12,7 @@ export interface CreateArgs {
 export class Create extends Command {
     public static description = 'run all ci tests'
 
-    public static args = [
+    public static args: typeof Command['args'] = [
         {
             name: 'type',
             required: true,
@@ -27,13 +27,22 @@ export class Create extends Command {
         },
     ]
 
+    public static roots: Record<string, string> = {
+        [PackageType.Library]: root,
+        [PackageType.OclifCli]: root,
+    }
+    public args!: ReturnType<Create['parseArgs']>
+    public parseArgs = () => this.parse(Create)
+    public _roots!: typeof Create.roots
+
     public async run() {
-        const { args: largs } = this.parse<{}, CreateArgs>(Create)
+        this._roots = (this.constructor as any).roots ?? Create.roots
+        this.args = this.parseArgs()
 
-        const targetDir = path.resolve(process.cwd(), largs.name)
-        this.log(`creating ${largs.type} in ${targetDir}`)
+        const targetDir = path.resolve(process.cwd(), this.args.args.name)
+        this.log(`creating ${this.args.args.type} in ${targetDir}`)
 
-        await copy(`${root}/examples/${largs.type}`, targetDir, {
+        await copy(`${this._roots[this.args.args.type]}/examples/${this.args.args.type}`, targetDir, {
             dot: true,
             overwrite: true,
             filter: [

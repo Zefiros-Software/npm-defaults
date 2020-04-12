@@ -1,3 +1,10 @@
+# [0.2.0-beta.44](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.43...v0.2.0-beta.44) (2020-04-12)
+
+
+### Features
+
+* extend create command with 'terraform' ([05ff417](https://github.com/Zefiros-Software/npm-defaults/commit/05ff41767f627276d31fa66918517cc9ab8f29dc))
+
 # [0.2.0-beta.43](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.42...v0.2.0-beta.43) (2020-04-12)
 
 

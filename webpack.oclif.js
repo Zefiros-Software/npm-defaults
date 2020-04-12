@@ -52,6 +52,7 @@ module.exports = function ({ root }) {
                     loader: 'ts-loader',
                     options: {
                         configFile: 'tsconfig.dist.json',
+                        compiler: 'ttypescript',
                     },
                 },
             ],

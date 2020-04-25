@@ -1,7 +1,7 @@
 {
   "name": "@zefiros/npm-defaults",
   "description": "Build tools for Zefiros packages",
-  "version": "0.2.0-beta.43",
+  "version": "0.2.0-beta.46",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

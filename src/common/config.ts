@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import fs from 'fs'
 import { Package } from 'normalize-package-data'
-import path from 'path'
 import { PackageType } from '~/common/type'
+import findRoot from 'find-root'
 
 // eslint-disable-next-line prefer-const
 export let configurationKey = 'npm-defaults'
@@ -11,8 +11,6 @@ export interface NpmDefaultsConfiguration {
     type: PackageType
     skipTemplate?: boolean
 }
-
-import findRoot from 'find-root'
 
 export const packagejson: Package & {
     ['npm-defaults']: NpmDefaultsConfiguration

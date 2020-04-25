@@ -277,7 +277,7 @@ export class Lint extends Command {
     }
 
     public fail() {
-        if (!this.args.flags.fix && !this.isCI) {
+        if (!this.args.flags.fix) {
             this.shouldFail = true
         }
     }

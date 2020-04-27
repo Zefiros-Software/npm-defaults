@@ -12,10 +12,7 @@ export class CI extends Command {
         [PackageType.OclifCli]: true,
     }
 
-    public commands = [
-        this.isCI ? 'install --frozen-lockfile' : 'install',
-        ['lint', 'build', 'check:types', 'jest test --maxWorkers=1'],
-    ]
+    public commands = ['install', ['lint', 'build', 'check:types', 'jest test --maxWorkers=1']]
     public _shouldLock!: typeof CI.shouldLock
 
     public async run() {

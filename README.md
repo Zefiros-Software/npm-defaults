@@ -24,6 +24,7 @@ USAGE
 <!-- commands -->
 * [`npm-defaults ci`](#npm-defaults-ci)
 * [`npm-defaults create TYPE NAME`](#npm-defaults-create-type-name)
+* [`npm-defaults env`](#npm-defaults-env)
 * [`npm-defaults help [COMMAND]`](#npm-defaults-help-command)
 * [`npm-defaults lint`](#npm-defaults-lint)
 * [`npm-defaults make-release`](#npm-defaults-make-release)
@@ -55,6 +56,17 @@ ARGUMENTS
 
 _See code: [dist/commands/create.js](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.43/dist/commands/create.js)_
 
+## `npm-defaults env`
+
+provision global environment
+
+```
+USAGE
+  $ npm-defaults env
+```
+
+_See code: [dist\commands\env.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.43/dist\commands\env.ts)_
+
 ## `npm-defaults help [COMMAND]`
 
 display help for npm-defaults
@@ -70,7 +82,7 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src\commands\help.ts)_
 
 ## `npm-defaults lint`
 

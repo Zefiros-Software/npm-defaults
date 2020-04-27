@@ -30,13 +30,15 @@ jobs:
         npm config set scripts-prepend-node-path true
 
         yarn install        
+
+        # initialize environment
+        ./bin/run env --install
+
+        echo "$(yarn global bin)"
         
         # for using named modules
         yarn link
         yarn link @zefiros/npm-defaults
-
-        # initialize environment
-        ./bin/run env --install
 
         ./bin/run ci
         yalc publish

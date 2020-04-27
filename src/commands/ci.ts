@@ -12,12 +12,14 @@ export class CI extends Command {
         [PackageType.OclifCli]: true,
     }
 
-    public commands = ['install', ['lint', 'build', 'check:types', 'jest test --maxWorkers=1']]
+    public commands = [['lint', 'build', 'check:types', 'jest test --maxWorkers=1']]
     public _shouldLock!: typeof CI.shouldLock
 
     public async run() {
         this._shouldLock = (this.constructor as any).shouldLock ?? CI.shouldLock
         await this.lint()
+
+        await this.runCommand('install', false)
         for (const command of this.commands) {
             await this.runCommand(command)
         }
@@ -27,13 +29,13 @@ export class CI extends Command {
         return Lint.run([])
     }
 
-    public async runCommand(command: string | string[]) {
-        if (Array.isArray(command)) {
+    public async runCommand(command: string | string[], allowParallel = true) {
+        if (allowParallel && Array.isArray(command)) {
             const codes = await concurrently(command.map((c) => `yarn ${c}`))
             this.log(`Exited with codes ${codes}`)
         } else {
-            this.log(`$ yarn ${command}`)
-            const subprocess = execa(`yarn ${command}`)
+            this.log(`$ yarn ${Array.isArray(command) ? command.join(' ') : command}`)
+            const subprocess = execa('yarn', Array.isArray(command) ? command : [command])
 
             subprocess.stderr!.pipe(process.stderr)
             subprocess.stdout!.pipe(process.stdout)

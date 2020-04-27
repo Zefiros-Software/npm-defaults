@@ -14,18 +14,12 @@
   "oclif": {
     "bin": "example-cli",
     "commands": "./dist/commands",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-not-found"
-    ]
+    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found"]
   },
   "npm-defaults": {
     "type": "oclif-cli"
   },
-  "files": [
-    "bin",
-    "dist"
-  ],
+  "files": ["bin", "dist"],
   "scripts": {
     "build": "webpack --version && webpack",
     "test": "concurrently \"yarn check:types\" \"jest test --maxWorkers=1 --collectCoverage=false\"",
@@ -44,10 +38,9 @@
     "@oclif/config": "^1.15.1"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.22.2",
     "@oclif/plugin-help": "^2.2.3",
     "@oclif/plugin-not-found": "^1.2.3",
-    "@zefiros/npm-defaults": "file:.yalc/@zefiros/npm-defaults",
+    "@zefiros/npm-defaults": "^0.2.0-beta.46",
     "@zerollup/ts-transform-paths": "^1.7.17",
     "ts-loader": "^7.0.1",
     "ts-node": "^8.9.1",
@@ -55,8 +48,6 @@
     "tslib": "^1.11.1",
     "ttypescript": "^1.5.10",
     "typescript": "^3.8.3",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"
   }
 }

@@ -33,8 +33,6 @@ jobs:
 
         # initialize environment
         ./bin/run env --install
-
-        echo "$(yarn global bin)"
         
         # for using named modules
         yarn link

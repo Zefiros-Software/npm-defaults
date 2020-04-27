@@ -1,3 +1,10 @@
+# [0.2.0-beta.47](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.46...v0.2.0-beta.47) (2020-04-27)
+
+
+### Features
+
+* simplify package structure ([b10d9b0](https://github.com/Zefiros-Software/npm-defaults/commit/b10d9b0a72fed2cc914e3301a23bb4f698281b5f))
+
 # [0.2.0-beta.46](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.45...v0.2.0-beta.46) (2020-04-25)
 
 

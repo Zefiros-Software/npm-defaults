@@ -3,6 +3,7 @@ import execa from 'execa'
 import Lint from '~/commands/lint'
 import { config } from '~/common/config'
 import { PackageType } from '~/common/type'
+import concurrently from 'concurrently'
 
 export class CI extends Command {
     public static description = 'run all ci tests'
@@ -11,7 +12,10 @@ export class CI extends Command {
         [PackageType.OclifCli]: true,
     }
 
-    public commands = [[...(this.isCI ? ['install', '--frozen-lockfile'] : ['install'])], 'lint', 'build', 'test']
+    public commands = [
+        this.isCI ? 'install --frozen-lockfile' : 'install',
+        ['lint', 'build', 'check:types', 'jest test --maxWorkers=1'],
+    ]
     public _shouldLock!: typeof CI.shouldLock
 
     public async run() {
@@ -27,12 +31,18 @@ export class CI extends Command {
     }
 
     public async runCommand(command: string | string[]) {
-        this.log(`$ yarn ${Array.isArray(command) ? command.join(' ') : command}`)
-        const subprocess = execa('yarn', Array.isArray(command) ? command : [command])
-        subprocess.stderr!.pipe(process.stderr)
-        subprocess.stdout!.pipe(process.stdout)
-        const { exitCode } = await subprocess
-        this.log(`Exited with code ${exitCode}`)
+        if (Array.isArray(command)) {
+            const codes = await concurrently(command.map((c) => `yarn ${c}`))
+            this.log(`Exited with codes ${codes}`)
+        } else {
+            this.log(`$ yarn ${command}`)
+            const subprocess = execa(`yarn ${command}`)
+
+            subprocess.stderr!.pipe(process.stderr)
+            subprocess.stdout!.pipe(process.stdout)
+            const { exitCode } = await subprocess
+            this.log(`Exited with code ${exitCode}`)
+        }
     }
 
     public get lockfile(): boolean {

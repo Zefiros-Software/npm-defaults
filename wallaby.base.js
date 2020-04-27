@@ -1,7 +1,7 @@
 const path = require('path')
 
-module.exports = function(dir) {
-    return w => ({
+module.exports = function (dir) {
+    return (w) => ({
         files: [
             'tsconfig.json',
             { pattern: 'jest.config.js', instrument: false },
@@ -28,7 +28,7 @@ module.exports = function(dir) {
             }),
         },
 
-        setup: function(wallaby) {
+        setup: function (wallaby) {
             const jestConfig = require('./jest.config.js')
             wallaby.testFramework.configure(jestConfig)
         },

@@ -3,6 +3,9 @@ import fs from 'fs'
 import LineDiff from 'line-diff'
 import path from 'path'
 import vdiff from 'variable-diff'
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+//@ts-ignore
+import { peerDependencies } from '../../package.json'
 import { config, packagejson, reloadConfiguration, root, configurationKey } from '~/common/config'
 import { getAllFiles } from '~/common/file'
 import { PackageType } from '~/common/type'
@@ -19,20 +22,20 @@ export class Lint extends Command {
             ['build']: 'yarn ttsc -p tsconfig.dist.json',
             ['check:types']: 'yarn ttsc -p tsconfig.json',
             ['check:project']: 'yarn npm-defaults lint',
-            ['test']: 'concurrently "yarn check:types" "yarn jest test --maxWorkers=1"',
+            ['test']: 'concurrently "yarn check:types" "jest test --maxWorkers=1 --collectCoverage=false"',
             ['fix']: 'yarn lint --fix',
-            ['lint']: 'eslint "{src,test,typing}/**/*.{ts,js}" --ignore-pattern **/node_modules/*',
+            ['lint']: 'yarn eslint "{src,test,typing}/**/*.{ts,js}" --ignore-pattern **/node_modules/*',
             ['format']: 'prettier "{src/*,test/*,typing/*,templates/*,examples/*,}*/*.{ts,js,json}" --write',
             ['package']: 'rm -rf dist && yarn build',
-            ['release']: 'yarn semantic-release',
+            ['release']: 'semantic-release',
             ['release:dry']: 'yarn release --dry-run',
         },
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
-            ['build']: 'yarn webpack',
+            ['build']: 'webpack --version && webpack',
             ['check:types']: 'yarn ttsc -p tsconfig.lint.json',
             ['prepack']:
-                'yarn ts-node -r tsconfig-paths/register node_modules/@oclif/dev-cli/bin/run manifest && oclif-dev readme',
+                'bash -c \'yarn ts-node -r tsconfig-paths/register "$(npm root -g)/@oclif/dev-cli/bin/run" manifest\' && oclif-dev readme',
             ['postpack']: 'rm -f oclif.manifest.json',
         },
     }
@@ -43,7 +46,7 @@ export class Lint extends Command {
         },
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
-            '@oclif/config': '^1.14.0',
+            '@oclif/config': '^1.15.1',
             '@oclif/dev-cli': undefined,
             '@oclif/plugin-help': undefined,
             '@oclif/plugin-not-found': undefined,
@@ -52,18 +55,17 @@ export class Lint extends Command {
     }
 
     public static devDependencies: Record<string, Record<string, string | undefined>> = {
-        [PackageType.Common]: {},
+        [PackageType.Common]: {
+            ...peerDependencies,
+        },
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
-            '@oclif/dev-cli': '^1.22.2',
             '@oclif/plugin-help': '^2.2.3',
             '@oclif/plugin-not-found': '^1.2.3',
-            'ts-loader': '^6.2.2',
+            'ts-loader': '^7.0.1',
             'tsconfig-paths-webpack-plugin': '^3.2.0',
             tslib: '^1.11.1',
-            webpack: '^4.42.1',
-            'webpack-cli': '^3.3.11',
-            'webpack-node-externals': '^1.7.2',
+            'ts-node': '^8.9.1',
         },
     }
 

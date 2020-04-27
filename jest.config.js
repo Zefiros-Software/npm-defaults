@@ -16,6 +16,7 @@ module.exports = {
     testEnvironment: 'node',
     collectCoverage: true,
     coverageDirectory: '<rootDir>/coverage/',
+    coverageReporters: ['lcov', 'text-summary'],
     globals: {
         'ts-jest': { isolatedModules: true, diagnostics: false },
     },

@@ -35,6 +35,9 @@ jobs:
         yarn link
         yarn link @zefiros/npm-defaults
 
+        # initialize environment
+        ./bin/run env --install
+
         ./bin/run ci
         yalc publish
     - name: library - yarn install, build, and test

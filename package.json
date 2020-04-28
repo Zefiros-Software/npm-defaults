@@ -14,10 +14,7 @@
   "oclif": {
     "bin": "npm-defaults",
     "commands": "./dist/commands",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-not-found"
-    ]
+    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found"]
   },
   "npm-defaults": {
     "type": "oclif-cli",
@@ -83,7 +80,7 @@
     "semantic-release": "^17.0.7",
     "concurrently": "^5.2.0",
     "conventional-changelog": "^3.1.18",
-    "webpack": "^4.43.0",
+    "webpack": "^5.0.0-beta.13",
     "webpack-cli": "^3.3.11"
   },
   "globalDevDependencies": {
@@ -96,7 +93,7 @@
     "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "@oclif/plugin-help": "^2.2.3",
+    "@oclif/plugin-help": "^3.0.0",
     "@oclif/plugin-not-found": "^1.2.3",
     "@octokit/action": "^2.4.0",
     "@types/concurrently": "^5.2.0",

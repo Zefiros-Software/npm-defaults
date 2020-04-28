@@ -60,7 +60,7 @@ export class Lint extends Command {
         },
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
-            '@oclif/plugin-help': '^2.2.3',
+            '@oclif/plugin-help': '^3.0.0',
             '@oclif/plugin-not-found': '^1.2.3',
             'ts-loader': '^7.0.1',
             'tsconfig-paths-webpack-plugin': '^3.2.0',

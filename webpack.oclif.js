@@ -6,12 +6,15 @@ const nodeExternals = require('webpack-node-externals')
 module.exports = function ({ root }) {
     return {
         mode: 'production',
-        entry: glob.sync('./src/**/*.ts').reduce((acc, file) => {
+        target: 'node',
+        node: false,
+        entry: glob.sync('./src/{index,commands/**}.ts').reduce((acc, file) => {
             acc[file.replace(/^\.\/src\//, '').replace(/\.ts$/, '')] = file
             return acc
         }, {}),
         devtool: 'source-map',
         resolve: {
+            mainFields: ['main'],
             extensions: ['.js', '.json', '.ts'],
             plugins: [
                 new TsconfigPathsPlugin({
@@ -24,12 +27,11 @@ module.exports = function ({ root }) {
             path: path.join(root, 'dist'),
             filename: '[name].js',
         },
-        target: 'node',
-        node: false,
         externals: [
             '@oclif/config',
             '@oclif/command',
             'fs-extra-debug',
+            'encoding',
             nodeExternals({
                 modulesFromFile: {
                     exclude: ['devDependencies'],
@@ -39,6 +41,20 @@ module.exports = function ({ root }) {
         ],
         optimization: {
             minimize: false,
+            splitChunks: {
+                chunks: 'all',
+                cacheGroups: {
+                    commons: {
+                        test: /node_modules/,
+                        name: 'vendors',
+                        chunks: 'all',
+                    },
+                    default: {
+                        priority: -20,
+                        reuseExistingChunk: true,
+                    },
+                },
+            },
         },
         devtool: 'source-map',
         module: {

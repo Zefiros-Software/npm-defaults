@@ -1,3 +1,10 @@
+# [0.2.0-beta.48](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.47...v0.2.0-beta.48) (2020-04-28)
+
+
+### Features
+
+* use webpack 5 ([beaeded](https://github.com/Zefiros-Software/npm-defaults/commit/beaeded4a4b5404c843841b13aca72ca0f175267))
+
 # [0.2.0-beta.47](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.46...v0.2.0-beta.47) (2020-04-27)
 
 

@@ -1,3 +1,10 @@
+# [0.2.0-beta.49](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.48...v0.2.0-beta.49) (2020-04-30)
+
+
+### Bug Fixes
+
+* generate correct readme ([224edf0](https://github.com/Zefiros-Software/npm-defaults/commit/224edf0df89dda365ac1c1ef724537cb66859ab8))
+
 # [0.2.0-beta.48](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.47...v0.2.0-beta.48) (2020-04-28)
 
 

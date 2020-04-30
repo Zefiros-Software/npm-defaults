@@ -34,6 +34,7 @@ export class Lint extends Command {
         [PackageType.OclifCli]: {
             ['build']: 'webpack --version && webpack',
             ['check:types']: 'yarn ttsc -p tsconfig.lint.json',
+            ['release']: 'yarn prepack && semantic-release',
             ['prepack']:
                 'bash -c \'yarn ts-node -r tsconfig-paths/register "$(npm root -g)/@oclif/dev-cli/bin/run" manifest\' && oclif-dev readme',
             ['postpack']: 'rm -f oclif.manifest.json',

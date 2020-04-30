@@ -20,7 +20,7 @@ export class MakeRelease extends Command {
                 draft: true,
             })
         } catch (error) {
-            this.log(`A pull request already exists, updating the old one`)
+            this.log(`A pull request already exists, updating the old one:\n${error}`)
             const existing = await this.octokit.pulls.list({
                 ...this.repo,
                 state: 'open',

@@ -12,9 +12,8 @@ module.exports = {
     collectCoverageFrom: ['src/**/*.{ts,tsx}', '!**/*.d.{ts,tsx}', '!**/node_modules/**'],
     testRegex: '.spec.ts$',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-    verbose: true,
     testEnvironment: 'node',
-    collectCoverage: true,
+    collectCoverage: false,
     coverageDirectory: '<rootDir>/coverage/',
     coverageReporters: ['lcov', 'text-summary'],
     globals: {

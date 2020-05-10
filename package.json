@@ -14,10 +14,7 @@
   "oclif": {
     "bin": "npm-defaults",
     "commands": "./dist/commands",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-not-found"
-    ]
+    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found"]
   },
   "npm-defaults": {
     "type": "oclif-cli",
@@ -48,7 +45,7 @@
     "build": "webpack --version && webpack",
     "test": "concurrently \"yarn check:types\" \"jest test --maxWorkers=1 --collectCoverage=false\"",
     "fix": "yarn lint --fix",
-    "lint": "yarn eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-pattern **/node_modules/*",
+    "lint": "yarn eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-pattern **/node_modules/* --resolve-plugins-relative-to .",
     "format": "prettier \"{src/*,test/*,typing/*,templates/*,examples/*,}*/*.{ts,js,json}\" --write",
     "release": "yarn prepack && semantic-release",
     "release:dry": "yarn release --dry-run",
@@ -62,18 +59,19 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@oclif/config": "^1.15.1",
     "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.4",
-    "@typescript-eslint/eslint-plugin": "^2.30.0",
-    "@typescript-eslint/parser": "^2.30.0",
+    "@types/node": "^13.13.5",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
     "@zerollup/ts-transform-paths": "^1.7.17",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-extra-rules": "^0.0.0-development",
     "eslint-plugin-prettier": "^3.1.3",
+    "globby": "^11.0.0",
     "husky": "^4.2.5",
-    "jest": "^25.4.0",
+    "jest": "^26.0.1",
     "prettier": "^2.0.5",
-    "ts-jest": "^25.4.0",
+    "ts-jest": "^25.5.1",
     "tsconfig-paths": "^3.9.0"
   },
   "globalDependencies": {
@@ -82,13 +80,13 @@
     "@semantic-release/git": "^9.0.0",
     "semantic-release": "^17.0.7",
     "concurrently": "^5.2.0",
-    "conventional-changelog": "^3.1.18",
-    "webpack": "^5.0.0-beta.13",
+    "conventional-changelog": "^3.1.21",
+    "webpack": "^5.0.0-beta.16",
     "webpack-cli": "^3.3.11"
   },
   "globalDevDependencies": {
     "@commitlint/cli": "^8.3.5",
-    "lint-staged": "^10.1.7"
+    "lint-staged": "^10.2.2"
   },
   "peerDependencies": {
     "@zerollup/ts-transform-paths": "^1.7.17",
@@ -98,21 +96,21 @@
   "devDependencies": {
     "@oclif/plugin-help": "^3.0.0",
     "@oclif/plugin-not-found": "^1.2.3",
-    "@octokit/action": "^2.4.0",
+    "@octokit/action": "^2.6.0",
     "@types/concurrently": "^5.2.0",
     "@types/find-root": "^1.1.1",
     "@types/normalize-package-data": "^2.4.0",
     "@zerollup/ts-transform-paths": "^1.7.17",
     "concurrently": "^5.2.0",
-    "execa": "^4.0.0",
+    "execa": "^4.0.1",
     "find-root": "^1.1.0",
     "line-diff": "^2.1.0",
     "normalize-package-data": "^2.5.0",
     "recursive-copy": "^2.0.10",
-    "ts-loader": "^7.0.1",
-    "ts-node": "^8.9.1",
+    "ts-loader": "^7.0.3",
+    "ts-node": "^8.10.1",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "tslib": "^1.11.1",
+    "tslib": "^1.11.2",
     "ttypescript": "^1.5.10",
     "typescript": "^3.8.3",
     "variable-diff": "^2.0.1",

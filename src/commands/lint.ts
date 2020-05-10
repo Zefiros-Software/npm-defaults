@@ -24,7 +24,8 @@ export class Lint extends Command {
             ['check:project']: 'yarn npm-defaults lint',
             ['test']: 'concurrently "yarn check:types" "jest test --maxWorkers=1 --collectCoverage=false"',
             ['fix']: 'yarn lint --fix',
-            ['lint']: 'yarn eslint "{src,test,typing}/**/*.{ts,js}" --ignore-pattern **/node_modules/*',
+            ['lint']:
+                'yarn eslint "{src,test,typing}/**/*.{ts,js}" --ignore-pattern **/node_modules/* --resolve-plugins-relative-to .',
             ['format']: 'prettier "{src/*,test/*,typing/*,templates/*,examples/*,}*/*.{ts,js,json}" --write',
             ['package']: 'rm -rf dist && yarn build',
             ['release']: 'semantic-release',
@@ -43,7 +44,7 @@ export class Lint extends Command {
 
     public static dependencies: Record<string, Record<string, string | undefined>> = {
         [PackageType.Common]: {
-            tslib: '^1.11.1',
+            tslib: '^1.11.2',
         },
         [PackageType.Library]: {},
         [PackageType.OclifCli]: {
@@ -63,10 +64,10 @@ export class Lint extends Command {
         [PackageType.OclifCli]: {
             '@oclif/plugin-help': '^3.0.0',
             '@oclif/plugin-not-found': '^1.2.3',
-            'ts-loader': '^7.0.1',
+            'ts-loader': '^7.0.3',
             'tsconfig-paths-webpack-plugin': '^3.2.0',
-            tslib: '^1.11.1',
-            'ts-node': '^8.9.1',
+            tslib: '^1.11.2',
+            'ts-node': '^8.10.1',
         },
     }
 

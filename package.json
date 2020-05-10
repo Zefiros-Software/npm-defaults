@@ -1,7 +1,7 @@
 {
   "name": "@zefiros/npm-defaults",
   "description": "Build tools for Zefiros packages",
-  "version": "0.2.0-beta.49",
+  "version": "0.2.0-beta.50",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,7 +14,10 @@
   "oclif": {
     "bin": "npm-defaults",
     "commands": "./dist/commands",
-    "plugins": ["@oclif/plugin-help", "@oclif/plugin-not-found"]
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found"
+    ]
   },
   "npm-defaults": {
     "type": "oclif-cli",

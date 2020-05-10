@@ -1,3 +1,10 @@
+# [0.2.0-beta.50](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.49...v0.2.0-beta.50) (2020-05-10)
+
+
+### Features
+
+* update dependencies ([1f75c37](https://github.com/Zefiros-Software/npm-defaults/commit/1f75c37cd03bbb1b3822c7b9d065b197a06831db))
+
 # [0.2.0-beta.49](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.48...v0.2.0-beta.49) (2020-04-30)
 
 

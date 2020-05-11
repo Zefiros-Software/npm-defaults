@@ -1,3 +1,10 @@
+# [0.2.0-beta.51](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.50...v0.2.0-beta.51) (2020-05-11)
+
+
+### Bug Fixes
+
+* missing oclif dependency ([c2703b2](https://github.com/Zefiros-Software/npm-defaults/commit/c2703b253f138aa5bc0de9ccc768bcb040906e35))
+
 # [0.2.0-beta.50](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.49...v0.2.0-beta.50) (2020-05-10)
 
 

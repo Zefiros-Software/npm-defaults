@@ -13,7 +13,7 @@ $ npm install -g @zefiros/npm-defaults
 $ npm-defaults COMMAND
 running command...
 $ npm-defaults (-v|--version|version)
-@zefiros/npm-defaults/0.2.0-beta.49 linux-x64 node-v12.16.3
+@zefiros/npm-defaults/0.2.0-beta.50 linux-x64 node-v12.16.3
 $ npm-defaults --help [COMMAND]
 USAGE
   $ npm-defaults COMMAND
@@ -39,7 +39,7 @@ USAGE
   $ npm-defaults ci
 ```
 
-_See code: [dist/commands/ci.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.49/dist/commands/ci.ts)_
+_See code: [dist/commands/ci.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.50/dist/commands/ci.ts)_
 
 ## `npm-defaults create TYPE NAME`
 
@@ -54,7 +54,7 @@ ARGUMENTS
   NAME  the package name
 ```
 
-_See code: [dist/commands/create.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.49/dist/commands/create.ts)_
+_See code: [dist/commands/create.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.50/dist/commands/create.ts)_
 
 ## `npm-defaults env`
 
@@ -69,7 +69,7 @@ OPTIONS
   --install   install the environment
 ```
 
-_See code: [dist/commands/env.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.49/dist/commands/env.ts)_
+_See code: [dist/commands/env.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.50/dist/commands/env.ts)_
 
 ## `npm-defaults help [COMMAND]`
 
@@ -100,7 +100,7 @@ OPTIONS
   --fix
 ```
 
-_See code: [dist/commands/lint.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.49/dist/commands/lint.ts)_
+_See code: [dist/commands/lint.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.50/dist/commands/lint.ts)_
 
 ## `npm-defaults make-release`
 
@@ -111,7 +111,7 @@ USAGE
   $ npm-defaults make-release
 ```
 
-_See code: [dist/commands/make-release.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.49/dist/commands/make-release.ts)_
+_See code: [dist/commands/make-release.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.50/dist/commands/make-release.ts)_
 
 ## `npm-defaults release`
 
@@ -122,5 +122,5 @@ USAGE
   $ npm-defaults release
 ```
 
-_See code: [dist/commands/release.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.49/dist/commands/release.ts)_
+_See code: [dist/commands/release.ts](https://github.com/Zefiros-Software/npm-defaults/blob/v0.2.0-beta.50/dist/commands/release.ts)_
 <!-- commandsstop -->

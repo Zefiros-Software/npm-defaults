@@ -1,38 +1,45 @@
 {
   "name": "package-name",
-  "description": "",
+  "description": "example package",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "npm-defaults": {
-    "type": "library"
+  "main": "./dist/main.js",
+  "types": "./dist/src/index.d.ts",
+  "bin": {
+    "example-cli": "./bin/run"
   },
   "engines": {
     "node": ">=12"
   },
-  "files": ["dist", "package.json"],
+  "npm-defaults": {
+    "type": "yargs-cli"
+  },
+  "files": ["bin", "dist", "package.json"],
   "scripts": {
-    "build": "yarn ttsc -p tsconfig.dist.json",
+    "build": "webpack --version && webpack",
     "test": "concurrently \"yarn check:types\" \"yarn ava\"",
     "fix": "yarn lint --fix",
     "lint": "yarn eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-pattern **/node_modules/* --resolve-plugins-relative-to .",
     "format": "prettier \"{src/*,test/*,typing/*,templates/*,examples/*,}*/*.{ts,js,json}\" --write",
     "release": "semantic-release",
     "release:dry": "yarn release --dry-run",
+    "package": "rm -rf dist && yarn build",
     "check:types": "yarn ttsc -p tsconfig.json",
     "check:project": "yarn npm-defaults lint",
-    "package": "rm -rf dist && yarn build",
     "check:cost": "npx cost-of-modules --yarn --no-install --include-dev",
     "coverage": "nyc --reporter=text-summary ava"
   },
-  "dependencies": {
-    "tslib": "^1.11.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@zefiros/npm-defaults": "^0.2.0-beta.51",
     "@zerollup/ts-transform-paths": "^1.7.18",
+    "ts-loader": "^7.0.5",
+    "ts-node": "^8.10.2",
+    "tsconfig-paths": "^3.9.0",
+    "tslib": "^2.0.0",
     "ttypescript": "^1.5.10",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "webpack-node-externals": "^1.7.2",
+    "yargs": "^15.3.1"
   }
 }

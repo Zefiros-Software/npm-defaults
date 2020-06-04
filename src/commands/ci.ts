@@ -1,60 +1,44 @@
-import { Command } from '@oclif/command'
+import { lintDirectory } from '~/commands/lint'
+
 import execa from 'execa'
-import Lint from '~/commands/lint'
-import { config } from '~/common/config'
-import { PackageType } from '~/common/type'
 import concurrently from 'concurrently'
 
-export class CI extends Command {
-    public static description = 'run all ci tests'
+import { cpus } from 'os'
 
-    public static shouldLock: Record<string, boolean> = {
-        [PackageType.OclifCli]: true,
-    }
+export const commands = [['lint', 'build', 'check:types'], 'coverage']
 
-    public commands = [['lint', 'build', 'check:types', 'jest test --maxWorkers=1']]
-    public _shouldLock!: typeof CI.shouldLock
+export async function runCommand(command: string | string[], allowParallel = true): Promise<void> {
+    if (allowParallel && Array.isArray(command)) {
+        const codes = await concurrently(command.map((c) => `yarn ${c}`, {
+            maxProcesses: cpus().length
+        }))
+        console.log(`Exited with codes ${codes}`)
+    } else {
 
-    public async run() {
-        this._shouldLock = (this.constructor as any).shouldLock ?? CI.shouldLock
-        await this.lint()
-
-        await this.runCommand('install', false)
-        for (const command of this.commands) {
-            await this.runCommand(command)
-        }
-    }
-
-    public async lint() {
-        return Lint.run([])
-    }
-
-    public async runCommand(command: string | string[], allowParallel = true) {
-        if (allowParallel && Array.isArray(command)) {
-            const codes = await concurrently(command.map((c) => `yarn ${c}`))
-            this.log(`Exited with codes ${codes}`)
-        } else {
-            this.log(`$ yarn ${Array.isArray(command) ? command.join(' ') : command}`)
-            const subprocess = execa('yarn', Array.isArray(command) ? command : [command])
-
+        const subcommands =( Array.isArray(command) ? command : [command])
+        for (const subcommand of subcommands) {
+            console.log(`$ yarn ${subcommand}`)
+            const subprocess = execa('yarn', [subcommand])
+    
             subprocess.stderr!.pipe(process.stderr)
             subprocess.stdout!.pipe(process.stdout)
             const { exitCode } = await subprocess
-            this.log(`Exited with code ${exitCode}`)
+            console.log(`Exited with code ${exitCode}`)
         }
-    }
-
-    public get lockfile(): boolean {
-        return this.isCI && this.type ? this._shouldLock[this.type] ?? false : false
-    }
-
-    public get isCI(): boolean {
-        return process.env.CI !== undefined
-    }
-
-    public get type(): string | undefined {
-        return config?.type
     }
 }
 
-export default CI
+export async function handler() {
+    await lintDirectory()
+
+    await runCommand('install', false)
+    for (const command of commands) {
+        await runCommand(command)
+    }
+}
+
+export default {
+    command: 'ci',
+    describe: 'run all ci tests',
+    handler,
+}

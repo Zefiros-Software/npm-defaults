@@ -22,7 +22,8 @@
     "plugins": [
       {
         "transform": "@zerollup/ts-transform-paths",
-        "exclude": ["*"]
+        "exclude": ["*"],
+        "disableForDeclarations ": true
       }
     ],
     "paths": {

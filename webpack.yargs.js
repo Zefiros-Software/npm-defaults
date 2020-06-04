@@ -1,6 +1,4 @@
 const path = require('path')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-const glob = require('glob')
 const nodeExternals = require('webpack-node-externals')
 
 module.exports = function ({ root }) {
@@ -8,30 +6,22 @@ module.exports = function ({ root }) {
         mode: 'production',
         target: 'node',
         node: false,
-        entry: glob.sync('./src/{index,commands/**}.ts').reduce((acc, file) => {
-            acc[file.replace(/^\.\/src\//, '').replace(/\.ts$/, '')] = file
-            return acc
-        }, {}),
+        entry: './src/index.ts',
         devtool: 'source-map',
         resolve: {
             mainFields: ['main'],
             extensions: ['.js', '.json', '.ts'],
-            plugins: [
-                new TsconfigPathsPlugin({
-                    configFile: 'tsconfig.dist.json',
-                }),
-            ],
         },
         output: {
             libraryTarget: 'commonjs2',
             path: path.join(root, 'dist'),
             filename: '[name].js',
         },
+        stats: {
+            // Ignore warnings due to yarg's dynamic module loading
+            warningsFilter: [/node_modules\/yargs/, /node_modules\/require-main-filename/],
+        },
         externals: [
-            '@oclif/config',
-            '@oclif/command',
-            'fs-extra-debug',
-            'encoding',
             nodeExternals({
                 modulesFromFile: {
                     exclude: ['devDependencies'],
@@ -41,22 +31,7 @@ module.exports = function ({ root }) {
         ],
         optimization: {
             minimize: false,
-            splitChunks: {
-                chunks: 'all',
-                cacheGroups: {
-                    commons: {
-                        test: /node_modules/,
-                        name: 'vendors',
-                        chunks: 'all',
-                    },
-                    default: {
-                        priority: -20,
-                        reuseExistingChunk: true,
-                    },
-                },
-            },
         },
-        devtool: 'source-map',
         module: {
             rules: [
                 {
@@ -65,6 +40,7 @@ module.exports = function ({ root }) {
                     loader: 'ts-loader',
                     options: {
                         configFile: 'tsconfig.dist.json',
+                        compiler: 'ttypescript',
                     },
                 },
             ],

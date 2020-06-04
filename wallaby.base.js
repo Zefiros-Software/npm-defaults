@@ -2,24 +2,12 @@ const path = require('path')
 
 module.exports = function (dir) {
     return (w) => ({
-        files: [
-            'tsconfig.json',
-            { pattern: 'jest.config.js', instrument: false },
-            { pattern: 'wallaby.js', instrument: false },
-            'src/**/*.ts',
-            'src/**/*.js',
-            'src/**/*.json',
-        ],
-        filesWithNoCoverageCalculated: ['jest.config.js', 'wallaby.js'],
-
-        tests: ['test/**/*.spec.ts', 'packages/*/test/**/*.spec.ts'],
+        files: ['src/**/*.ts', 'src/**/*.json', 'tsconfig.json', 'package.json'],
+        tests: ['test/**/*.spec.ts'],
 
         env: { type: 'node' },
 
-        testFramework: {
-            type: 'jest',
-            path: path.resolve(dir, 'node_modules/jest-cli'),
-        },
+        testFramework: 'ava',
 
         compilers: {
             '**/*.ts': w.compilers.typeScript({
@@ -28,9 +16,18 @@ module.exports = function (dir) {
             }),
         },
 
-        setup: function (wallaby) {
-            const jestConfig = require('./jest.config.js')
-            wallaby.testFramework.configure(jestConfig)
+        setup: function (w) {
+            if (global._tsPathsRegistered) {
+                return
+            }
+            const project = require(path.join(dir, 'tsconfig.json'))
+            const tsPaths = require('tsconfig-paths')
+            tsPaths.register({
+                baseUrl: project.compilerOptions.baseUrl,
+                paths: project.compilerOptions.paths,
+            })
+            global._tsPathsRegistered = true
         },
+        debug: true,
     })
 }

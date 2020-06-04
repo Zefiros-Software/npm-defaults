@@ -1,3 +1,3 @@
-module.exports = require('./webpack.oclif')({
+module.exports = require('./webpack.yargs')({
     root: __dirname,
 })

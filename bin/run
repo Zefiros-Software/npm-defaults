@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-require('source-map-support').install()
 const fs = require('fs')
 const path = require('path')
 const project = path.join(__dirname, '../tsconfig.json')
-const dev = fs.existsSync(project)
+const dev = fs.existsSync(project) && process.env.DEBUG != 'false'
 
 if (dev) {
     const root = path.join(__dirname, '../')
@@ -13,9 +12,8 @@ if (dev) {
         baseUrl: root,
     })
     require('ts-node').register({ project, pretty: true, files: true, transpileOnly: true })
-} else {
-    process.env.OCLIF_TS_NODE = 0
 }
-require(`../${dev ? 'src' : 'dist'}`)
+
+require(`../${dev ? 'src' : 'dist/main'}`)
     .run()
-    .catch(require('@oclif/errors/handle'))
+    .catch(console.error)

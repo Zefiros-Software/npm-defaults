@@ -1,3 +1,10 @@
+# [0.2.0-beta.52](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.51...v0.2.0-beta.52) (2020-06-16)
+
+
+### Features
+
+* use yargs ([#9](https://github.com/Zefiros-Software/npm-defaults/issues/9)) ([2db32de](https://github.com/Zefiros-Software/npm-defaults/commit/2db32de472bd9a8f8fa8ee88d4472de33e289e0d))
+
 # [0.2.0-beta.51](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.50...v0.2.0-beta.51) (2020-05-11)
 
 

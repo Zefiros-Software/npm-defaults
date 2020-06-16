@@ -1,63 +1,62 @@
-import { Command } from '@oclif/command'
-import path from 'path'
-import copy from 'recursive-copy'
 import { root } from '~/common/config'
 import { PackageType } from '~/common/type'
 
-export interface CreateArgs {
-    type: PackageType.Library | PackageType.OclifCli
-    name: string
+import copy from 'recursive-copy'
+import execa from 'execa'
+import { Argv } from 'yargs'
+
+import path from 'path'
+
+export const projectRoots: Record<string, string> = {
+    [PackageType.Library]: root,
+    [PackageType.YargsCli]: root,
 }
 
-export class Create extends Command {
-    public static description = 'run all ci tests'
+export async function createProject(type: string, name: string, from: string): Promise<void> {
+    const targetDir = path.resolve(process.cwd(), name)
+    console.log(`creating ${type} in ${targetDir}`)
+    await execa('git', ['init', targetDir])
+    await copy(from, targetDir, {
+        debug: true,
+        dot: true,
+        overwrite: true,
+        filter: [
+            '**/*',
+            '!node_modules{/**,}',
+            '!coverage{/**,}',
+            '!dist{/**,}',
+            '!dist',
+            '!yarn.lock',
+            '!yarn-error.log',
+            '!.yalc{/**,}',
+            '!yalc.lock',
+        ],
+    })
+}
 
-    public static args: typeof Command['args'] = [
-        {
-            name: 'type',
-            required: true,
-            description: 'the package type',
+export function builder(yargs: Argv) {
+    return yargs
+        .option('type', {
+            describe: 'package type',
+            type: 'string',
             default: PackageType.Library,
-            options: [PackageType.Library, PackageType.OclifCli],
-        },
-        {
-            name: 'name',
-            required: true,
-            description: 'the package name',
-        },
-    ]
-
-    public static roots: Record<string, string> = {
-        [PackageType.Library]: root,
-        [PackageType.OclifCli]: root,
-    }
-    public args!: ReturnType<Create['parseArgs']>
-    public parseArgs = () => this.parse(Create)
-    public _roots!: typeof Create.roots
-
-    public async run() {
-        this._roots = (this.constructor as any).roots ?? Create.roots
-        this.args = this.parseArgs()
-
-        const targetDir = path.resolve(process.cwd(), this.args.args.name)
-        this.log(`creating ${this.args.args.type} in ${targetDir}`)
-
-        await copy(`${this._roots[this.args.args.type]}/examples/${this.args.args.type}`, targetDir, {
-            dot: true,
-            overwrite: true,
-            filter: [
-                '**/*',
-                '!node_modules{/**,}',
-                '!coverage{/**,}',
-                '!dist{/**,}',
-                '!dist',
-                '!yarn.lock',
-                '!yarn-error.log',
-                '!.yalc{/**,}',
-                '!yalc.lock',
-            ],
+            choices: [PackageType.Library, PackageType.YargsCli],
+            demand: true,
         })
-    }
+        .positional('name', {
+            describe: 'the new package name',
+            type: 'string',
+            required: true,
+        })
 }
 
-export default Create
+export async function handler(argv: ReturnType<typeof builder>['argv']): Promise<void> {
+    await createProject(argv.type, argv.name!, `${projectRoots[argv.type]}/examples/${argv.type}`)
+}
+
+export default {
+    command: 'create <name>',
+    describe: 'create a new project',
+    builder,
+    handler,
+}

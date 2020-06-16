@@ -1,15 +1,26 @@
-/* eslint-disable @typescript-eslint/camelcase */
-import fs from 'fs'
-import { Package } from 'normalize-package-data'
+/* eslint-disable @typescript-eslint/naming-convention */
 import { PackageType } from '~/common/type'
+
+import { Package } from 'normalize-package-data'
 import findRoot from 'find-root'
+
+import fs from 'fs'
 
 // eslint-disable-next-line prefer-const
 export let configurationKey = 'npm-defaults'
 
 export interface NpmDefaultsConfiguration {
     type: PackageType
-    skipTemplate?: boolean
+    template?: {
+        exclude?: string[]
+        ignore?: {
+            files?: boolean
+            dependencies?: boolean
+            devDependencies?: boolean
+            script?: boolean
+            packageDefinition?: boolean
+        }
+    }
 }
 
 export const packagejson: Package & {

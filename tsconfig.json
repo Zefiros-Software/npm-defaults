@@ -1,9 +1,13 @@
 {
   "extends": "./tsconfig.base.json",
-  "include": ["src/**/*.ts", "typings/**/*.ts", "test/**/*.ts"],
+  "include": ["src/**/*.ts", "test/**/*.ts", "typings/**/*.ts", "*.js", "*.json"],
   "compilerOptions": {
+    "paths": {
+      "~/*": ["./src/*"],
+      "*": ["./typings/*"]
+    },
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": ".",
     "baseUrl": "."
   }
 }

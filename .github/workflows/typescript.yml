@@ -17,7 +17,7 @@ jobs:
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
-    - uses: actions/cache@v1
+    - uses: actions/cache@v2
       id: yarn-cache
       with:
         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -27,8 +27,7 @@ jobs:
     - name: yarn link
       run: |
         export PATH="$(yarn global bin):$PATH"
-        npm config set scripts-prepend-node-path true
-
+        
         yarn install        
 
         # initialize environment
@@ -38,20 +37,20 @@ jobs:
         yarn link
         yarn link @zefiros/npm-defaults
 
-        ./bin/run ci
+        npm-defaults ci
         yalc publish
     - name: library - yarn install, build, and test
       working-directory: ./examples/library
       run: |
         yalc add @zefiros/npm-defaults
         ../../bin/run ci
-    - name: oclif-cli - yarn install, build, and test
-      working-directory: ./examples/oclif-cli
+    - name: yargs-cli - yarn install, build, and test
+      working-directory: ./examples/yargs-cli
       run: |
         yalc add @zefiros/npm-defaults
         ../../bin/run ci
     - name: coverage
-      run: codecov
+      run: nyc report --reporter=text-lcov | codecov --pipe
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
     - name: release

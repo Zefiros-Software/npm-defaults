@@ -1,5 +1,7 @@
 import { main } from '~/main'
 
-test('main', () => {
-    expect(main()).toEqual('yay')
+import test from 'ava'
+
+test('main', t => {
+    t.deepEqual(main(),'yay')
 })

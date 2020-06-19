@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
 import { globalDependencies } from '../../package.json'
 
 import execa from 'execa'
@@ -22,6 +20,7 @@ export async function install(dependencies: string[] = []): Promise<void> {
     )
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function builder(yargs: Argv) {
     return yargs.option('install', {
         describe: 'install the environment',

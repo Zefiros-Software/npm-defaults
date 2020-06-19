@@ -1,5 +1,6 @@
 import type { Argv } from 'yargs'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function builder(yargs: Argv) {
     return yargs
         .option('name', {
@@ -10,10 +11,12 @@ export function builder(yargs: Argv) {
         .option('force', {
             type: 'boolean',
         })
-        .positional('file', {})
+        .positional('file', {
+            type: 'string',
+        })
 }
 
-export async function handler(argv: ReturnType<typeof builder>['argv']): Promise<void> {
+export function handler(argv: ReturnType<typeof builder>['argv']): void {
     console.log(`hello ${argv.name} from ./src/commands/hello.ts`)
     if (argv.file && argv.force) {
         console.log(`you input --force and --file: ${argv.file}`)

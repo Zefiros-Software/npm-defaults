@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
+// @ts-ignore
 import { bin } from '../package.json'
 
 import ci from '~/commands/ci'
@@ -12,14 +12,13 @@ import { setConfigurationKey } from '~/common/config'
 import { PackageType } from '~/common/type'
 
 import yargs from 'yargs'
-import {install} from 'source-map-support'
+import { install } from 'source-map-support'
 
-
-
-export async function run() {
+// eslint-disable-next-line @typescript-eslint/require-await
+export async function run(): Promise<void> {
     install()
 
-    return yargs
+    yargs
         .scriptName(Object.keys(bin)[0])
         .command(ci)
         .command(create)
@@ -28,6 +27,7 @@ export async function run() {
         .command(release)
         .command(makeRelease)
         .demandCommand()
+        .strict()
         .help().argv
 }
 

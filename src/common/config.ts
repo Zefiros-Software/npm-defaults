@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { PackageType } from '~/common/type'
 
-import { Package } from 'normalize-package-data'
 import findRoot from 'find-root'
 
 import fs from 'fs'
 
-// eslint-disable-next-line prefer-const
 export let configurationKey = 'npm-defaults'
 
 export interface NpmDefaultsConfiguration {
@@ -23,21 +20,27 @@ export interface NpmDefaultsConfiguration {
     }
 }
 
-export const packagejson: Package & {
-    ['npm-defaults']: NpmDefaultsConfiguration
-} = {
+export const packagejson = {
     ...(fs.existsSync(`${process.cwd()}/package.json`)
         ? JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`).toString())
         : {}),
+} as Record<string, unknown> & {
+    version: string
+    scripts: Record<string, string>
+    dependencies: Record<string, string>
+    devDependencies: Record<string, string>
+    ['npm-defaults']: NpmDefaultsConfiguration | undefined
 }
 
-export let config: typeof packagejson['npm-defaults'] | undefined = packagejson[configurationKey]
+export let config: typeof packagejson['npm-defaults'] | undefined = packagejson[
+    configurationKey
+] as typeof packagejson['npm-defaults']
 
-export function reloadConfiguration() {
-    config = packagejson[configurationKey]
+export function reloadConfiguration(): void {
+    config = packagejson[configurationKey] as typeof config
 }
 
-export function setConfigurationKey(key: string) {
+export function setConfigurationKey(key: string): void {
     configurationKey = key
 }
 

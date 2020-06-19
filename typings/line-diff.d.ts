@@ -1,4 +1,7 @@
 declare module 'line-diff' {
-    const diff: any
-    export default diff
+    class LineDiff {
+        public constructor(old: string, current: string)
+        public toString(): string
+    }
+    export default LineDiff
 }

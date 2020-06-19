@@ -17,7 +17,7 @@ export async function createRelease(): Promise<execa.ExecaReturnValue<string>> {
     return await subprocess
 }
 
-export async function handler() {
+export async function handler(): Promise<void> {
     console.log(`Creating release pull request for version ${packagejson.version}`)
     try {
         const { exitCode } = await createRelease()

@@ -1,7 +1,5 @@
-import { peerDependencies } from '../../package.json'
+import { peerDependencies, devDependencies } from '../../package.json'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
 import { config, packagejson, reloadConfiguration, root, configurationKey } from '~/common/config'
 import { getAllFiles } from '~/common/file'
 import { PackageType } from '~/common/type'
@@ -20,7 +18,7 @@ export const scripts: Record<string, Record<string, string>> = {
         ['check:types']: 'yarn ttsc -p tsconfig.json',
         ['check:project']: 'yarn npm-defaults lint',
         ['test']: 'concurrently "yarn check:types" "yarn ava"',
-       [ "coverage"]: "nyc --reporter=text-summary ava",
+        ['coverage']: 'nyc --reporter=text-summary ava',
         ['fix']: 'yarn lint --fix',
         ['lint']:
             'yarn eslint "{src,test,typing}/**/*.{ts,js}" --ignore-pattern **/node_modules/* --resolve-plugins-relative-to .',
@@ -37,49 +35,50 @@ export const scripts: Record<string, Record<string, string>> = {
     },
 }
 
-export const dependencies: Record<string, Record<string, string | undefined>> = {
-    [PackageType.Common]: {
-        tslib: '^1.11.2',
-    },
+export const files: Record<string, string[] | undefined> = {
+    [PackageType.Library]: ['dist', 'package.json'],
+    [PackageType.YargsCli]: ['bin', 'dist', 'package.json'],
+}
+
+export const packageDependencies: Record<string, Record<string, string | undefined>> = {
+    [PackageType.Common]: {},
     [PackageType.Library]: {},
     [PackageType.YargsCli]: {
         tslib: undefined,
     },
 }
 
-export const files: Record<string, string[] | undefined> = {
-    [PackageType.Library]: ["dist", "package.json"],
-    [PackageType.YargsCli]:["bin", "dist", "package.json"],
-}
-
-export const devDependencies: Record<string, Record<string, string | undefined>> = {
+export const packageDevDependencies: Record<string, Record<string, string | undefined>> = {
     [PackageType.Common]: {
         ...peerDependencies,
+        'ts-node': devDependencies['ts-node'],
+        typescript: devDependencies['typescript'],
     },
     [PackageType.Library]: {},
     [PackageType.YargsCli]: {
-        yargs: '^15.3.1',
-        'ts-loader': '^7.0.5',
-        tslib: '^2.0.0',
-        'ts-node': '^8.10.2',
-        'tsconfig-paths': '^3.9.0',
+        '@types/source-map-support': devDependencies['@types/source-map-support'],
+        'source-map-support': devDependencies['source-map-support'],
+        'ts-loader': devDependencies['ts-loader'],
+        'ts-node': devDependencies['ts-node'],
+        'tsconfig-paths': devDependencies['tsconfig-paths'],
+        tslib: devDependencies['tslib'],
+        yargs: devDependencies['yargs'],
     },
 }
 
 export const packageDefinition: Record<string, Record<string, string | undefined>> = {
     [PackageType.Common]: {
-        "node": ">=12"
+        node: '>=12',
     },
     [PackageType.Library]: {
-        "main": "./dist/index.js",
-        "types": "./dist/index.d.ts",
+        main: './dist/index.js',
+        types: './dist/index.d.ts',
     },
     [PackageType.YargsCli]: {
-        "main": "./dist/main.js",
-        "types": "./dist/src/index.d.ts",
+        main: './dist/main.js',
+        types: './dist/src/index.d.ts',
     },
 }
-
 
 export const links: Record<string, string[]> = {
     [PackageType.Library]: [PackageType.Common],
@@ -93,11 +92,11 @@ export const roots: Record<string, string[]> = {
 }
 
 export interface LintOptions {
-    dependencies: typeof dependencies
-    devDependencies: typeof devDependencies
+    dependencies: typeof packageDependencies
+    devDependencies: typeof packageDevDependencies
     scripts: typeof scripts
     files: typeof files
-    packageDefinition: typeof packageDefinition,
+    packageDefinition: typeof packageDefinition
     links: typeof links
     roots: typeof roots
     fix: boolean
@@ -112,7 +111,7 @@ export function lintTemplate(state: LintState): void {
     if (!config) {
         return
     }
-    const targets: Record<string, () => void > = {}
+    const targets: Record<string, () => void> = {}
 
     if (config.type !== PackageType.Common) {
         for (const root of getRoot(state.options, config.type)) {
@@ -243,21 +242,18 @@ export function lintPackageFiles(state: LintState): void {
     if (!packagejson.files) {
         packagejson.files = []
     }
-    
+
     const json = JSON.stringify(packagejson.files)
 
     packagejson.files = config?.type ? state.options.files[config.type] ?? [] : []
     if (JSON.stringify(packagejson.files) !== json) {
         console.warn(
-            `[package.json>files] missing or outdated files entries found:\n${
-                vdiff(JSON.parse(json), packagejson.files).text
-            }`
+            `[package.json>files] missing or outdated files entries found:\n${vdiff(JSON.parse(json), packagejson.files).text}`
         )
 
         fail(state)
     }
 }
-
 
 export function lintDependencies(state: LintState): void {
     if (config?.template?.ignore?.dependencies) {
@@ -317,12 +313,11 @@ export function lintDevDependencies(state: LintState): void {
     }
 }
 
-
 export function linDefinition(state: LintState): void {
     if (config?.template?.ignore?.packageDefinition) {
         return
     }
-    
+
     const json = JSON.stringify(packagejson)
     for (const [entry, value] of Object.entries(config ? state.options.packageDefinition[config.type] ?? {} : {})) {
         packagejson[entry] = value
@@ -352,12 +347,12 @@ export function getLinks(options: LintOptions): string[] {
     return config?.type ? options.links[config.type] ?? [] : []
 }
 
-export async function lintDirectory(options: Partial<LintOptions> = {}): Promise<void> {
+export function lintDirectory(options: Partial<LintOptions> = {}): void {
     const state: LintState = {
         options: {
             packageDefinition,
-            dependencies,
-            devDependencies,
+            devDependencies: packageDevDependencies,
+            dependencies: packageDependencies,
             scripts,
             links,
             roots,
@@ -376,6 +371,7 @@ export async function lintDirectory(options: Partial<LintOptions> = {}): Promise
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function builder(yargs: Argv) {
     return yargs.option('fix', {
         describe: 'try to fix the errors',
@@ -384,8 +380,8 @@ export function builder(yargs: Argv) {
     })
 }
 
-export async function handler(argv: ReturnType<typeof builder>['argv']): Promise<void> {
-    await lintDirectory({ fix: argv.fix })
+export function handler(argv: ReturnType<typeof builder>['argv']): void {
+    lintDirectory({ fix: argv.fix })
 }
 
 export default {
@@ -395,7 +391,7 @@ export default {
     handler,
     lintDirectory,
     scripts,
-    dependencies,
+    dependencies: packageDependencies,
     devDependencies,
     roots,
     links,

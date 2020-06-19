@@ -12,6 +12,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "eslint.options": {
+    "resolvePluginsRelativeTo": "."
+  },
   "files.eol": "\n",
   "files.exclude": {
     "**/.git": true,
@@ -34,6 +37,7 @@
     "**/.webpack/**": true,
     "**/coverage/*/**": true
   },
+  "typescript.tsserver.useSeparateSyntaxServer": "dynamic",
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "typescript.format.semicolons": "remove"
 }

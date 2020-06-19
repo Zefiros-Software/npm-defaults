@@ -9,17 +9,18 @@ export const commands = [['lint', 'build', 'check:types'], 'coverage']
 
 export async function runCommand(command: string | string[], allowParallel = true): Promise<void> {
     if (allowParallel && Array.isArray(command)) {
-        const codes = await concurrently(command.map((c) => `yarn ${c}`, {
-            maxProcesses: cpus().length
-        }))
-        console.log(`Exited with codes ${codes}`)
+        const codes = await concurrently(
+            command.map((c) => `yarn ${c}`, {
+                maxProcesses: cpus().length,
+            })
+        )
+        console.log(`Exited with codes ${codes ?? ''}`)
     } else {
-
-        const subcommands =( Array.isArray(command) ? command : [command])
+        const subcommands = Array.isArray(command) ? command : [command]
         for (const subcommand of subcommands) {
             console.log(`$ yarn ${subcommand}`)
             const subprocess = execa('yarn', [subcommand])
-    
+
             subprocess.stderr!.pipe(process.stderr)
             subprocess.stdout!.pipe(process.stdout)
             const { exitCode } = await subprocess
@@ -28,8 +29,8 @@ export async function runCommand(command: string | string[], allowParallel = tru
     }
 }
 
-export async function handler() {
-    await lintDirectory()
+export async function handler(): Promise<void> {
+    lintDirectory()
 
     await runCommand('install', false)
     for (const command of commands) {

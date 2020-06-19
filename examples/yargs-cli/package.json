@@ -14,7 +14,11 @@
   "npm-defaults": {
     "type": "yargs-cli"
   },
-  "files": ["bin", "dist", "package.json"],
+  "files": [
+    "bin",
+    "dist",
+    "package.json"
+  ],
   "scripts": {
     "build": "webpack --version && webpack",
     "test": "concurrently \"yarn check:types\" \"yarn ava\"",
@@ -31,14 +35,16 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@zefiros/npm-defaults": "^0.2.0-beta.51",
+    "@types/source-map-support": "^0.5.1",
+    "@zefiros/npm-defaults": "file:.yalc/@zefiros/npm-defaults",
     "@zerollup/ts-transform-paths": "^1.7.18",
+    "source-map-support": "^0.5.19",
     "ts-loader": "^7.0.5",
     "ts-node": "^8.10.2",
     "tsconfig-paths": "^3.9.0",
     "tslib": "^2.0.0",
     "ttypescript": "^1.5.10",
-    "typescript": "^3.9.5",
+    "typescript": "^4.0.0-beta",
     "webpack-node-externals": "^1.7.2",
     "yargs": "^15.3.1"
   }

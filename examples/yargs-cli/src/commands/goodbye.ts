@@ -1,5 +1,6 @@
 import type { Argv } from 'yargs'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function builder(yargs: Argv) {
     return yargs
         .option('name', {
@@ -10,7 +11,7 @@ export function builder(yargs: Argv) {
         .positional('file', {})
 }
 
-export async function handler(argv: ReturnType<typeof builder>['argv']): Promise<void> {
+export function handler(argv: ReturnType<typeof builder>['argv']): void {
     console.log(`goodbye ${argv.name} from ./src/commands/goodbye.ts`)
 }
 

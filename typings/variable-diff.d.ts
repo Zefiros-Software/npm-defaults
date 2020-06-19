@@ -1,4 +1,4 @@
 declare module 'variable-diff' {
-    const diff: any
+    const diff: (obj: unknown, other: unknown) => { text: string }
     export default diff
 }

@@ -1,5 +1,5 @@
 import { main } from '~/main'
 
-export function maintoo() {
+export function maintoo(): void {
     main()
 }

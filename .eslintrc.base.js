@@ -1,36 +1,44 @@
 module.exports = {
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        ecmaVersion: 2018,
+        ecmaVersion: 2020,
         sourceType: 'module',
         project: 'tsconfig.json',
     },
     plugins: ['@typescript-eslint', 'import'],
     extends: [
         'eslint:recommended',
-        'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:import/errors',
         'plugin:import/warnings',
         'plugin:import/typescript',
+        'plugin:prettier/recommended',
         'prettier/@typescript-eslint',
     ],
     rules: {
-        'max-classes-per-file': 'off',
-        '@typescript-eslint/no-non-null-assertion': 'off',
-        '@typescript-eslint/interface-name-prefix': 'off',
-        '@typescript-eslint/no-empty-interface': 'off',
-        '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-        '@typescript-eslint/no-unused-vars-experimental': 'error',
-        '@typescript-eslint/prefer-nullish-coalescing': 'error',
-        '@typescript-eslint/prefer-optional-chain': 'error',
-        '@typescript-eslint/prefer-readonly': 'error',
         '@typescript-eslint/explicit-member-accessibility': [
             'error',
             {
                 accessibility: 'explicit',
             },
         ],
+        '@typescript-eslint/explicit-module-boundary-types': 'error',
+        '@typescript-eslint/interface-name-prefix': 'off',
+        '@typescript-eslint/naming-convention': [
+            'error',
+            {
+                selector: 'property',
+                format: ['camelCase', 'UPPER_CASE'],
+            },
+        ],
+        '@typescript-eslint/no-empty-interface': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+        '@typescript-eslint/no-unused-vars-experimental': 'error',
+        '@typescript-eslint/prefer-nullish-coalescing': 'error',
+        '@typescript-eslint/prefer-optional-chain': 'error',
+        '@typescript-eslint/prefer-readonly': 'error',
         'import/default': 'off',
         'import/order': [
             'error',
@@ -39,12 +47,13 @@ module.exports = {
                 'newlines-between': 'always',
                 pathGroups: [
                     {
-                        pattern: '~/**',
                         group: 'internal',
+                        pattern: '~/**',
                     },
                 ],
             },
         ],
+        'max-classes-per-file': 'off',
     },
     settings: {
         'import/resolver': {

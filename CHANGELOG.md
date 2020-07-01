@@ -1,3 +1,10 @@
+# [0.2.0-beta.53](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.52...v0.2.0-beta.53) (2020-07-01)
+
+
+### Bug Fixes
+
+* project creation ([7ef0f77](https://github.com/Zefiros-Software/npm-defaults/commit/7ef0f7796edf7539e501af4d32381415dca2c820))
+
 # [0.2.0-beta.52](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.51...v0.2.0-beta.52) (2020-06-16)
 
 

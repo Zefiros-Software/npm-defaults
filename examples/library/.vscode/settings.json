@@ -1,43 +1,44 @@
 {
-  "javascript.validate.enable": true,
-  "prettier.disableLanguages": ["yaml", "js", "typescript"],
-  "typescript.referencesCodeLens.enabled": true,
-  "typescript.implementationsCodeLens.enabled": true,
-  "eslint.validate": ["javascript", "typescript"],
-  "yaml.format.enable": false,
-  "editor.formatOnSave": true,
   "[json]": {
     "editor.tabSize": 2
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
   "eslint.options": {
     "resolvePluginsRelativeTo": "."
   },
+  "eslint.validate": ["javascript", "typescript"],
   "files.eol": "\n",
   "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
     "**/.DS_Store": true,
-    "**/node_modules": true,
-    "**/dist": true,
-    "**/.yalc": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
     "**/.webpack": true,
-    "**/coverage": true
+    "**/.yalc": true,
+    "**/CVS": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/node_modules": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
-    "**/node_modules/*/**": true,
-    "**/dist/**": true,
-    "**/.yalc/**": true,
     "**/.webpack/**": true,
-    "**/coverage/*/**": true
+    "**/.yalc/**": true,
+    "**/coverage/*/**": true,
+    "**/dist/**": true,
+    "**/node_modules/*/**": true
   },
-  "typescript.tsserver.useSeparateSyntaxServer": "dynamic",
+  "javascript.validate.enable": true,
+  "prettier.disableLanguages": ["yaml", "js", "typescript"],
+  "typescript.format.semicolons": "remove",
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": true,
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "typescript.format.semicolons": "remove"
+  "typescript.tsserver.useSeparateSyntaxServer": "dynamic",
+  "yaml.format.enable": false
 }

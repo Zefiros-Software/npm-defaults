@@ -1,7 +1,12 @@
-import { globalDependencies } from '../../package.json'
-
 import execa from 'execa'
 import type { Argv } from 'yargs'
+
+interface PackageJsonDependencies {
+    globalDependencies: Record<string, string>
+}
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
+const { globalDependencies }: PackageJsonDependencies = require('../../package.json')
 
 export async function install(dependencies: string[] = []): Promise<void> {
     await execa(

@@ -1,7 +1,13 @@
 import { run } from '~/index'
 
-import test from 'ava'
+test('main', () => {
+    expect(run).toBeTruthy()
+})
 
-test('main', (t) => {
-    t.truthy(run)
+test('maintwo', () => {
+    expect({ foo: 'bar' }).toMatchInlineSnapshot(`
+        Object {
+          "foo": "bar",
+        }
+    `)
 })

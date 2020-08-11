@@ -27,10 +27,7 @@ module.exports = {
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/naming-convention': [
             'error',
-            {
-                selector: 'property',
-                format: ['camelCase', 'UPPER_CASE'],
-            },
+            { leadingUnderscore: 'allow', selector: 'property', format: ['camelCase', 'UPPER_CASE'] },
         ],
         '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
@@ -57,9 +54,7 @@ module.exports = {
     },
     settings: {
         'import/resolver': {
-            typescript: {
-                directory: './',
-            },
+            typescript: {},
         },
         'import/external-module-folders': ['node_modules', 'typings'],
     },

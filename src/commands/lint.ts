@@ -1,5 +1,3 @@
-import { peerDependencies, devDependencies } from '../../package.json'
-
 import { config, packagejson, reloadConfiguration, root, configurationKey } from '~/common/config'
 import { getAllFiles } from '~/common/file'
 import { PackageType } from '~/common/type'
@@ -11,14 +9,22 @@ import { Argv } from 'yargs'
 import path from 'path'
 import fs from 'fs'
 
+interface PackageJsonDependencies {
+    peerDependencies: Record<string, string>
+    devDependencies: Record<string, string>
+}
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
+const { peerDependencies, devDependencies }: PackageJsonDependencies = require('../../package.json')
+
 export const scripts: Record<string, Record<string, string>> = {
     [PackageType.Common]: {
-        ['build']: 'yarn ttsc -p tsconfig.dist.json',
+        ['build']: 'webpack --version && webpack',
         ['check:cost']: 'npx cost-of-modules --yarn --no-install --include-dev',
-        ['check:types']: 'yarn ttsc -p tsconfig.json',
+        ['check:types']: 'yarn tsc -p tsconfig.json',
         ['check:project']: 'yarn npm-defaults lint',
-        ['test']: 'concurrently "yarn check:types" "yarn ava"',
-        ['coverage']: 'nyc --reporter=text-summary ava',
+        ['test']: 'concurrently "yarn check:types" "jest test --maxWorkers=1"',
+        ['coverage']: 'jest test --maxWorkers=1 --collectCoverage=true',
         ['fix']: 'yarn lint --fix',
         ['lint']:
             'yarn eslint "{src,test,typing}/**/*.{ts,js}" --ignore-pattern **/node_modules/* --resolve-plugins-relative-to .',
@@ -29,8 +35,7 @@ export const scripts: Record<string, Record<string, string>> = {
     },
     [PackageType.Library]: {},
     [PackageType.YargsCli]: {
-        ['build']: 'webpack --version && webpack',
-        ['check:types']: 'yarn ttsc -p tsconfig.json',
+        ['check:types']: 'yarn tsc -p tsconfig.json',
         ['release']: 'semantic-release',
     },
 }
@@ -58,7 +63,8 @@ export const packageDevDependencies: Record<string, Record<string, string | unde
     [PackageType.YargsCli]: {
         '@types/source-map-support': devDependencies['@types/source-map-support'],
         'source-map-support': devDependencies['source-map-support'],
-        'ts-loader': devDependencies['ts-loader'],
+        //'webpack-node-externals': devDependencies['webpack-node-externals'],
+        //'ts-loader': devDependencies['ts-loader'],
         'ts-node': devDependencies['ts-node'],
         'tsconfig-paths': devDependencies['tsconfig-paths'],
         tslib: devDependencies['tslib'],
@@ -76,7 +82,7 @@ export const packageDefinition: Record<string, Record<string, string | undefined
     },
     [PackageType.YargsCli]: {
         main: './dist/main.js',
-        types: './dist/src/index.d.ts',
+        types: './dist/index.d.ts',
     },
 }
 
@@ -391,8 +397,8 @@ export default {
     handler,
     lintDirectory,
     scripts,
-    dependencies: packageDependencies,
-    devDependencies,
+    packageDependencies,
+    packageDevDependencies,
     roots,
     links,
 }

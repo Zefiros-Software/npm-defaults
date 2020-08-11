@@ -19,16 +19,8 @@
     "strict": true,
     "declaration": true,
     "resolveJsonModule": true,
-    "plugins": [
-      {
-        "transform": "@zerollup/ts-transform-paths",
-        "exclude": ["*"],
-        "disableForDeclarations ": true
-      }
-    ],
     "paths": {
-      "~/*": ["./src/*"],
-      "*": ["./typings/*"]
+      "~/*": ["./src/*"]
     }
   }
 }

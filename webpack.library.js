@@ -18,18 +18,7 @@ module.exports = function ({ root }) {
             path: path.join(root, 'dist'),
             filename: '[name].js',
         },
-        stats: {
-            // Ignore warnings due to yarg's dynamic module loading
-            warningsFilter: [/node_modules\/yargs/, /node_modules\/require-main-filename/],
-        },
-        externals: [
-            nodeExternals({
-                modulesFromFile: {
-                    exclude: ['devDependencies'],
-                    include: ['dependencies'],
-                },
-            }),
-        ],
+        externals: [nodeExternals()],
         optimization: {
             minimize: false,
         },

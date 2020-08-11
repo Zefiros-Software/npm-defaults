@@ -50,7 +50,7 @@ jobs:
         yalc add @zefiros/npm-defaults
         ../../bin/run ci
     - name: coverage
-      run: nyc report --reporter=text-lcov | codecov --pipe
+      run: codecov
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
     - name: release

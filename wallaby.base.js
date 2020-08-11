@@ -1,29 +1,19 @@
-module.exports = (w) => ({
-    files: ['src/**/*.ts', 'src/**/*.json', 'tsconfig.json', 'package.json'],
-    tests: ['test/**/*.spec.ts'],
+module.exports = (w) => {
+    return {
+        files: ['package.json', 'src/**/*.ts', 'src/**/*.js', 'src/**/*.json'],
+        tests: ['test/**/*.spec.ts'],
 
-    env: { type: 'node' },
+        env: { type: 'node' },
 
-    testFramework: 'ava',
+        testFramework: {
+            type: 'jest',
+        },
 
-    compilers: {
-        '**/*.ts': w.compilers.typeScript({
-            isolatedModules: true,
-            module: 'commonjs',
-        }),
-    },
-
-    setup: function (w) {
-        if (global._tsPathsRegistered) {
-            return
-        }
-        const project = require('./tsconfig.json')
-        const tsPaths = require('tsconfig-paths')
-        tsPaths.register({
-            baseUrl: project.compilerOptions.baseUrl,
-            paths: project.compilerOptions.paths,
-        })
-        global._tsPathsRegistered = true
-    },
-    debug: true,
-})
+        compilers: {
+            '**/*.ts': w.compilers.typeScript({
+                isolatedModules: true,
+                module: 'commonjs',
+            }),
+        },
+    }
+}

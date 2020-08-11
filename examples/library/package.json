@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "npm-defaults": {
     "type": "library"
   },
@@ -13,27 +14,26 @@
   },
   "files": ["dist", "package.json"],
   "scripts": {
-    "build": "yarn ttsc -p tsconfig.dist.json",
-    "test": "concurrently \"yarn check:types\" \"yarn ava\"",
+    "build": "webpack --version && webpack",
+    "test": "concurrently \"yarn check:types\" \"jest test --maxWorkers=1\"",
     "fix": "yarn lint --fix",
     "lint": "yarn eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-pattern **/node_modules/* --resolve-plugins-relative-to .",
     "format": "prettier \"{src/*,test/*,typing/*,templates/*,examples/*,}*/*.{ts,js,json}\" --write",
     "release": "semantic-release",
     "release:dry": "yarn release --dry-run",
-    "check:types": "yarn ttsc -p tsconfig.json",
+    "check:types": "yarn tsc -p tsconfig.json",
     "check:project": "yarn npm-defaults lint",
     "package": "rm -rf dist && yarn build",
     "check:cost": "npx cost-of-modules --yarn --no-install --include-dev",
-    "coverage": "nyc --reporter=text-summary ava"
+    "coverage": "jest test --maxWorkers=1 --collectCoverage=true"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.1"
   },
   "devDependencies": {
     "@zefiros/npm-defaults": "^0.2.0-beta.51",
     "@zerollup/ts-transform-paths": "^1.7.18",
-    "ttypescript": "^1.5.10",
-    "typescript": "^4.0.0-beta",
-    "ts-node": "^8.10.2"
+    "ts-node": "^8.10.2",
+    "typescript": "^4.0.1-rc"
   }
 }

@@ -77,7 +77,7 @@ export const packageDefinition: Record<string, Record<string, string | undefined
         node: '>=12',
     },
     [PackageType.Library]: {
-        main: './dist/index.js',
+        main: './dist/main.js',
         types: './dist/index.d.ts',
     },
     [PackageType.YargsCli]: {

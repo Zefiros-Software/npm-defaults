@@ -1,3 +1,10 @@
+# [0.2.0-beta.54](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.53...v0.2.0-beta.54) (2020-08-11)
+
+
+### Features
+
+* enable jest ([aa5a50a](https://github.com/Zefiros-Software/npm-defaults/commit/aa5a50a47220de6522df4a659007837c5f1dd194))
+
 # [0.2.0-beta.53](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.52...v0.2.0-beta.53) (2020-07-01)
 
 

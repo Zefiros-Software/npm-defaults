@@ -1,3 +1,15 @@
+# [0.2.0-beta.55](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.54...v0.2.0-beta.55) (2020-08-15)
+
+
+### Bug Fixes
+
+* add ts-node ([e37e93d](https://github.com/Zefiros-Software/npm-defaults/commit/e37e93d55c5b783c1d9450f5f7f32bab5f905f1c))
+
+
+### Features
+
+* use babel instead of ts-jest ([ea8bd21](https://github.com/Zefiros-Software/npm-defaults/commit/ea8bd219450e6947025c0d72cebe03126b1d0b41))
+
 # [0.2.0-beta.54](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.53...v0.2.0-beta.54) (2020-08-11)
 
 

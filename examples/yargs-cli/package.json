@@ -14,11 +14,7 @@
   "npm-defaults": {
     "type": "yargs-cli"
   },
-  "files": [
-    "bin",
-    "dist",
-    "package.json"
-  ],
+  "files": ["bin", "dist", "package.json"],
   "scripts": {
     "build": "webpack --version && webpack",
     "test": "concurrently \"yarn check:types\" \"jest test --maxWorkers=1\"",
@@ -39,7 +35,6 @@
     "@zefiros/npm-defaults": "file:.yalc/@zefiros/npm-defaults",
     "source-map-support": "^0.5.19",
     "ts-loader": "^8.0.2",
-    "ts-node": "^8.10.2",
     "tsconfig-paths": "^3.9.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.1",

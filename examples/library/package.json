@@ -31,9 +31,8 @@
     "tslib": "^2.0.1"
   },
   "devDependencies": {
-    "@zefiros/npm-defaults": "^0.2.0-beta.51",
+    "@zefiros/npm-defaults": "file:.yalc/@zefiros/npm-defaults",
     "@zerollup/ts-transform-paths": "^1.7.18",
-    "ts-node": "^8.10.2",
     "typescript": "^4.0.1-rc"
   }
 }

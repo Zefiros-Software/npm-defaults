@@ -1,5 +1,3 @@
-//import { bin } from '../package.json'
-
 import ci from '~/commands/ci'
 import create from '~/commands/create'
 import env from '~/commands/env'

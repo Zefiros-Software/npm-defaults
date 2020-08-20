@@ -25,10 +25,7 @@ module.exports = {
         ],
         '@typescript-eslint/explicit-module-boundary-types': 'error',
         '@typescript-eslint/interface-name-prefix': 'off',
-        '@typescript-eslint/naming-convention': [
-            'error',
-            { leadingUnderscore: 'allow', selector: 'property', format: ['camelCase'] },
-        ],
+        '@typescript-eslint/naming-convention': 'warn',
         '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-unnecessary-type-assertion': 'error',

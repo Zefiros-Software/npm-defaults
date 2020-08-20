@@ -56,16 +56,12 @@ export const packageDependencies: Record<string, Record<string, string | undefin
 export const packageDevDependencies: Record<string, Record<string, string | undefined>> = {
     [PackageType.Common]: {
         ...peerDependencies,
-        //'ts-node': devDependencies['ts-node'],
         typescript: devDependencies['typescript'],
     },
     [PackageType.Library]: {},
     [PackageType.YargsCli]: {
         '@types/source-map-support': devDependencies['@types/source-map-support'],
         'source-map-support': devDependencies['source-map-support'],
-        //'webpack-node-externals': devDependencies['webpack-node-externals'],
-        //'ts-loader': devDependencies['ts-loader'],
-        //'ts-node': devDependencies['ts-node'],
         'tsconfig-paths': devDependencies['tsconfig-paths'],
         tslib: devDependencies['tslib'],
         yargs: devDependencies['yargs'],

@@ -6,6 +6,7 @@
     "source.fixAll.eslint": true
   },
   "editor.formatOnSave": true,
+  "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
   "eslint.enable": true,
   "eslint.options": {
     "resolvePluginsRelativeTo": "."

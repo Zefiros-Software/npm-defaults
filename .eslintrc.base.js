@@ -27,7 +27,7 @@ module.exports = {
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/naming-convention': [
             'error',
-            { leadingUnderscore: 'allow', selector: 'property', format: ['camelCase', 'UPPER_CASE'] },
+            { leadingUnderscore: 'allow', selector: 'property', format: ['camelCase'] },
         ],
         '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',

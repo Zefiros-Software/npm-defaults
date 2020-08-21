@@ -1,3 +1,10 @@
+# [0.2.0-beta.57](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.56...v0.2.0-beta.57) (2020-08-21)
+
+
+### Bug Fixes
+
+* transitive jest dependency ([9a5f11a](https://github.com/Zefiros-Software/npm-defaults/commit/9a5f11aeae85b3ce4a5eda909e0d2519e2dc95d3))
+
 # [0.2.0-beta.56](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.55...v0.2.0-beta.56) (2020-08-20)
 
 

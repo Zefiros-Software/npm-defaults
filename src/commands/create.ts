@@ -44,7 +44,6 @@ export async function createProject(type: string, name: string, from: string): P
     )
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function builder(yargs: Argv) {
     return yargs
         .option('type', {

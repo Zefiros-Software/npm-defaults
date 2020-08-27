@@ -5,6 +5,7 @@ module.exports = {
         sourceType: 'module',
         project: 'tsconfig.json',
     },
+    reportUnusedDisableDirectives: true,
     plugins: ['@typescript-eslint', 'import'],
     extends: [
         'eslint:recommended',
@@ -17,15 +18,14 @@ module.exports = {
         'prettier/@typescript-eslint',
     ],
     rules: {
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/explicit-member-accessibility': [
             'error',
             {
                 accessibility: 'explicit',
             },
         ],
-        '@typescript-eslint/explicit-module-boundary-types': 'error',
         '@typescript-eslint/interface-name-prefix': 'off',
-        '@typescript-eslint/naming-convention': 'warn',
         '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-unnecessary-type-assertion': 'error',
@@ -33,7 +33,13 @@ module.exports = {
         '@typescript-eslint/prefer-nullish-coalescing': 'error',
         '@typescript-eslint/prefer-optional-chain': 'error',
         '@typescript-eslint/prefer-readonly': 'error',
-        'import/default': 'off',
+        '@typescript-eslint/strict-boolean-expressions': [
+            'error',
+            {
+                allowNullableBoolean: true,
+            },
+        ],
+        '@typescript-eslint/switch-exhaustiveness-check': 'error',
         'import/order': [
             'error',
             {
@@ -48,6 +54,17 @@ module.exports = {
             },
         ],
         'max-classes-per-file': 'off',
+
+        ...(process.env.VSCODE_PID || process.env.FULL_LINT
+            ? {
+                  '@typescript-eslint/explicit-module-boundary-types': 'warn',
+                  '@typescript-eslint/prefer-readonly-parameter-types': 'warn',
+                  '@typescript-eslint/naming-convention': [
+                      'warn',
+                      { leadingUnderscore: 'allow', selector: 'property', format: ['camelCase'] },
+                  ],
+              }
+            : {}),
     },
     settings: {
         'import/resolver': {

@@ -18,6 +18,7 @@
     "test": "concurrently \"yarn check:types\" \"jest test --maxWorkers=1\"",
     "fix": "yarn lint --fix",
     "lint": "yarn eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-pattern **/node_modules/* --resolve-plugins-relative-to .",
+    "lint:full": "bash -c \"FULL_LINT=true yarn lint\"",
     "format": "prettier \"{src/*,test/*,typing/*,templates/*,examples/*,}*/*.{ts,js,json}\" --write",
     "release": "semantic-release",
     "release:dry": "yarn release --dry-run",

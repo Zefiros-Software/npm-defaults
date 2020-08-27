@@ -26,9 +26,10 @@ export const packagejson = {
         : {}),
 } as Record<string, unknown> & {
     version: string
-    scripts: Record<string, string>
-    dependencies: Record<string, string>
-    devDependencies: Record<string, string>
+    scripts: Record<string, string> | undefined
+    dependencies: Record<string, string> | undefined
+    devDependencies: Record<string, string> | undefined
+    files: string[] | undefined
     ['npm-defaults']: NpmDefaultsConfiguration | undefined
 }
 

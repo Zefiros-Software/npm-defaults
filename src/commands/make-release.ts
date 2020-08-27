@@ -12,12 +12,12 @@ export interface Repo {
 }
 
 export function getRepo(): Repo {
-    if (process.env.GITHUB_REPOSITORY) {
+    if (process.env.GITHUB_REPOSITORY != undefined) {
         const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/')
         return { owner, repo }
     }
     let payload: unknown & { repository?: { owner: { login: string }; name: string } } = {}
-    if (process.env.GITHUB_EVENT_PATH) {
+    if (process.env.GITHUB_EVENT_PATH != undefined) {
         if (existsSync(process.env.GITHUB_EVENT_PATH)) {
             payload = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: 'utf8' })) as typeof payload
         } else {
@@ -35,7 +35,7 @@ export function getRepo(): Repo {
     throw new Error("context.repo requires a GITHUB_REPOSITORY environment variable like 'owner/repo'")
 }
 
-export async function makePullRequest(octokit: Octokit, repo: Repo, version: string): Promise<void> {
+export async function makePullRequest(octokit: Octokit, repo: Readonly<Repo>, version: string): Promise<void> {
     await octokit.pulls.create({
         ...repo,
         title: `Publish version ${version}`,
@@ -45,7 +45,7 @@ export async function makePullRequest(octokit: Octokit, repo: Repo, version: str
     })
 }
 
-export async function updatePullRequest(octokit: Octokit, repo: Repo, version: string): Promise<void> {
+export async function updatePullRequest(octokit: Octokit, repo: Readonly<Repo>, version: string): Promise<void> {
     const existing = await octokit.pulls.list({
         ...repo,
         state: 'open',
@@ -57,7 +57,6 @@ export async function updatePullRequest(octokit: Octokit, repo: Repo, version: s
         await octokit.pulls.update({
             ...repo,
             title: `Publish version ${version}`,
-            // eslint-disable-next-line @typescript-eslint/naming-convention
             pull_number: pullNumber,
         })
     }

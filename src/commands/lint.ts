@@ -17,7 +17,7 @@ interface PackageJsonDependencies {
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
 const { peerDependencies, devDependencies }: PackageJsonDependencies = require('../../package.json')
 
-export const scripts: Record<string, Record<string, string>> = {
+export const scripts: Record<string, Record<string, string> | undefined> = {
     [PackageType.Common]: {
         ['build']: 'webpack --version && webpack',
         ['check:cost']: 'npx cost-of-modules --yarn --no-install --include-dev',
@@ -28,6 +28,7 @@ export const scripts: Record<string, Record<string, string>> = {
         ['fix']: 'yarn lint --fix',
         ['lint']:
             'yarn eslint "{src,test,typing}/**/*.{ts,js}" --ignore-pattern **/node_modules/* --resolve-plugins-relative-to .',
+        ['lint:full']: 'bash -c "FULL_LINT=true yarn lint"',
         ['format']: 'prettier "{src/*,test/*,typing/*,templates/*,examples/*,}*/*.{ts,js,json}" --write',
         ['package']: 'rm -rf dist && yarn build',
         ['release']: 'semantic-release',
@@ -45,7 +46,7 @@ export const files: Record<string, string[] | undefined> = {
     [PackageType.YargsCli]: ['bin', 'dist', 'package.json'],
 }
 
-export const packageDependencies: Record<string, Record<string, string | undefined>> = {
+export const packageDependencies: Record<string, Record<string, string | undefined> | undefined> = {
     [PackageType.Common]: {},
     [PackageType.Library]: {},
     [PackageType.YargsCli]: {
@@ -53,7 +54,7 @@ export const packageDependencies: Record<string, Record<string, string | undefin
     },
 }
 
-export const packageDevDependencies: Record<string, Record<string, string | undefined>> = {
+export const packageDevDependencies: Record<string, Record<string, string | undefined> | undefined> = {
     [PackageType.Common]: {
         ...peerDependencies,
         typescript: devDependencies['typescript'],
@@ -68,7 +69,7 @@ export const packageDevDependencies: Record<string, Record<string, string | unde
     },
 }
 
-export const packageDefinition: Record<string, Record<string, string | undefined>> = {
+export const packageDefinition: Record<string, Record<string, string | undefined> | undefined> = {
     [PackageType.Common]: {
         node: '>=12',
     },
@@ -82,12 +83,12 @@ export const packageDefinition: Record<string, Record<string, string | undefined
     },
 }
 
-export const links: Record<string, string[]> = {
+export const links: Record<string, string[] | undefined> = {
     [PackageType.Library]: [PackageType.Common],
     [PackageType.YargsCli]: [PackageType.Common],
 }
 
-export const roots: Record<string, string[]> = {
+export const roots: Record<string, string[] | undefined> = {
     [PackageType.Common]: [root],
     [PackageType.Library]: [root],
     [PackageType.YargsCli]: [root],
@@ -113,7 +114,7 @@ export function lintTemplate(state: LintState): void {
     if (!config) {
         return
     }
-    const targets: Record<string, () => void> = {}
+    const targets: Record<string, () => void | undefined> = {}
 
     if (config.type !== PackageType.Common) {
         for (const root of getRoot(state.options, config.type)) {
@@ -123,7 +124,7 @@ export function lintTemplate(state: LintState): void {
             }
             for (const file of getAllFiles(templateRoot)) {
                 const relFile = path.relative(templateRoot, file).replace(/\\/g, '/')
-                if (!targets[relFile] && !config.template?.exclude?.includes(relFile)) {
+                if (targets[relFile] == undefined && !config.template?.exclude?.includes(relFile)) {
                     targets[relFile] = () => lintFile(state, `${templateRoot}${relFile}`, relFile)
                 }
             }
@@ -138,7 +139,7 @@ export function lintTemplate(state: LintState): void {
             }
             for (const file of getAllFiles(otherRoot)) {
                 const relFile = path.relative(otherRoot, file).replace(/\\/g, '/')
-                if (!targets[relFile] && !config.template?.exclude?.includes(relFile)) {
+                if (targets[relFile] == undefined && !config.template?.exclude?.includes(relFile)) {
                     targets[relFile] = () => lintFile(state, `${otherRoot}${relFile}`, relFile)
                 }
             }
@@ -155,7 +156,7 @@ export function lintFile(state: LintState, from: string, target: string): void {
     const newContent = fs.readFileSync(from, 'utf-8')
     const isDifferent = oldContent !== newContent
     if (isDifferent) {
-        if (oldContent) {
+        if (oldContent !== undefined) {
             console.warn(`[${target}]:\n${new LineDiff(oldContent, newContent).toString()}`)
         } else {
             console.warn(`[${target}]: file not found`)
@@ -216,9 +217,10 @@ export function lintScripts(state: LintState): void {
         packagejson.scripts = {}
     }
     const json = JSON.stringify(packagejson.scripts)
-    for (const other of config?.type ? state.options.links[config.type] ?? [] : []) {
-        if (state.options.scripts[other]) {
-            for (const [entry, value] of Object.entries(state.options.scripts[other])) {
+    for (const other of config?.type != undefined ? state.options.links[config.type] ?? [] : []) {
+        const scripts = state.options.scripts[other]
+        if (scripts) {
+            for (const [entry, value] of Object.entries(scripts)) {
                 packagejson.scripts[entry] = value
             }
         }
@@ -247,7 +249,7 @@ export function lintPackageFiles(state: LintState): void {
 
     const json = JSON.stringify(packagejson.files)
 
-    packagejson.files = config?.type ? state.options.files[config.type] ?? [] : []
+    packagejson.files = config?.type != undefined ? state.options.files[config.type] ?? [] : []
     if (JSON.stringify(packagejson.files) !== json) {
         console.warn(
             `[package.json>files] missing or outdated files entries found:\n${vdiff(JSON.parse(json), packagejson.files).text}`
@@ -265,9 +267,10 @@ export function lintDependencies(state: LintState): void {
         packagejson.dependencies = {}
     }
     const json = JSON.stringify(packagejson.dependencies)
-    for (const other of config?.type ? state.options.links[config.type] ?? [] : []) {
-        if (state.options.dependencies[other]) {
-            for (const [entry, value] of Object.entries(state.options.dependencies[other])) {
+    for (const other of config?.type != undefined ? state.options.links[config.type] ?? [] : []) {
+        const dependencies = state.options.dependencies[other]
+        if (dependencies) {
+            for (const [entry, value] of Object.entries(dependencies)) {
                 packagejson.dependencies[entry] = value!
             }
         }
@@ -294,9 +297,10 @@ export function lintDevDependencies(state: LintState): void {
         packagejson.devDependencies = {}
     }
     const json = JSON.stringify(packagejson.devDependencies)
-    for (const other of config?.type ? state.options.links[config.type] ?? [] : []) {
-        if (state.options.devDependencies[other]) {
-            for (const [entry, value] of Object.entries(state.options.devDependencies[other])) {
+    for (const other of config?.type != undefined ? state.options.links[config.type] ?? [] : []) {
+        const devDependencies = state.options.devDependencies[other]
+        if (devDependencies) {
+            for (const [entry, value] of Object.entries(devDependencies)) {
                 packagejson.devDependencies[entry] = value!
             }
         }
@@ -341,12 +345,12 @@ export function fail(state: LintState): void {
     }
 }
 
-export function getRoot(options: LintOptions, type: string): string[] {
+export function getRoot(options: LintOptions, type: string): readonly string[] {
     return options.roots[type] ?? [root]
 }
 
-export function getLinks(options: LintOptions): string[] {
-    return config?.type ? options.links[config.type] ?? [] : []
+export function getLinks(options: LintOptions): readonly string[] {
+    return config?.type != undefined ? options.links[config.type] ?? [] : []
 }
 
 export function lintDirectory(options: Partial<LintOptions> = {}): void {
@@ -373,7 +377,6 @@ export function lintDirectory(options: Partial<LintOptions> = {}): void {
     }
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function builder(yargs: Argv) {
     return yargs.option('fix', {
         describe: 'try to fix the errors',

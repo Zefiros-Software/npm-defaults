@@ -8,14 +8,14 @@ interface PackageJsonDependencies {
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
 const { globalDependencies }: PackageJsonDependencies = require('../../package.json')
 
-export async function install(dependencies: string[] = []): Promise<void> {
+export async function install(dependencies: readonly string[] = []): Promise<void> {
     await execa(
         'npm',
         [
             ...[
                 'install',
                 '-g',
-                ...Object.entries(globalDependencies).map(([pkg, version]) => `${pkg}@${version}`),
+                ...Object.entries(globalDependencies).map(([pkg, version]: readonly [string, string]) => `${pkg}@${version}`),
                 ...dependencies,
             ],
         ],
@@ -25,7 +25,6 @@ export async function install(dependencies: string[] = []): Promise<void> {
     )
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function builder(yargs: Argv) {
     return yargs.option('install', {
         describe: 'install the environment',

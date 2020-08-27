@@ -1,6 +1,5 @@
 import type { Argv } from 'yargs'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function builder(yargs: Argv) {
     return yargs
         .option('name', {

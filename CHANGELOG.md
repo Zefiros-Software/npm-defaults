@@ -1,3 +1,10 @@
+# [0.2.0-beta.58](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.57...v0.2.0-beta.58) (2020-08-27)
+
+
+### Features
+
+* improved linting ([80ffd61](https://github.com/Zefiros-Software/npm-defaults/commit/80ffd61ed6ebeec0d3db9888d9c5653598e7e6e3))
+
 # [0.2.0-beta.57](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.56...v0.2.0-beta.57) (2020-08-21)
 
 

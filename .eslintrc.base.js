@@ -72,4 +72,16 @@ module.exports = {
         },
         'import/external-module-folders': ['node_modules', 'typings'],
     },
+    overrides: [
+        {
+            files: ['*.js'],
+            rules: {
+                '@typescript-eslint/no-unsafe-assignment': 'off',
+                '@typescript-eslint/no-unsafe-call': 'off',
+                '@typescript-eslint/no-unsafe-member-access': 'off',
+                '@typescript-eslint/no-var-requires': 'off',
+                'no-undef': 'off',
+            },
+        },
+    ],
 }

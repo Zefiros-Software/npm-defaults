@@ -54,6 +54,7 @@ module.exports = {
             },
         ],
         'max-classes-per-file': 'off',
+        'prefer-template': 'error',
 
         ...(process.env.VSCODE_PID || process.env.FULL_LINT
             ? {

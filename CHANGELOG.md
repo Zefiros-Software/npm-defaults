@@ -1,3 +1,12 @@
+# [0.2.0-beta.59](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.58...v0.2.0-beta.59) (2020-09-10)
+
+
+### Features
+
+* **eslint:** add overrides for js config files ([#14](https://github.com/Zefiros-Software/npm-defaults/issues/14)) ([071c888](https://github.com/Zefiros-Software/npm-defaults/commit/071c888c746752e48559c29255c9fcac788ee875))
+* **eslint:** prefer template string formatting ([#13](https://github.com/Zefiros-Software/npm-defaults/issues/13)) ([34fb94c](https://github.com/Zefiros-Software/npm-defaults/commit/34fb94ca96d4953281b1acfdae1019369769bd4a))
+* **tsconfig:** include hidden files that start with a dot ([1ceaa89](https://github.com/Zefiros-Software/npm-defaults/commit/1ceaa8919a94bae7718f6b96fe8574500d3ffbaa))
+
 # [0.2.0-beta.58](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.57...v0.2.0-beta.58) (2020-08-27)
 
 

@@ -1,6 +1,14 @@
 module.exports = (w) => {
     return {
-        files: ['package.json', 'src/**/*.ts', 'src/**/*.js', 'src/**/*.json'],
+        files: [
+            'package.json',
+            'src/**/*.ts',
+            'src/**/*.js',
+            'src/**/*.json',
+            'test/**/*.ts',
+            '!test/**/*.spec.ts',
+            '!src/vendor.d.ts',
+        ],
         tests: ['test/**/*.spec.ts'],
 
         env: { type: 'node' },

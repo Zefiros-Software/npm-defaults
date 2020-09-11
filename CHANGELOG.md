@@ -1,3 +1,10 @@
+# [0.2.0-beta.60](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.59...v0.2.0-beta.60) (2020-09-11)
+
+
+### Features
+
+* improve eslint configuration ([b3826e4](https://github.com/Zefiros-Software/npm-defaults/commit/b3826e4cf2693019f905a513052caa1552756d10))
+
 # [0.2.0-beta.59](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.58...v0.2.0-beta.59) (2020-09-10)
 
 

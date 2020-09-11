@@ -17,7 +17,7 @@ export function builder(yargs: Argv) {
 
 export function handler(argv: ReturnType<typeof builder>['argv']): void {
     console.log(`hello ${argv.name} from ./src/commands/hello.ts`)
-    if (argv.file != undefined && argv.force) {
+    if (argv.file !== undefined && argv.force) {
         console.log(`you input --force and --file: ${argv.file}`)
     }
 }

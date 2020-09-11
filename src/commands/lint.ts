@@ -4,7 +4,7 @@ import { PackageType } from '~/common/type'
 
 import vdiff from 'variable-diff'
 import LineDiff from 'line-diff'
-import { Argv } from 'yargs'
+import type { Argv } from 'yargs'
 
 import path from 'path'
 import fs from 'fs'
@@ -124,7 +124,7 @@ export function lintTemplate(state: LintState): void {
             }
             for (const file of getAllFiles(templateRoot)) {
                 const relFile = path.relative(templateRoot, file).replace(/\\/g, '/')
-                if (targets[relFile] == undefined && !config.template?.exclude?.includes(relFile)) {
+                if (targets[relFile] === undefined && !config.template?.exclude?.includes(relFile)) {
                     targets[relFile] = () => lintFile(state, `${templateRoot}${relFile}`, relFile)
                 }
             }
@@ -139,7 +139,7 @@ export function lintTemplate(state: LintState): void {
             }
             for (const file of getAllFiles(otherRoot)) {
                 const relFile = path.relative(otherRoot, file).replace(/\\/g, '/')
-                if (targets[relFile] == undefined && !config.template?.exclude?.includes(relFile)) {
+                if (targets[relFile] === undefined && !config.template?.exclude?.includes(relFile)) {
                     targets[relFile] = () => lintFile(state, `${otherRoot}${relFile}`, relFile)
                 }
             }
@@ -217,7 +217,7 @@ export function lintScripts(state: LintState): void {
         packagejson.scripts = {}
     }
     const json = JSON.stringify(packagejson.scripts)
-    for (const other of config?.type != undefined ? state.options.links[config.type] ?? [] : []) {
+    for (const other of config?.type !== undefined ? state.options.links[config.type] ?? [] : []) {
         const scripts = state.options.scripts[other]
         if (scripts) {
             for (const [entry, value] of Object.entries(scripts)) {
@@ -249,7 +249,7 @@ export function lintPackageFiles(state: LintState): void {
 
     const json = JSON.stringify(packagejson.files)
 
-    packagejson.files = config?.type != undefined ? state.options.files[config.type] ?? [] : []
+    packagejson.files = config?.type !== undefined ? state.options.files[config.type] ?? [] : []
     if (JSON.stringify(packagejson.files) !== json) {
         console.warn(
             `[package.json>files] missing or outdated files entries found:\n${vdiff(JSON.parse(json), packagejson.files).text}`
@@ -267,7 +267,7 @@ export function lintDependencies(state: LintState): void {
         packagejson.dependencies = {}
     }
     const json = JSON.stringify(packagejson.dependencies)
-    for (const other of config?.type != undefined ? state.options.links[config.type] ?? [] : []) {
+    for (const other of config?.type !== undefined ? state.options.links[config.type] ?? [] : []) {
         const dependencies = state.options.dependencies[other]
         if (dependencies) {
             for (const [entry, value] of Object.entries(dependencies)) {
@@ -297,7 +297,7 @@ export function lintDevDependencies(state: LintState): void {
         packagejson.devDependencies = {}
     }
     const json = JSON.stringify(packagejson.devDependencies)
-    for (const other of config?.type != undefined ? state.options.links[config.type] ?? [] : []) {
+    for (const other of config?.type !== undefined ? state.options.links[config.type] ?? [] : []) {
         const devDependencies = state.options.devDependencies[other]
         if (devDependencies) {
             for (const [entry, value] of Object.entries(devDependencies)) {
@@ -350,7 +350,7 @@ export function getRoot(options: LintOptions, type: string): readonly string[] {
 }
 
 export function getLinks(options: LintOptions): readonly string[] {
-    return config?.type != undefined ? options.links[config.type] ?? [] : []
+    return config?.type !== undefined ? options.links[config.type] ?? [] : []
 }
 
 export function lintDirectory(options: Partial<LintOptions> = {}): void {

@@ -1,4 +1,4 @@
-import { PackageType } from '~/common/type'
+import type { PackageType } from '~/common/type'
 
 import findRoot from 'find-root'
 

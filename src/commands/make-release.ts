@@ -12,12 +12,12 @@ export interface Repo {
 }
 
 export function getRepo(): Repo {
-    if (process.env.GITHUB_REPOSITORY != undefined) {
+    if (process.env.GITHUB_REPOSITORY !== undefined) {
         const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/')
         return { owner, repo }
     }
     let payload: unknown & { repository?: { owner: { login: string }; name: string } } = {}
-    if (process.env.GITHUB_EVENT_PATH != undefined) {
+    if (process.env.GITHUB_EVENT_PATH !== undefined) {
         if (existsSync(process.env.GITHUB_EVENT_PATH)) {
             payload = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: 'utf8' })) as typeof payload
         } else {

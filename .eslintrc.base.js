@@ -18,6 +18,7 @@ module.exports = {
         'prettier/@typescript-eslint',
     ],
     rules: {
+        '@typescript-eslint/consistent-type-imports': 'error',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/explicit-member-accessibility': [
             'error',
@@ -29,7 +30,7 @@ module.exports = {
         '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-        '@typescript-eslint/no-unused-vars-experimental': 'error',
+        '@typescript-eslint/no-unused-vars': ['error', { args: 'after-used', argsIgnorePattern: '^_' }],
         '@typescript-eslint/prefer-nullish-coalescing': 'error',
         '@typescript-eslint/prefer-optional-chain': 'error',
         '@typescript-eslint/prefer-readonly': 'error',
@@ -53,13 +54,16 @@ module.exports = {
                 ],
             },
         ],
+        'import/no-cycle': ['error'],
         'max-classes-per-file': 'off',
         'prefer-template': 'error',
+        eqeqeq: ['error', 'always'],
 
         ...(process.env.VSCODE_PID || process.env.FULL_LINT
             ? {
                   '@typescript-eslint/explicit-module-boundary-types': 'warn',
-                  '@typescript-eslint/prefer-readonly-parameter-types': 'warn',
+                  // https://github.com/typescript-eslint/typescript-eslint/issues/2143
+                  // '@typescript-eslint/prefer-readonly-parameter-types': ['warn', { checkParameterProperties: false }],
                   '@typescript-eslint/naming-convention': [
                       'warn',
                       { leadingUnderscore: 'allow', selector: 'property', format: ['camelCase'] },

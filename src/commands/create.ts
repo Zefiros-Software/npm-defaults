@@ -4,7 +4,7 @@ import { gitignore } from '~/common/ignore'
 
 import fg from 'fast-glob'
 import execa from 'execa'
-import { Argv } from 'yargs'
+import type { Argv } from 'yargs'
 import pLimit from 'p-limit'
 
 import path, { join, dirname } from 'path'

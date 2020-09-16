@@ -16,10 +16,8 @@
     "template": {
       "exclude": [
         ".eslintrc.js",
-        ".huskyrc.js",
         "babel.config.js",
         "commitlint.config.js",
-        "lint-staged.config.js",
         "prettier.config.js",
         "release.config.js",
         "tsconfig.dist.json",
@@ -38,13 +36,11 @@
   },
   "files": [
     ".eslintrc.base.js",
-    ".huskyrc.js",
     "babel.config.js",
     "bin",
     "commitlint.config.js",
     "dist",
     "jest.config.js",
-    "lint-staged.config.js",
     "package.json",
     "prettier.config.js",
     "release.config.js",
@@ -67,7 +63,8 @@
     "package": "rm -rf dist && yarn build",
     "check:types": "yarn tsc -p tsconfig.json",
     "check:project": "yarn npm-defaults lint",
-    "check:cost": "npx cost-of-modules --yarn --no-install --include-dev"
+    "check:cost": "npx cost-of-modules --yarn --no-install --include-dev",
+    "postinstall": "node ./bin/lefthook"
   },
   "dependencies": {
     "@babel/core": "^7.11.6",
@@ -84,7 +81,6 @@
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
     "ignore-loader": "^0.1.2",
     "jest": "^26.4.2",
     "prettier": "^2.1.1",
@@ -95,10 +91,10 @@
     "typescript": "^4.0.2"
   },
   "globalDependencies": {
+    "@arkweid/lefthook": "^0.7.2",
     "@commitlint/cli": "^9.1.2",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
-    "lint-staged": "^10.3.0",
     "concurrently": "^5.3.0",
     "conventional-changelog": "^3.1.23",
     "semantic-release": "^17.1.1",

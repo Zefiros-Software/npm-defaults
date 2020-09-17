@@ -22,7 +22,7 @@
       "~/*": ["./src/*"]
     },
     "outDir": "./dist",
-    "baseUrl": ".",
-    "rootDir": "."
+    "rootDir": ".",
+    "baseUrl": "."
   }
 }

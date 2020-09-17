@@ -3,6 +3,10 @@
   "include": [
     "src/**/*.ts",
     "src/**/.*.ts",
+    "examples/**/*.ts",
+    "examples/**/.*.ts",
+    "static/**/*.ts",
+    "static/**/.*.ts",
     "test/**/*.ts",
     "test/**/.*.ts",
     "typings/**/*.ts",
@@ -18,7 +22,7 @@
       "~/*": ["./src/*"]
     },
     "outDir": "./dist",
-    "rootDir": ".",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "rootDir": "."
   }
 }

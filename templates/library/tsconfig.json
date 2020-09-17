@@ -1,6 +1,21 @@
 {
   "extends": "@zefiros/npm-defaults/tsconfig.base.json",
-  "include": ["src/**/*.ts", "examples/**/*.ts", "test/**/*.ts", "typings/**/*.ts", "*.js", "*.json"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/.*.ts",
+    "examples/**/*.ts",
+    "examples/**/.*.ts",
+    "static/**/*.ts",
+    "static/**/.*.ts",
+    "test/**/*.ts",
+    "test/**/.*.ts",
+    "typings/**/*.ts",
+    "typings/**/.*.ts",
+    "*.js",
+    ".*.js",
+    "*.json",
+    ".*.json"
+  ],
   "compilerOptions": {
     "typeRoots": ["./typings", "./node_modules/@types"],
     "paths": {

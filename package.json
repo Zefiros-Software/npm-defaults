@@ -49,6 +49,7 @@
     "prettier.config.js",
     "release.config.js",
     "templates",
+    "examples",
     "tsconfig.base.json",
     "wallaby.base.js",
     "webpack.library.js",

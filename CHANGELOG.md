@@ -1,3 +1,10 @@
+# [0.2.0-beta.61](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.60...v0.2.0-beta.61) (2020-09-17)
+
+
+### Bug Fixes
+
+* **package:** include examples folder while packaging ([#17](https://github.com/Zefiros-Software/npm-defaults/issues/17)) ([2666242](https://github.com/Zefiros-Software/npm-defaults/commit/26662429c3a1b652aa9423b04696e20dcaf6a2d2))
+
 # [0.2.0-beta.60](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.59...v0.2.0-beta.60) (2020-09-11)
 
 

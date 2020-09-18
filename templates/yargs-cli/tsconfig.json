@@ -18,11 +18,11 @@
   ],
   "compilerOptions": {
     "paths": {
-      "~/*": ["./src/*"],
-      "*": ["./typings/*"]
+      "*": ["./typings/*"],
+      "~/*": ["./src/*"]
     },
     "outDir": "./dist",
-    "rootDir": ".",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "rootDir": "."
   }
 }

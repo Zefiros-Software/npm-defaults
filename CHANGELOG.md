@@ -1,3 +1,10 @@
+# [0.2.0-beta.62](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.61...v0.2.0-beta.62) (2020-09-21)
+
+
+### Bug Fixes
+
+* **tsconfig:** synchronize files that are included in the tsconfig project ([#16](https://github.com/Zefiros-Software/npm-defaults/issues/16)) ([68f79cf](https://github.com/Zefiros-Software/npm-defaults/commit/68f79cf1a6108f85813bad397cd35ae7910782ae))
+
 # [0.2.0-beta.61](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.60...v0.2.0-beta.61) (2020-09-17)
 
 

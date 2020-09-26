@@ -1,3 +1,10 @@
+# [0.2.0-beta.63](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.62...v0.2.0-beta.63) (2020-09-26)
+
+
+### Bug Fixes
+
+* **eslint:** include hidden js files (glob pattern: .*.js) ([#18](https://github.com/Zefiros-Software/npm-defaults/issues/18)) ([0897c92](https://github.com/Zefiros-Software/npm-defaults/commit/0897c92e0528f829215e91ff8a17011bbdd3d34d))
+
 # [0.2.0-beta.62](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.61...v0.2.0-beta.62) (2020-09-21)
 
 

@@ -79,7 +79,7 @@ module.exports = {
     },
     overrides: [
         {
-            files: ['*.js'],
+            files: ['*.js', '.*.js'],
             rules: {
                 '@typescript-eslint/no-unsafe-assignment': 'off',
                 '@typescript-eslint/no-unsafe-call': 'off',

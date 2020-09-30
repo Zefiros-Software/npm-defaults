@@ -1,3 +1,15 @@
+# [0.2.0-beta.65](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.64...v0.2.0-beta.65) (2020-09-30)
+
+
+### Bug Fixes
+
+* **typescript:** use forward slash for tsdk lib path ([#22](https://github.com/Zefiros-Software/npm-defaults/issues/22)) ([c003f77](https://github.com/Zefiros-Software/npm-defaults/commit/c003f77cdf9d720e90c1ef910f3e4d36be7964f2))
+
+
+### Features
+
+* use lefthook vs husky ([#20](https://github.com/Zefiros-Software/npm-defaults/issues/20)) ([aedeeab](https://github.com/Zefiros-Software/npm-defaults/commit/aedeeabef0fc79c5874ac927f3bb43338ea02b54))
+
 # [0.2.0-beta.64](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.63...v0.2.0-beta.64) (2020-09-30)
 
 

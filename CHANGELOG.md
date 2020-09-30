@@ -1,3 +1,10 @@
+# [0.2.0-beta.64](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.63...v0.2.0-beta.64) (2020-09-30)
+
+
+### Bug Fixes
+
+* **ci:** force include date-fns to bypass broken default import ([#21](https://github.com/Zefiros-Software/npm-defaults/issues/21)) ([71727ef](https://github.com/Zefiros-Software/npm-defaults/commit/71727ef622fe452e2801f4412280ddf51886799b))
+
 # [0.2.0-beta.63](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.62...v0.2.0-beta.63) (2020-09-26)
 
 

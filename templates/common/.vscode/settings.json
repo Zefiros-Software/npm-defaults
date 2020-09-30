@@ -39,7 +39,7 @@
   "typescript.format.semicolons": "remove",
   "typescript.implementationsCodeLens.enabled": true,
   "typescript.referencesCodeLens.enabled": true,
-  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.tsserver.useSeparateSyntaxServer": "dynamic",
   "yaml.format.enable": false
 }

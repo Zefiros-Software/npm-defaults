@@ -65,7 +65,7 @@
     "check:types": "yarn tsc -p tsconfig.json",
     "check:project": "yarn npm-defaults lint",
     "check:cost": "npx cost-of-modules --yarn --no-install --include-dev",
-    "postinstall": "node ./bin/lefthook"
+    "postinstall": "./bin/lefthook"
   },
   "dependencies": {
     "@babel/core": "^7.11.6",

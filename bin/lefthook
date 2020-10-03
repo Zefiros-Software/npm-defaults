@@ -1,10 +1,12 @@
+#!/usr/bin/env node
 const isCi = require('is-ci')
+
 if (!isCi) {
     const execa = require('execa')
 
     let dependencies = {}
     try {
-        const { stdout } = execa.commandSync('npm list -j -g @arkweid/lefthook')
+        const { stdout } = execa.commandSync('npm -j -g ls @arkweid/lefthook')
         dependencies = JSON.parse(stdout).dependencies
     } catch (err) {
         dependencies = {}

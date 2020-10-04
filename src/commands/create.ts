@@ -4,7 +4,7 @@ import { gitignore } from '~/common/ignore'
 
 import type { Argv } from 'yargs'
 import pLimit from 'p-limit'
-import JSZip from 'jszip'
+import { JSZip, walkZip, findZipFolder } from '@zefiros/jszip-slim'
 import glob from 'picomatch'
 import execa from 'execa'
 
@@ -15,25 +15,6 @@ import https from 'https'
 export const projectRoots: Record<string, string> = {
     [PackageType.Library]: root,
     [PackageType.YargsCli]: root,
-}
-
-function findZipDir(zip: JSZip, dirName: string): JSZip | undefined {
-    const candidates = zip.folder(/^[^/]+\/?$/)
-    for (let i = 0; i < candidates.length; ++i) {
-        const candidate = candidates[i]
-        if (candidate.name.endsWith(`${dirName}/`)) {
-            return zip.folder(candidate.name) ?? undefined
-        }
-        candidates.push(...(zip.folder(candidate.name)?.folder(/^[^/]+\/?$/) ?? []))
-    }
-}
-
-function* walkZip(zip: JSZip | undefined | null) {
-    const entries: [string, JSZip.JSZipObject][] = []
-    zip?.forEach((path, file) => {
-        entries.push([path, file])
-    })
-    yield* entries
 }
 
 function httpsGet(url: string): Promise<Buffer> {
@@ -71,7 +52,7 @@ export async function createProject(type: string, name: string): Promise<void> {
     console.log(`creating ${type} in ${targetDir}`)
     await execa('git', ['init', targetDir])
 
-    const artifact = findZipDir(
+    const artifact = findZipFolder(
         await JSZip.loadAsync(await httpsGet(`${repositoryUrl}/archive/v${version}.zip`)),
         'examples'
     )?.folder(type)

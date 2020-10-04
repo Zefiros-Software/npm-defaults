@@ -1,3 +1,10 @@
+# [0.2.0-beta.67](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.66...v0.2.0-beta.67) (2020-10-04)
+
+
+### Bug Fixes
+
+* **lefthook:** run in the correct directory ([a1c3375](https://github.com/Zefiros-Software/npm-defaults/commit/a1c3375b2e81151f02e955f814e7ab129b8375c6))
+
 # [0.2.0-beta.66](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.65...v0.2.0-beta.66) (2020-10-04)
 
 

@@ -1,3 +1,10 @@
+# [0.2.0-beta.66](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.65...v0.2.0-beta.66) (2020-10-04)
+
+
+### Bug Fixes
+
+* **lefthook:** make sure lefthook is installed before bootstrapping ([#23](https://github.com/Zefiros-Software/npm-defaults/issues/23)) ([249c222](https://github.com/Zefiros-Software/npm-defaults/commit/249c2223b0c2c01250a375b7e3af4d2f1e1c7568))
+
 # [0.2.0-beta.65](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.64...v0.2.0-beta.65) (2020-09-30)
 
 

@@ -39,6 +39,25 @@ function httpsGet(url: string): Promise<Buffer> {
     })
 }
 
+async function addZipFolder(root: string, subPath: string, zip: JSZip): Promise<JSZip> {
+    const dir = zip.folder(subPath)!
+    const current = path.join(root, subPath)
+    for (const entry of await fs.promises.readdir(current)) {
+        const entryPath = path.join(current, entry)
+        if ((await fs.promises.stat(entryPath)).isDirectory()) {
+            await addZipFolder(current, entry, dir)
+        } else {
+            dir.file(entry, fs.promises.readFile(entryPath))
+        }
+    }
+    return zip
+}
+
+async function createLocalZip() {
+    const zip = new JSZip()
+    return addZipFolder(root, 'examples', zip)
+}
+
 /* eslint-disable */
 const {
     version,
@@ -47,13 +66,13 @@ const {
 /* eslint-enable */
 
 const [, repositoryUrl] = /(https:\/\/.*?)(?:\.git)?$/.exec(gitUrl) ?? []
-export async function createProject(type: string, name: string): Promise<void> {
+export async function createProject(type: string, name: string, local: boolean): Promise<void> {
     const targetDir = path.resolve(process.cwd(), name)
     console.log(`creating ${type} in ${targetDir}`)
     await execa('git', ['init', targetDir])
 
     const artifact = findZipFolder(
-        await JSZip.loadAsync(await httpsGet(`${repositoryUrl}/archive/v${version}.zip`)),
+        local ? await createLocalZip() : await JSZip.loadAsync(await httpsGet(`${repositoryUrl}/archive/v${version}.zip`)),
         'examples'
     )?.folder(type)
 
@@ -99,10 +118,15 @@ export function builder(yargs: Argv) {
             type: 'string',
             required: true,
         })
+        .option('local', {
+            describe: 'create from local examples instead of Github artifact',
+            type: 'boolean',
+            default: fs.existsSync(path.join(root, 'examples')),
+        })
 }
 
 export async function handler(argv: ReturnType<typeof builder>['argv']): Promise<void> {
-    await createProject(argv.type, argv.name!)
+    await createProject(argv.type, argv.name!, argv.local)
 }
 
 export default {

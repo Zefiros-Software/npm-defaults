@@ -42,14 +42,18 @@ function httpsGet(url: string): Promise<Buffer> {
 async function addZipFolder(root: string, subPath: string, zip: JSZip): Promise<JSZip> {
     const dir = zip.folder(subPath)!
     const current = path.join(root, subPath)
-    for (const entry of await fs.promises.readdir(current)) {
-        const entryPath = path.join(current, entry)
-        if ((await fs.promises.stat(entryPath)).isDirectory()) {
-            await addZipFolder(current, entry, dir)
-        } else {
-            dir.file(entry, fs.promises.readFile(entryPath))
-        }
-    }
+
+    const entries = await fs.promises.readdir(current)
+    await Promise.all(
+        entries.map(async (entry) => {
+            const entryPath = path.join(current, entry)
+            if ((await fs.promises.stat(entryPath)).isDirectory()) {
+                await addZipFolder(current, entry, dir)
+            } else {
+                dir.file(entry, fs.promises.readFile(entryPath))
+            }
+        })
+    )
     return zip
 }
 

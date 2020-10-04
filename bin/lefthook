@@ -15,5 +15,5 @@ if (!isCi) {
         execa.commandSync('npm i -g @arkweid/lefthook', { stdio: 'inherit' })
     }
 
-    execa.commandSync('lefthook install', { stdio: 'inherit' })
+    execa.commandSync('lefthook install', { stdio: 'inherit', cwd: process.env.INIT_CWD || process.cwd() })
 }

@@ -1,3 +1,10 @@
+# [0.2.0-beta.68](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.67...v0.2.0-beta.68) (2020-10-05)
+
+
+### Features
+
+* **create:** use github artifacts to create from examples ([#24](https://github.com/Zefiros-Software/npm-defaults/issues/24)) ([f852bbd](https://github.com/Zefiros-Software/npm-defaults/commit/f852bbd3f8d6a6cc8d2357dded621befa7ab0268))
+
 # [0.2.0-beta.67](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.66...v0.2.0-beta.67) (2020-10-04)
 
 

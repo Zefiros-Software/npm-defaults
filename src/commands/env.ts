@@ -35,24 +35,43 @@ export async function install(update: boolean, dependencies: readonly string[] =
         installedDeps = {}
     }
 
-    await execa(
-        'npm',
-        [
-            'install',
-            '-g',
-            ...[
-                ...Object.entries(globalDependencies).map(([pkg, version]: readonly [string, string]) => `${pkg}@${version}`),
-                ...dependencies,
-            ].filter((dep) => {
+    const { stdout: globalNpmRoot } = await execa('npm', ['root', '-g'])
+
+    await Promise.allSettled([
+        execa(
+            'npm',
+            [
+                'install',
+                '-g',
+                ...[
+                    ...Object.entries(globalDependencies).map(([pkg, version]: readonly [string, string]) => `${pkg}@${version}`),
+                    ...dependencies,
+                ].filter((dep) => {
+                    const [, name, version] = /^(@?.+)(?:@(.*)$)/.exec(dep) ?? []
+                    const installedVersion = installedDeps?.[name]?.version
+                    return version === undefined || installedVersion === undefined || !satisfies(installedVersion, version)
+                }),
+            ],
+            {
+                stdio: 'inherit',
+            }
+        ),
+
+        ...[
+            ...Object.entries(globalDependencies).map(([pkg, version]: readonly [string, string]) => `${pkg}@${version}`),
+            ...dependencies,
+        ]
+            .filter((dep) => {
                 const [, name, version] = /^(@?.+)(?:@(.*)$)/.exec(dep) ?? []
                 const installedVersion = installedDeps?.[name]?.version
-                return version === undefined || installedVersion === undefined || !satisfies(installedVersion, version)
+                return version !== undefined && installedVersion !== undefined && satisfies(installedVersion, version)
+            })
+            .map((dep) => {
+                const [, name] = /^(@?.+)(?:@(.*)$)/.exec(dep) ?? []
+                console.log(globalNpmRoot, name)
+                return execa('npm', ['-g', 'build', `${globalNpmRoot}/${name}`], { stdio: 'inherit' })
             }),
-        ],
-        {
-            stdio: 'inherit',
-        }
-    )
+    ])
 }
 
 export function builder(yargs: Argv) {

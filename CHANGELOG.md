@@ -1,3 +1,10 @@
+# [0.2.0-beta.70](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.69...v0.2.0-beta.70) (2020-10-05)
+
+
+### Bug Fixes
+
+* **env:** rebuild already installed global dependencies ([#26](https://github.com/Zefiros-Software/npm-defaults/issues/26)) ([05dfb9e](https://github.com/Zefiros-Software/npm-defaults/commit/05dfb9e28f0354f468ae281e3690c60d6bc470fd))
+
 # [0.2.0-beta.69](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.68...v0.2.0-beta.69) (2020-10-05)
 
 

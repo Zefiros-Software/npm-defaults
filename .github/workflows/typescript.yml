@@ -13,17 +13,21 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: 12
-    - run: npm install -g yarn yalc codecov
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
+      run: |
+        echo "::set-output name=cache_dir::$(yarn cache dir)"
+        echo "::set-output name=global_dir::$(npm root -g)"
     - uses: actions/cache@v2
       id: yarn-cache
       with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        path: |
+          ${{ steps.yarn-cache-dir-path.outputs.cache_dir }}
+          ${{ steps.yarn-cache-dir-path.outputs.global_dir }}
         key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
+    - run: npm install -g yarn yalc codecov
     - name: yarn link
       run: |
         export PATH="$(yarn global bin):$PATH"

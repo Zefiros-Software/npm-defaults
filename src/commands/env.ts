@@ -26,7 +26,7 @@ export async function install(update: boolean, dependencies: readonly string[] =
                     dependencies: InstalledDependencies
                 }
                 installedDeps = deps
-            } catch (err) {
+            } catch (e) {
                 installedDeps = {}
             }
         }

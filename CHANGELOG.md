@@ -1,3 +1,10 @@
+# [0.2.0-beta.69](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.68...v0.2.0-beta.69) (2020-10-05)
+
+
+### Features
+
+* **env:** check for already installed versions before global install ([#25](https://github.com/Zefiros-Software/npm-defaults/issues/25)) ([e178b46](https://github.com/Zefiros-Software/npm-defaults/commit/e178b46827c638ffe7d7106b8abfd806265b7f3d))
+
 # [0.2.0-beta.68](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.67...v0.2.0-beta.68) (2020-10-05)
 
 

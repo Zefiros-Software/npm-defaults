@@ -1,18 +1,2 @@
-commit-msg:
-  commands:
-    lint-commit-msg:
-      run: commitlint --edit ./.git/COMMIT_EDITMSG
-pre-commit:
-  parallel: true
-  commands:
-    eslint:
-      glob: '*.{ts, tsx}'
-      run: 'yarn eslint --fix --resolve-plugins-relative-to . --ignore-pattern examples {staged_files}'
-    format-json:
-      glob: '*.{js,json}'
-      run: 'yarn prettier --write --config prettier.config.js {staged_files}'
-pre-push:
-  parallel: true
-  commands:
-    test:
-      run: 'yarn test'
+extends:
+  - ./lefthook.base.yml

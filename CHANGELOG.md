@@ -1,3 +1,11 @@
+# [0.2.0-beta.71](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.70...v0.2.0-beta.71) (2020-10-19)
+
+
+### Features
+
+* remove redundant devDependencies ([#28](https://github.com/Zefiros-Software/npm-defaults/issues/28)) ([3d68fc4](https://github.com/Zefiros-Software/npm-defaults/commit/3d68fc4ec434cfea5be8a815c1520d8e3605c224))
+* **lefthook:** add lefthook.base.yml ([#27](https://github.com/Zefiros-Software/npm-defaults/issues/27)) ([fc602bf](https://github.com/Zefiros-Software/npm-defaults/commit/fc602bf433f9d036ee2803cc5194f1ee40ea27b2))
+
 # [0.2.0-beta.70](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.69...v0.2.0-beta.70) (2020-10-05)
 
 

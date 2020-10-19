@@ -19,7 +19,7 @@
     "build": "webpack --version && webpack",
     "test": "concurrently \"yarn check:types\" \"jest test --maxWorkers=1\"",
     "fix": "yarn lint --fix",
-    "lint": "yarn eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-path .gitignore",
+    "lint": "yarn eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-path .gitignore --resolve-plugins-relative-to .",
     "lint:full": "bash -c \"FULL_LINT=true yarn lint\"",
     "format": "prettier \"**/*.{ts,js,json,yml,yaml}\" --ignore-path .gitignore --write",
     "release": "semantic-release",

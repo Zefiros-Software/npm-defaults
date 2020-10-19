@@ -27,7 +27,7 @@ export const scripts: Record<string, Record<string, string> | undefined> = {
         ['test']: 'concurrently "yarn check:types" "jest test --maxWorkers=1"',
         ['coverage']: 'jest test --maxWorkers=1 --collectCoverage=true',
         ['fix']: 'yarn lint --fix',
-        ['lint']: 'yarn eslint "{src,test,typing}/**/*.{ts,js}" --ignore-path .gitignore',
+        ['lint']: 'yarn eslint "{src,test,typing}/**/*.{ts,js}" --ignore-path .gitignore --resolve-plugins-relative-to .',
         ['lint:full']: 'bash -c "FULL_LINT=true yarn lint"',
         ['format']: 'prettier "**/*.{ts,js,json,yml,yaml}" --ignore-path .gitignore --write',
         ['package']: 'rm -rf dist && yarn build',

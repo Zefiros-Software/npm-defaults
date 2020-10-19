@@ -1,3 +1,10 @@
+# [0.2.0-beta.72](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.71...v0.2.0-beta.72) (2020-10-19)
+
+
+### Bug Fixes
+
+* simplify format and lint scripts ([#30](https://github.com/Zefiros-Software/npm-defaults/issues/30)) ([9dbfd88](https://github.com/Zefiros-Software/npm-defaults/commit/9dbfd8864dff1ecc095ee6985c2664733d83e7c0))
+
 # [0.2.0-beta.71](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.70...v0.2.0-beta.71) (2020-10-19)
 
 

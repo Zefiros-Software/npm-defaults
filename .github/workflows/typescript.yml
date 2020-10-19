@@ -6,66 +6,66 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-      with:
-        fetch-depth: 1
-    - name: Use Node.js 12
-      uses: actions/setup-node@master
-      with:
-        node-version: 12
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: |
-        echo "::set-output name=cache_dir::$(yarn cache dir)"
-        echo "::set-output name=global_dir::$(npm root -g)"
-    - uses: actions/cache@v2
-      id: yarn-cache
-      with:
-        path: |
-          ${{ steps.yarn-cache-dir-path.outputs.cache_dir }}
-          ${{ steps.yarn-cache-dir-path.outputs.global_dir }}
-        key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-    - run: npm install -g yarn yalc codecov
-    - name: yarn link
-      run: |
-        export PATH="$(yarn global bin):$PATH"
-        
-        yarn install        
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Use Node.js 12
+        uses: actions/setup-node@master
+        with:
+          node-version: 12
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: |
+          echo "::set-output name=cache_dir::$(yarn cache dir)"
+          echo "::set-output name=global_dir::$(npm root -g)"
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            ${{ steps.yarn-cache-dir-path.outputs.cache_dir }}
+            ${{ steps.yarn-cache-dir-path.outputs.global_dir }}
+          key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: npm install -g yarn yalc codecov
+      - name: yarn link
+        run: |
+          export PATH="$(yarn global bin):$PATH"
 
-        # initialize environment
-        ./bin/run env --install
-        
-        # for using named modules
-        yarn link
-        yarn link @zefiros/npm-defaults
+          yarn install        
 
-        npm-defaults ci
-        yalc publish
-    - name: library - yarn install, build, and test
-      working-directory: ./examples/library
-      run: |
-        yalc add @zefiros/npm-defaults
-        ../../bin/run ci
-    - name: yargs-cli - yarn install, build, and test
-      working-directory: ./examples/yargs-cli
-      run: |
-        yalc add @zefiros/npm-defaults
-        ../../bin/run ci
-    - name: coverage
-      run: codecov
-      env:
-        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-    - name: release
-      if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
-      run: |
-         ./bin/run release
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-    - name: create pull request
-      if: github.ref == 'refs/heads/development'
-      run: ./bin/run make-release
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          # initialize environment
+          ./bin/run env --install
+
+          # for using named modules
+          yarn link
+          yarn link @zefiros/npm-defaults
+
+          npm-defaults ci
+          yalc publish
+      - name: library - yarn install, build, and test
+        working-directory: ./examples/library
+        run: |
+          yalc add @zefiros/npm-defaults
+          ../../bin/run ci
+      - name: yargs-cli - yarn install, build, and test
+        working-directory: ./examples/yargs-cli
+        run: |
+          yalc add @zefiros/npm-defaults
+          ../../bin/run ci
+      - name: coverage
+        run: codecov
+        env:
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+      - name: release
+        if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
+        run: |
+          ./bin/run release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: create pull request
+        if: github.ref == 'refs/heads/development'
+        run: ./bin/run make-release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

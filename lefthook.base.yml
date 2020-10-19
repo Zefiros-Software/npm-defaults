@@ -7,10 +7,10 @@ pre-commit:
   commands:
     eslint:
       glob: '*.{ts, tsx}'
-      run: 'yarn eslint --fix --resolve-plugins-relative-to . --ignore-pattern examples {staged_files}'
+      run: 'yarn eslint --fix --ignore-path .gitignore {staged_files}'
     format-json:
-      glob: '*.{js,json}'
-      run: 'yarn prettier --write --config prettier.config.js {staged_files}'
+      glob: '*.{js,json,yml,yaml}'
+      run: 'yarn prettier --write --ignore-path .gitignore {staged_files}'
 pre-push:
   parallel: true
   commands:

@@ -1,3 +1,5 @@
+/** @typedef {import('prettier').Options} PrettierOptions */
+/** @type {PrettierOptions & { overrides: Array<{ files: string; options: PrettierOptions }>}} */
 module.exports = {
     tabWidth: 4,
     printWidth: 130,
@@ -13,6 +15,19 @@ module.exports = {
             options: {
                 parser: 'json',
                 tabWidth: 2,
+            },
+        },
+        {
+            files: ['**/*.yml', '**/*.yaml'],
+            options: {
+                parser: 'yaml',
+                tabWidth: 2,
+            },
+        },
+        {
+            files: ['**/*.md'],
+            options: {
+                parser: 'markdown',
             },
         },
     ],

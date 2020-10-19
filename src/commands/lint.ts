@@ -12,10 +12,11 @@ import fs from 'fs'
 interface PackageJsonDependencies {
     peerDependencies: Record<string, string>
     devDependencies: Record<string, string>
+    dependencies: Record<string, string>
 }
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
-const { peerDependencies, devDependencies }: PackageJsonDependencies = require('../../package.json')
+const { peerDependencies, devDependencies, dependencies }: PackageJsonDependencies = require('../../package.json')
 
 export const scripts: Record<string, Record<string, string> | undefined> = {
     [PackageType.Common]: {
@@ -307,6 +308,9 @@ export function lintDevDependencies(state: LintState): void {
     }
     for (const [entry, value] of Object.entries(config ? state.options.devDependencies[config.type] ?? {} : {})) {
         packagejson.devDependencies[entry] = value!
+    }
+    for (const entry in dependencies ?? {}) {
+        delete packagejson.devDependencies[entry]
     }
     if (JSON.stringify(packagejson.devDependencies) !== json) {
         console.warn(

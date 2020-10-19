@@ -41,6 +41,7 @@
     "commitlint.config.js",
     "dist",
     "jest.config.js",
+    "lefthook.base.yml",
     "package.json",
     "prettier.config.js",
     "release.config.js",

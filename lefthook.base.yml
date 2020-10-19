@@ -10,7 +10,7 @@ pre-commit:
       run: 'yarn eslint --fix --resolve-plugins-relative-to . {staged_files}'
     format-json:
       glob: '*.{js,json,yml,yaml}'
-      run: 'yarn prettier --write --ignore-path .gitignore {staged_files}'
+      run: 'yarn prettier --write {staged_files}'
 pre-push:
   parallel: true
   commands:

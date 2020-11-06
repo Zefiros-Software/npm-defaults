@@ -14,11 +14,7 @@
   "npm-defaults": {
     "type": "yargs-cli"
   },
-  "files": [
-    "bin",
-    "dist",
-    "package.json"
-  ],
+  "files": ["bin", "dist", "package.json"],
   "scripts": {
     "build": "webpack --version && webpack",
     "test": "concurrently \"yarn check:types\" \"jest test --maxWorkers=1\"",

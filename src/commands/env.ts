@@ -18,15 +18,14 @@ export async function install(update: boolean, dependencies: readonly string[] =
             const { stdout } = await execa('npm', ['-g', '-j', 'ls'])
             const { dependencies: deps } = JSON.parse(stdout ?? '{}') as { dependencies: InstalledDependencies }
             installedDeps = deps
-        } catch (err) {
+        } catch (err: unknown) {
             // The command may throw on "missing peerDependencies", but the output may still be useful
             try {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                const { dependencies: deps } = JSON.parse((err.stdout as string) ?? '{}') as {
+                const { dependencies: deps } = JSON.parse((err as { stdout?: string }).stdout ?? '{}') as {
                     dependencies: InstalledDependencies
                 }
                 installedDeps = deps
-            } catch (e) {
+            } catch (e: unknown) {
                 installedDeps = {}
             }
         }

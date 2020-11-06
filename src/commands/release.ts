@@ -23,7 +23,7 @@ export async function handler(): Promise<void> {
         const { exitCode } = await createRelease()
 
         console.log(`Exited with code ${exitCode}`)
-    } catch (error) {
+    } catch (error: unknown) {
         console.error(error)
     }
 }

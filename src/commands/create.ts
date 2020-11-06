@@ -26,7 +26,7 @@ function httpsGet(url: string): Promise<Buffer> {
                     for await (const chunk of response[Symbol.asyncIterator]()) {
                         chunks.push(Buffer.from(chunk))
                     }
-                } catch (err) {
+                } catch (err: unknown) {
                     reject(err)
                 }
                 if (response.headers.location !== undefined) {

@@ -71,7 +71,7 @@ export async function handler(): Promise<void> {
     console.log(`Creating release pull request for version ${version}`)
     try {
         await makePullRequest(octokit, repo, version)
-    } catch (error) {
+    } catch (error: unknown) {
         console.log(`A pull request already exists, updating the old one:\n${error as string}`)
         await updatePullRequest(octokit, repo, version)
     }

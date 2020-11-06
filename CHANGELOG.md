@@ -1,3 +1,11 @@
+# [0.2.0-beta.73](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.72...v0.2.0-beta.73) (2020-11-06)
+
+
+### Features
+
+* no implicit any catch ([886bc53](https://github.com/Zefiros-Software/npm-defaults/commit/886bc53a5c72306561fbb26aef1a5b5ceb79dc22))
+* windows lefthook support ([3a8452e](https://github.com/Zefiros-Software/npm-defaults/commit/3a8452e8fa7a0e47a753bd87c351bcc04042d2b3))
+
 # [0.2.0-beta.72](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.71...v0.2.0-beta.72) (2020-10-19)
 
 

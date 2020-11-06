@@ -27,7 +27,7 @@ jobs:
           key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - run: npm install -g yarn yalc codecov
+      - run: npm install -g yarn yalc
       - name: yarn link
         run: |
           export PATH="$(yarn global bin):$PATH"
@@ -54,9 +54,9 @@ jobs:
           yalc add @zefiros/npm-defaults
           ../../bin/run ci
       - name: coverage
-        run: codecov
-        env:
-          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: release
         if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
         run: |

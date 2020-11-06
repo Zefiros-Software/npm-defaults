@@ -12,7 +12,10 @@
   "engines": {
     "node": ">=12"
   },
-  "files": ["dist", "package.json"],
+  "files": [
+    "dist",
+    "package.json"
+  ],
   "scripts": {
     "build": "webpack --version && webpack",
     "test": "concurrently \"yarn check:types\" \"jest test --maxWorkers=1\"",
@@ -33,6 +36,6 @@
   },
   "devDependencies": {
     "@zefiros/npm-defaults": "file:.yalc/@zefiros/npm-defaults",
-    "typescript": "^4.0.3"
+    "typescript": "^4.1.1-rc"
   }
 }

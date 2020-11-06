@@ -4,15 +4,19 @@ const isCi = require('is-ci')
 if (!isCi) {
     const execa = require('execa')
 
-    let dependencies = {}
-    try {
-        const { stdout } = execa.commandSync('npm -j -g ls @arkweid/lefthook')
-        dependencies = JSON.parse(stdout).dependencies
-    } catch (err) {
-        dependencies = {}
-    }
-    if (dependencies['@arkweid/lefthook'] === undefined) {
-        execa.commandSync('npm i -g @arkweid/lefthook', { stdio: 'inherit' })
+    const { exitCode } = execa.commandSync('lefthook version')
+
+    if (exitCode != 0) {
+        let dependencies = {}
+        try {
+            const { stdout } = execa.commandSync('npm -j -g ls @arkweid/lefthook')
+            dependencies = JSON.parse(stdout).dependencies
+        } catch (err) {
+            dependencies = {}
+        }
+        if (dependencies['@arkweid/lefthook'] === undefined) {
+            execa.commandSync('npm i -g @arkweid/lefthook', { stdio: 'inherit' })
+        }
     }
 
     execa.commandSync('lefthook install', { stdio: 'inherit', cwd: process.env.INIT_CWD || process.cwd() })

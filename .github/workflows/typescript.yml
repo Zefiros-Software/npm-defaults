@@ -13,35 +13,34 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 12
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
+      - name: Get npm cache directory path
+        id: npm-cache-dir-path
         run: |
-          echo "::set-output name=cache_dir::$(yarn cache dir)"
           echo "::set-output name=global_dir::$(npm root -g)"
       - uses: actions/cache@v2
-        id: yarn-cache
+        id: npm-cache
         with:
           path: |
-            ${{ steps.yarn-cache-dir-path.outputs.cache_dir }}
-            ${{ steps.yarn-cache-dir-path.outputs.global_dir }}
-          key: ${{ runner.os }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
+            ~/.npm
+            ${{ steps.npm-cache-dir-path.outputs.global_dir }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
-      - run: npm install -g yarn yalc
-      - name: yarn link
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - run: npm install -g npm@7 yalc
+      - name: npm link
         run: |
-          export PATH="$(yarn global bin):$PATH"
-
-          yarn install        
+          npm install
 
           # initialize environment
           ./bin/run env --install
 
           # for using named modules
-          yarn link
-          yarn link @zefiros/npm-defaults
+          npm link
 
           npm-defaults ci
+
           yalc publish
       - name: library - yarn install, build, and test
         working-directory: ./examples/library

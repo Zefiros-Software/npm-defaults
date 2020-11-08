@@ -20,25 +20,23 @@ const { peerDependencies, devDependencies, dependencies }: PackageJsonDependenci
 
 export const scripts: Record<string, Record<string, string> | undefined> = {
     [PackageType.Common]: {
-        ['build']: 'webpack --version && webpack',
-        ['check:cost']: 'npx cost-of-modules --yarn --no-install --include-dev',
-        ['check:types']: 'yarn tsc -p tsconfig.json',
-        ['check:project']: 'yarn npm-defaults lint',
-        ['test']: 'concurrently "yarn check:types" "jest test --maxWorkers=1"',
+        ['build']: 'npx webpack --version && npx webpack',
+        ['check:cost']: 'npx cost-of-modules --no-install --include-dev',
+        ['check:types']: 'npx tsc -p tsconfig.json',
+        ['check:project']: 'npx npm-defaults lint',
+        ['test']: 'npx concurrently "npm run check:types" "jest test --maxWorkers=1"',
         ['coverage']: 'jest test --maxWorkers=1 --collectCoverage=true',
-        ['fix']: 'yarn lint --fix',
-        ['lint']: 'yarn eslint "{src,test,typing}/**/*.{ts,js}" --ignore-path .gitignore --resolve-plugins-relative-to .',
-        ['lint:full']: 'bash -c "FULL_LINT=true yarn lint"',
-        ['format']: 'prettier "**/*.{ts,js,json,yml,yaml}" --ignore-path .gitignore --write',
-        ['package']: 'rm -rf dist && yarn build',
-        ['release']: 'semantic-release',
-        ['release:dry']: 'yarn release --dry-run',
+        ['fix']: 'npm run lint --fix',
+        ['lint']:
+            'npx eslint "{src,test,typing}/**/*.{ts,js}" --no-eslintrc -c .eslintrc.js --ignore-path .gitignore --resolve-plugins-relative-to .',
+        ['lint:full']: 'bash -c "FULL_LINT=true npm run lint"',
+        ['format']: 'npx prettier "**/*.{ts,js,json,yml,yaml}" --ignore-path .gitignore --write',
+        ['package']: 'rm -rf dist && npm run build',
+        ['release']: 'npx semantic-release',
+        ['release:dry']: 'npm run release --dry-run',
     },
     [PackageType.Library]: {},
-    [PackageType.YargsCli]: {
-        ['check:types']: 'yarn tsc -p tsconfig.json',
-        ['release']: 'semantic-release',
-    },
+    [PackageType.YargsCli]: {},
 }
 
 export const files: Record<string, string[] | undefined> = {

@@ -34,8 +34,6 @@ export async function install(update: boolean, dependencies: readonly string[] =
         installedDeps = {}
     }
 
-    const { stdout: globalNpmRoot } = await execa('npm', ['root', '-g'])
-
     await Promise.allSettled([
         execa(
             'npm',
@@ -67,8 +65,7 @@ export async function install(update: boolean, dependencies: readonly string[] =
             })
             .map((dep) => {
                 const [, name] = /^(@?.+)(?:@(.*)$)/.exec(dep) ?? []
-                console.log(globalNpmRoot, name)
-                return execa('npm', ['-g', 'build', `${globalNpmRoot}/${name}`], { stdio: 'inherit' })
+                return execa('npm', ['-g', 'rebuild', `${name}`], { stdio: 'inherit' })
             }),
     ])
 }

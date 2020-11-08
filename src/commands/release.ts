@@ -3,7 +3,7 @@ import { packagejson } from '~/common/config'
 import execa from 'execa'
 
 export async function createRelease(): Promise<execa.ExecaReturnValue<string>> {
-    const subprocess = execa('yarn', ['release'], {
+    const subprocess = execa('npm', ['run', 'release'], {
         extendEnv: true,
         env: {
             GIT_AUTHOR_NAME: 'Hoid',

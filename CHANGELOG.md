@@ -1,3 +1,11 @@
+# [0.2.0-beta.74](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.73...v0.2.0-beta.74) (2020-11-26)
+
+
+### Features
+
+* **npm:** upgrade to npm@7 ([#32](https://github.com/Zefiros-Software/npm-defaults/issues/32)) ([1b9d55b](https://github.com/Zefiros-Software/npm-defaults/commit/1b9d55b6726727c6bd570c42efce1186d18a413c))
+* use codecov github action ([#31](https://github.com/Zefiros-Software/npm-defaults/issues/31)) ([34297f9](https://github.com/Zefiros-Software/npm-defaults/commit/34297f983573e6ae9f81298d29fca19f87dd037a))
+
 # [0.2.0-beta.73](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.72...v0.2.0-beta.73) (2020-11-06)
 
 

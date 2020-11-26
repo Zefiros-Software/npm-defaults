@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const fs = require('fs')
 const isCi = require('is-ci')
 
 if (!isCi) {
@@ -18,6 +19,7 @@ if (!isCi) {
             execa.commandSync('npm i -g @arkweid/lefthook', { stdio: 'inherit' })
         }
     }
-
-    execa.commandSync('lefthook install', { stdio: 'inherit', cwd: process.env.INIT_CWD || process.cwd() })
+    if (fs.existsSync('./.git')) {
+        execa.commandSync('lefthook install', { stdio: 'inherit', cwd: process.env.INIT_CWD || process.cwd() })
+    }
 }

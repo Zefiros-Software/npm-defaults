@@ -14,20 +14,24 @@
   "npm-defaults": {
     "type": "yargs-cli"
   },
-  "files": ["bin", "dist", "package.json"],
+  "files": [
+    "bin",
+    "dist",
+    "package.json"
+  ],
   "scripts": {
-    "build": "webpack --version && webpack",
-    "test": "concurrently \"yarn check:types\" \"jest test --maxWorkers=1\"",
-    "fix": "yarn lint --fix",
-    "lint": "yarn eslint \"{src,test,typing}/**/*.{ts,js}\" --ignore-path .gitignore --resolve-plugins-relative-to .",
-    "lint:full": "bash -c \"FULL_LINT=true yarn lint\"",
-    "format": "prettier \"**/*.{ts,js,json,yml,yaml}\" --ignore-path .gitignore --write",
-    "release": "semantic-release",
-    "release:dry": "yarn release --dry-run",
-    "package": "rm -rf dist && yarn build",
-    "check:types": "yarn tsc -p tsconfig.json",
-    "check:project": "yarn npm-defaults lint",
-    "check:cost": "npx cost-of-modules --yarn --no-install --include-dev",
+    "build": "npx webpack --version && npx webpack",
+    "test": "npx concurrently \"npm run check:types\" \"jest test --maxWorkers=1\"",
+    "fix": "npm run lint --fix",
+    "lint": "npx eslint \"{src,test,typing}/**/*.{ts,js}\" --no-eslintrc -c .eslintrc.js --ignore-path .gitignore --resolve-plugins-relative-to .",
+    "lint:full": "bash -c \"FULL_LINT=true npm run lint\"",
+    "format": "npx prettier \"**/*.{ts,js,json,yml,yaml}\" --ignore-path .gitignore --write",
+    "release": "npx semantic-release",
+    "release:dry": "npm run release --dry-run",
+    "package": "rm -rf dist && npm run build",
+    "check:types": "npx tsc -p tsconfig.json",
+    "check:project": "npx npm-defaults lint",
+    "check:cost": "npx cost-of-modules --no-install --include-dev",
     "coverage": "jest test --maxWorkers=1 --collectCoverage=true"
   },
   "dependencies": {},

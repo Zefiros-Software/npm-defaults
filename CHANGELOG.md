@@ -1,3 +1,10 @@
+# [0.2.0-beta.75](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.74...v0.2.0-beta.75) (2020-12-21)
+
+
+### Bug Fixes
+
+* correctly check error codes ([c79542d](https://github.com/Zefiros-Software/npm-defaults/commit/c79542d1e5c8b29f559d16194270c3d76319122a))
+
 # [0.2.0-beta.74](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.73...v0.2.0-beta.74) (2020-11-26)
 
 

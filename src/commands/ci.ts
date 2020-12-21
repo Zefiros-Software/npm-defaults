@@ -29,7 +29,7 @@ export const commands: (Command | Command[])[] = [
 
 export async function runCommand(command: Command | Command[], allowParallel = true): Promise<void> {
     if (allowParallel && Array.isArray(command)) {
-        const codes = await concurrently(
+        const codes = (((await concurrently(
             command.map(
                 (c: Command) =>
                     isScriptCommand(c) ? `npm run ${c.run}` : isComplexCommand(c) ? `npm ${c.args.join(' ')}` : `npm ${c}`,
@@ -37,8 +37,11 @@ export async function runCommand(command: Command | Command[], allowParallel = t
                     maxProcesses: cpus().length,
                 }
             )
-        )
-        console.log(`Exited with codes ${codes ?? ''}`)
+        )) as unknown) as { exitCode: number }[]).map((c) => c.exitCode)
+        if (codes.some((c) => c !== 0)) {
+            throw new Error(`Process exited with non-zero code!`)
+        }
+        console.log(`Exited with codes [${codes.join(', ') ?? ''}]`)
     } else {
         const subcommands = Array.isArray(command) ? command : [command]
         for (const subcommand of subcommands) {

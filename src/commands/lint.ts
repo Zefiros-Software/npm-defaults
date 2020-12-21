@@ -374,7 +374,7 @@ export function lintDirectory(options: Partial<LintOptions> = {}): void {
     lintTemplate(state)
 
     if (state.shouldFail) {
-        console.error('Found errors in the project')
+        throw new Error('Found errors in the project')
     }
 }
 

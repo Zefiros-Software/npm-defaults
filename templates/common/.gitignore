@@ -8,3 +8,5 @@ yarn-error.log
 .yarn
 .yalc
 yalc.lock
+
+*.schema.js

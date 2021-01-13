@@ -1,3 +1,10 @@
+# [0.2.0-beta.76](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.75...v0.2.0-beta.76) (2021-01-13)
+
+
+### Features
+
+* upgrade npm dependencies, allow in source testing ([fcde03b](https://github.com/Zefiros-Software/npm-defaults/commit/fcde03bf7ee9c06dfbb98bba9286f5cb40e67b2d))
+
 # [0.2.0-beta.75](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.74...v0.2.0-beta.75) (2020-12-21)
 
 

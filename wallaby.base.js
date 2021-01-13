@@ -9,7 +9,7 @@ module.exports = (w) => {
             '!test/**/*.spec.ts',
             '!src/vendor.d.ts',
         ],
-        tests: ['test/**/*.spec.ts'],
+        tests: ['test/**/*.spec.ts', 'src/**/*.spec.ts'],
 
         env: { type: 'node' },
 

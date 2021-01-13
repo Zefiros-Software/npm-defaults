@@ -24,7 +24,7 @@ export const scripts: Record<string, Record<string, string> | undefined> = {
         ['check:cost']: 'npx cost-of-modules --no-install --include-dev',
         ['check:types']: 'npx tsc -p tsconfig.json',
         ['check:project']: 'npx npm-defaults lint',
-        ['test']: 'npx concurrently "npm run check:types" "jest test --maxWorkers=1"',
+        ['test']: 'npx concurrently "npm run check:types" "npx jest test --maxWorkers=1"',
         ['coverage']: 'jest test --maxWorkers=1 --collectCoverage=true',
         ['fix']: 'npm run lint --fix',
         ['lint']:
@@ -45,7 +45,9 @@ export const files: Record<string, string[] | undefined> = {
 }
 
 export const packageDependencies: Record<string, Record<string, string | undefined> | undefined> = {
-    [PackageType.Common]: {},
+    [PackageType.Common]: {
+        tslib: devDependencies['tslib'],
+    },
     [PackageType.Library]: {},
     [PackageType.YargsCli]: {
         tslib: undefined,

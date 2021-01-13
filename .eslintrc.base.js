@@ -6,7 +6,7 @@ module.exports = {
         project: 'tsconfig.json',
     },
     reportUnusedDisableDirectives: true,
-    plugins: ['@typescript-eslint', 'import'],
+    plugins: ['@typescript-eslint', 'import', 'deprecation'],
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
@@ -59,6 +59,7 @@ module.exports = {
         'max-classes-per-file': 'off',
         'prefer-template': 'error',
         eqeqeq: ['error', 'always'],
+        'deprecation/deprecation': 'error',
 
         ...(process.env.VSCODE_PID || process.env.FULL_LINT
             ? {

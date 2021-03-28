@@ -14,20 +14,19 @@ jobs:
         with:
           node-version: 14
       - name: Get npm cache directory path
-        id: npm-cache-dir-path
+        id: npm-cache-dir
         run: |
           echo "::set-output name=global_dir::$(npm root -g)"
+          echo "::set-output name=cache_dir::$(npm config get cache)"
       - uses: actions/cache@v2
         id: npm-cache
         with:
           path: |
-            ~/.npm
-            ${{ steps.npm-cache-dir-path.outputs.global_dir }}
+            ${{ steps.npm-cache-dir.outputs.global_dir }}
+            ${{ steps.npm-cache-dir.outputs.cache_dir }}
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-node-
       - run: npm install -g npm@7 yalc
       - name: npm link
         run: |

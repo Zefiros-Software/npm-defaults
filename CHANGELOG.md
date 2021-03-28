@@ -1,3 +1,15 @@
+# [0.2.0-beta.77](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.76...v0.2.0-beta.77) (2021-03-28)
+
+
+### Bug Fixes
+
+* move eslint deprecation from devDependencies to dependencies ([890620c](https://github.com/Zefiros-Software/npm-defaults/commit/890620c2576fd90e739e7cda3ef4c05236e140cd))
+
+
+### Features
+
+* upgrade to node 14 ([5369c52](https://github.com/Zefiros-Software/npm-defaults/commit/5369c52906f2226b3da4dc3274aab1bf2021f9e5))
+
 # [0.2.0-beta.76](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.75...v0.2.0-beta.76) (2021-01-13)
 
 

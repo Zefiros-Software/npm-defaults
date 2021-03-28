@@ -28,7 +28,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm install -g npm@7 yalc
-      - name: npm link
+      - name: build
         run: |
           npm install
 

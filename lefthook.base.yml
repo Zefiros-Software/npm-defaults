@@ -7,12 +7,12 @@ pre-commit:
   commands:
     eslint:
       glob: '*.{ts, tsx}'
-      run: 'yarn eslint --fix --resolve-plugins-relative-to . {staged_files}'
+      run: 'npx eslint --fix --resolve-plugins-relative-to . {staged_files}'
     format-json:
       glob: '*.{js,json,yml,yaml}'
-      run: 'yarn prettier --write {staged_files}'
+      run: 'npx prettier --write {staged_files}'
 pre-push:
   parallel: true
   commands:
     test:
-      run: 'yarn test'
+      run: 'npm run check:types'

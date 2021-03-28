@@ -15,7 +15,6 @@ module.exports = {
         'plugin:import/warnings',
         'plugin:import/typescript',
         'plugin:prettier/recommended',
-        'prettier/@typescript-eslint',
     ],
     rules: {
         '@typescript-eslint/consistent-type-imports': 'error',

@@ -24,8 +24,8 @@ export const scripts: Record<string, Record<string, string> | undefined> = {
         ['check:cost']: 'npx cost-of-modules --no-install --include-dev',
         ['check:types']: 'npx tsc -p tsconfig.json',
         ['check:project']: 'npx npm-defaults lint',
-        ['test']: 'npx concurrently "npm run check:types" "npx jest test --maxWorkers=1"',
-        ['coverage']: 'jest test --maxWorkers=1 --collectCoverage=true',
+        ['test']: 'npx concurrently "npm run check:types" "npx jest"',
+        ['coverage']: 'jest --collectCoverage=true',
         ['fix']: 'npm run lint --fix',
         ['lint']:
             'npx eslint "{src,test,typing}/**/*.{ts,js}" --no-eslintrc -c .eslintrc.js --ignore-path .gitignore --resolve-plugins-relative-to .',

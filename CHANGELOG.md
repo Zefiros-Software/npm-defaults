@@ -1,3 +1,16 @@
+# [0.2.0-beta.78](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.77...v0.2.0-beta.78) (2021-03-29)
+
+
+### Bug Fixes
+
+* upgrade eslint formating settings in vscode ([cae8074](https://github.com/Zefiros-Software/npm-defaults/commit/cae80740d33649c0b71f4dab76451378e7ddb189))
+* upgrade webpack ([32919f1](https://github.com/Zefiros-Software/npm-defaults/commit/32919f1886039848e2ee26b9059df9b2572929e1))
+
+
+### Features
+
+* upgrade tsconfig to 2020 ([04a60f6](https://github.com/Zefiros-Software/npm-defaults/commit/04a60f629e62b67f7d258ac344737bb12e2f2ea8))
+
 # [0.2.0-beta.77](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.76...v0.2.0-beta.77) (2021-03-28)
 
 

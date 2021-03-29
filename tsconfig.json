@@ -5,6 +5,7 @@
     "src/**/.*.ts",
     "test/**/*.ts",
     "test/**/.*.ts",
+    "test",
     "typings/**/*.ts",
     "typings/**/.*.ts",
     "*.js",

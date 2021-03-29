@@ -7,11 +7,16 @@
   },
   "editor.formatOnSave": true,
   "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
-  "eslint.enable": true,
   "eslint.options": {
     "resolvePluginsRelativeTo": "."
   },
-  "eslint.validate": ["javascript", "typescript"],
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
+  "eslint.nodeEnv": "",
   "files.eol": "\n",
   "files.exclude": {
     "**/.DS_Store": true,
@@ -35,7 +40,6 @@
     "**/node_modules/*/**": true
   },
   "javascript.validate.enable": true,
-  "prettier.disableLanguages": ["yaml", "js", "typescript"],
   "typescript.format.semicolons": "remove",
   "typescript.implementationsCodeLens.enabled": true,
   "typescript.referencesCodeLens.enabled": true,

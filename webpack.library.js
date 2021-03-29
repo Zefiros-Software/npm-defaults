@@ -41,7 +41,7 @@ module.exports = function ({ root }) {
                     },
                 },
                 {
-                    test: /\.d\.ts$/,
+                    test: /\.(d|spec)\.ts$/,
                     loader: 'ignore-loader',
                 },
             ],

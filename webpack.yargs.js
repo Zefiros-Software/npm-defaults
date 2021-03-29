@@ -18,10 +18,14 @@ module.exports = function ({ root }) {
             path: path.join(root, 'dist'),
             filename: '[name].js',
         },
-        stats: {
-            // Ignore warnings due to yarg's dynamic module loading
-            warningsFilter: [/node_modules\/yargs/, /node_modules\/require-main-filename/],
-        },
+        ignoreWarnings: [
+            {
+                module: /node_modules\/yargs/,
+            },
+            {
+                module: /node_modules\/require-main-filename/,
+            },
+        ],
         externals: [
             nodeExternals({
                 modulesFromFile: {
@@ -52,7 +56,7 @@ module.exports = function ({ root }) {
                     },
                 },
                 {
-                    test: /\.d\.ts$/,
+                    test: /\.(d|spec)\.ts$/,
                     loader: 'ignore-loader',
                 },
             ],

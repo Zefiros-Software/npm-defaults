@@ -12,7 +12,10 @@
   },
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
-  "eslint.validate": ["javascript", "typescript"],
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
   "eslint.nodeEnv": "",
   "files.eol": "\n",
   "files.exclude": {

@@ -1,3 +1,10 @@
+# [0.2.0-beta.79](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.78...v0.2.0-beta.79) (2021-04-04)
+
+
+### Features
+
+* upgrade dependencies ([cf64dd6](https://github.com/Zefiros-Software/npm-defaults/commit/cf64dd64a8290e6f7486bfb6814a7256088d3b52))
+
 # [0.2.0-beta.78](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.77...v0.2.0-beta.78) (2021-03-29)
 
 

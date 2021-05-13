@@ -1,3 +1,10 @@
+# [0.2.0-beta.80](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.79...v0.2.0-beta.80) (2021-05-13)
+
+
+### Features
+
+* **eslint:** auto fix unused imports ([b054b39](https://github.com/Zefiros-Software/npm-defaults/commit/b054b390cc8954dcdfed282da7aac6d8c0cee2bc))
+
 # [0.2.0-beta.79](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.78...v0.2.0-beta.79) (2021-04-04)
 
 

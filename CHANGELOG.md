@@ -1,3 +1,10 @@
+# [0.2.0-beta.81](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.80...v0.2.0-beta.81) (2021-07-03)
+
+
+### Features
+
+* **typescript:** upgrade to typescript 4.4 ([#34](https://github.com/Zefiros-Software/npm-defaults/issues/34)) ([42238de](https://github.com/Zefiros-Software/npm-defaults/commit/42238de2331f25b9048df7b1be52e2481e67bcea))
+
 # [0.2.0-beta.80](https://github.com/Zefiros-Software/npm-defaults/compare/v0.2.0-beta.79...v0.2.0-beta.80) (2021-05-13)
 
 

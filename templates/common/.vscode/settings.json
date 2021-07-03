@@ -1,0 +1,49 @@
+{
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
+  "eslint.options": {
+    "resolvePluginsRelativeTo": "."
+  },
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
+  "eslint.nodeEnv": "",
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/.webpack": true,
+    "**/.yalc": true,
+    "**/CVS": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/node_modules": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.webpack/**": true,
+    "**/.yalc/**": true,
+    "**/coverage/*/**": true,
+    "**/dist/**": true,
+    "**/node_modules/*/**": true
+  },
+  "javascript.validate.enable": true,
+  "typescript.format.semicolons": "remove",
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsserver.useSeparateSyntaxServer": "dynamic",
+  "yaml.format.enable": false
+}

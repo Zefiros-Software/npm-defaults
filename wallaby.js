@@ -1,1 +1,1 @@
-module.exports = require('./wallaby.base')(__dirname)
+module.exports = require('./wallaby.base')

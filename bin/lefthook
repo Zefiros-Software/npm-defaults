@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+const fs = require('fs')
+const isCi = require('is-ci')
+
+if (!isCi) {
+    const execa = require('execa')
+
+    const { exitCode } = execa.commandSync('lefthook version')
+
+    if (exitCode != 0) {
+        let dependencies = {}
+        try {
+            const { stdout } = execa.commandSync('npm -j -g ls @arkweid/lefthook')
+            dependencies = JSON.parse(stdout).dependencies
+        } catch (err) {
+            dependencies = {}
+        }
+        if (dependencies['@arkweid/lefthook'] === undefined) {
+            execa.commandSync('npm i -g @arkweid/lefthook', { stdio: 'inherit' })
+        }
+    }
+    if (fs.existsSync('./.git')) {
+        execa.commandSync('lefthook install', { stdio: 'inherit', cwd: process.env.INIT_CWD || process.cwd() })
+    }
+}

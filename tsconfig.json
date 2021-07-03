@@ -1,22 +1,25 @@
 {
   "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"],
-      "*": ["./typings/*"]
-    },
-    "outDir": "./dist",
-    "rootDir": "."
-  },
   "include": [
     "src/**/*.ts",
-    "src/**/*.js",
+    "src/**/.*.ts",
     "test/**/*.ts",
-    "./*.js"
+    "test/**/.*.ts",
+    "test",
+    "typings/**/*.ts",
+    "typings/**/.*.ts",
+    "*.js",
+    ".*.js",
+    "*.json",
+    ".*.json"
   ],
-  "exclude": [
-    ".vscode",
-    "node_modules"
-  ]
+  "compilerOptions": {
+    "typeRoots": ["./typings", "./node_modules/@types"],
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "rootDir": "."
+  }
 }

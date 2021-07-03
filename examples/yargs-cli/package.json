@@ -1,0 +1,48 @@
+{
+  "name": "package-name",
+  "description": "example package",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "./dist/main.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "example-cli": "./bin/run"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "npm-defaults": {
+    "type": "yargs-cli"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "npx webpack --version && npx webpack",
+    "test": "npx concurrently \"npm run check:types\" \"npx jest\"",
+    "fix": "npm run lint -- --fix",
+    "lint": "npx eslint \"{src,test,typing}/**/*.{ts,js}\" --no-eslintrc -c .eslintrc.js --ignore-path .gitignore",
+    "lint:full": "bash -c \"FULL_LINT=true npm run lint\"",
+    "format": "npx prettier \"**/*.{ts,js,json,yml,yaml}\" --ignore-path .gitignore --write",
+    "release": "npx semantic-release",
+    "release:dry": "npm run release --dry-run",
+    "package": "rm -rf dist && npm run build",
+    "check:types": "npx tsc -p tsconfig.json",
+    "check:project": "npx npm-defaults lint",
+    "check:cost": "npx cost-of-modules --no-install --include-dev",
+    "coverage": "jest --collectCoverage=true"
+  },
+  "devDependencies": {
+    "@types/source-map-support": "^0.5.3",
+    "@zefiros/npm-defaults": "file:.yalc/@zefiros/npm-defaults",
+    "source-map-support": "^0.5.19",
+    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "tslib": "^2.3.0",
+    "typescript": "^4.4.0-beta",
+    "yargs": "^17.0.1"
+  },
+  "dependencies": {}
+}

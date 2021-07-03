@@ -1,8 +1,0 @@
-node_modules
-coverage
-dist
-yarn.lock
-yarn-error.log
-
-.yalc
-yalc.lock

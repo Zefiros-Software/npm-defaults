@@ -4,44 +4,53 @@ on: push
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-      with:
-        fetch-depth: 1
-    - name: Use Node.js 10
-      uses: actions/setup-node@master
-      with:
-        node-version: 10
-    - run: npm install -g yarn yalc codecov
-    - name: yarn link
-      run: |
-        yarn install
-        yalc publish
-      env:
-        CI: true
-    - name: yarn install, build, and test
-      working-directory: examples/simple
-      run: |
-        yalc add @zefiros/npm-defaults
-        yarn install
-        yarn lint
-        yarn build
-        yarn test
-      env:
-        CI: true
-    - name: coverage
-      run: codecov
-      env:
-        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-    - name: release
-      if: github.ref == 'refs/heads/master' && !github.event.release
-      run: |
-        git config --global user.name 'Hoid'
-        git config --global user.email 'hoid@zefiros.io'
-        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        yarn release
-        git push --follow-tags origin HEAD:refs/heads/master 
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Use Node.js 14
+        uses: actions/setup-node@master
+        with:
+          node-version: 14
+          cache: npm
+      - run: npm install -g npm@7 yalc
+      - name: npm build
+        run: |
+          npm install
+
+          # initialize environment
+          ./bin/run env --install
+
+          # for using named modules
+          npm link
+
+          npm-defaults ci
+
+          yalc publish
+      - name: library - yarn install, build, and test
+        working-directory: ./examples/library
+        run: |
+          yalc add @zefiros/npm-defaults
+          ../../bin/run ci
+      - name: yargs-cli - yarn install, build, and test
+        working-directory: ./examples/yargs-cli
+        run: |
+          yalc add @zefiros/npm-defaults
+          ../../bin/run ci
+      - name: coverage
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: release
+        if: github.ref == 'refs/heads/development' || github.ref == 'refs/heads/master'
+        run: |
+          ./bin/run release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: create pull request
+        if: github.ref == 'refs/heads/development'
+        run: ./bin/run make-release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

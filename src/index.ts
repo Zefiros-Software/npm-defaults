@@ -13,11 +13,10 @@ import { install } from 'source-map-support'
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
 const { bin } = require('../package.json')
 
-// eslint-disable-next-line @typescript-eslint/require-await
 export async function run(): Promise<void> {
     install()
 
-    yargs
+    await yargs
         .scriptName(Object.keys(bin)[0])
         .command(ci)
         .command(create)

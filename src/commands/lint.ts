@@ -26,7 +26,7 @@ export const scripts: Record<string, Record<string, string> | undefined> = {
         ['check:project']: 'npx npm-defaults lint',
         ['test']: 'npx concurrently "npm run check:types" "npx jest"',
         ['coverage']: 'jest --collectCoverage=true',
-        ['fix']: 'npm run lint --fix',
+        ['fix']: 'npm run lint -- --fix',
         ['lint']: 'npx eslint "{src,test,typing}/**/*.{ts,js}" --no-eslintrc -c .eslintrc.js --ignore-path .gitignore',
         ['lint:full']: 'bash -c "FULL_LINT=true npm run lint"',
         ['format']: 'npx prettier "**/*.{ts,js,json,yml,yaml}" --ignore-path .gitignore --write',
@@ -387,8 +387,9 @@ export function builder(yargs: Argv) {
     })
 }
 
-export function handler(argv: ReturnType<typeof builder>['argv']): void {
-    lintDirectory({ fix: argv.fix })
+export async function handler(argv: ReturnType<typeof builder>['argv']): Promise<void> {
+    const { fix } = await argv
+    lintDirectory({ fix })
 }
 
 export default {

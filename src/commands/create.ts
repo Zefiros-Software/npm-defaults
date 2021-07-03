@@ -130,7 +130,8 @@ export function builder(yargs: Argv) {
 }
 
 export async function handler(argv: ReturnType<typeof builder>['argv']): Promise<void> {
-    await createProject(argv.type, argv.name!, argv.local)
+    const { type, name, local } = await argv
+    await createProject(type, name!, local)
 }
 
 export default {

@@ -22,7 +22,7 @@
   "scripts": {
     "build": "npx webpack --version && npx webpack",
     "test": "npx concurrently \"npm run check:types\" \"npx jest\"",
-    "fix": "npm run lint --fix",
+    "fix": "npm run lint -- --fix",
     "lint": "npx eslint \"{src,test,typing}/**/*.{ts,js}\" --no-eslintrc -c .eslintrc.js --ignore-path .gitignore",
     "lint:full": "bash -c \"FULL_LINT=true npm run lint\"",
     "format": "npx prettier \"**/*.{ts,js,json,yml,yaml}\" --ignore-path .gitignore --write",
@@ -34,15 +34,15 @@
     "check:cost": "npx cost-of-modules --no-install --include-dev",
     "coverage": "jest --collectCoverage=true"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/source-map-support": "^0.5.3",
     "@zefiros/npm-defaults": "file:.yalc/@zefiros/npm-defaults",
     "source-map-support": "^0.5.19",
     "tsconfig-paths": "^3.9.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "tslib": "^2.1.0",
-    "typescript": "^4.2.3",
-    "yargs": "^16.2.0"
-  }
+    "tslib": "^2.3.0",
+    "typescript": "^4.4.0-beta",
+    "yargs": "^17.0.1"
+  },
+  "dependencies": {}
 }

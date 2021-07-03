@@ -29,15 +29,17 @@ export const commands: (Command | Command[])[] = [
 
 export async function runCommand(command: Command | Command[], allowParallel = true): Promise<void> {
     if (allowParallel && Array.isArray(command)) {
-        const codes = (((await concurrently(
-            command.map(
-                (c: Command) =>
-                    isScriptCommand(c) ? `npm run ${c.run}` : isComplexCommand(c) ? `npm ${c.args.join(' ')}` : `npm ${c}`,
-                {
-                    maxProcesses: cpus().length,
-                }
-            )
-        )) as unknown) as { exitCode: number }[]).map((c) => c.exitCode)
+        const codes = (
+            (await concurrently(
+                command.map(
+                    (c: Command) =>
+                        isScriptCommand(c) ? `npm run ${c.run}` : isComplexCommand(c) ? `npm ${c.args.join(' ')}` : `npm ${c}`,
+                    {
+                        maxProcesses: cpus().length,
+                    }
+                )
+            )) as unknown as { exitCode: number }[]
+        ).map((c) => c.exitCode)
         if (codes.some((c) => c !== 0)) {
             throw new Error(`Process exited with non-zero code!`)
         }
@@ -64,7 +66,7 @@ export async function runCommand(command: Command | Command[], allowParallel = t
 export async function handler(): Promise<void> {
     lintDirectory()
 
-    await runCommand({ args: ['install'] }, false)
+    await runCommand({ args: ['install', '--legacy-peer-deps'] }, false)
     for (const command of commands) {
         await runCommand(command)
     }

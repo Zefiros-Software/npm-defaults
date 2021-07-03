@@ -88,8 +88,9 @@ export function builder(yargs: Argv) {
 }
 
 export async function handler(argv: ReturnType<typeof builder>['argv']): Promise<void> {
-    if (argv.install) {
-        await install(argv.update)
+    const { install: shouldInstall, update } = await argv
+    if (shouldInstall) {
+        await install(update)
     }
 }
 
